@@ -13,4 +13,15 @@ abstract class StringsManager {
   static const next = 'NEXT';
   static const back = 'BACK';
   static const getStarted = 'GETSTARTED';
+  static const login = 'Login';
+  static const register = 'Register';
+  static const username = 'Username';
+  static const enterUsername = 'Enter your Username';
+  static const password = 'Password';
+  static const confirmPassword = 'Confirm Password';
+  static const enterPassword = '••••••••••••••';
+  static const loginWithGoogle = 'Login with Google';
+  static const loginWithFacebook = 'Login with Facebook';
+  static const dontHaveAccount = 'Don’t have an account? ';
+  static const alreadyHaveAccount = 'Already have an account? ';
 }

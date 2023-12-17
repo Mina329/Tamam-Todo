@@ -10,6 +10,27 @@ abstract class ThemeManager {
           displayLarge: StylesManager.displayLargeLight,
           displayMedium: StylesManager.displayMediumLight,
           headlineSmall: StylesManager.headlineSmallLight,
+          labelSmall: StylesManager.labelSmallLight,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorManager.primaryColor,
+            foregroundColor: Colors.white,
+            alignment: Alignment.center,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: ColorManager.borderColor,
+            ),
+          ),
+          hintStyle: StylesManager.headlineSmallLight.copyWith(
+            color: ColorManager.hintColor.withOpacity(0.4),
+          ),
         ),
       );
   static ThemeData get darkThemeData => ThemeData.dark().copyWith(
@@ -19,6 +40,7 @@ abstract class ThemeManager {
           displayLarge: StylesManager.displayLargeDark,
           displayMedium: StylesManager.displayMediumDark,
           headlineSmall: StylesManager.headlineSmallDark,
+          labelSmall: StylesManager.labelSmallDark,
         ),
         ///////////////// ELEVATED BUTTON //////////////
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -29,6 +51,18 @@ abstract class ThemeManager {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),
             ),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: ColorManager.borderColor,
+            ),
+          ),
+          fillColor: ColorManager.fillColor,
+          filled: true,
+          hintStyle: StylesManager.headlineSmallLight.copyWith(
+            color: ColorManager.hintColor,
           ),
         ),
       );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/features/onboarding/presentation/view/widgets/onboarding_action_buttons.dart';
 import 'package:todo/features/onboarding/presentation/view/widgets/page_index_indicator.dart';
@@ -38,7 +40,9 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           ),
           SkipBackButton(
             text: StringsManager.skip,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).go(AppRouter.kAuthView);
+            },
           ),
           PageViewBody(
             controller: controller,

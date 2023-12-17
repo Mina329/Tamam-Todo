@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/core/utils/color_manager.dart';
 
 abstract class StylesManager {
   static TextStyle get displayLargeDark => GoogleFonts.lato(
@@ -18,7 +19,11 @@ abstract class StylesManager {
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       );
-
+  static TextStyle get labelSmallDark => GoogleFonts.lato(
+        color: ColorManager.borderColor,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      );
   /////////////////////////////////////////
   static TextStyle get displayLargeLight => GoogleFonts.lato(
         color: Colors.black,
@@ -34,6 +39,11 @@ abstract class StylesManager {
   static TextStyle get headlineSmallLight => GoogleFonts.lato(
         color: Colors.black.withOpacity(0.87),
         fontSize: 16.sp,
-        fontWeight: FontWeight.w400,  
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle get labelSmallLight => GoogleFonts.lato(
+        color: ColorManager.borderColor,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
       );
 }

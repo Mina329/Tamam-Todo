@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/features/onboarding/presentation/view/widgets/skip_button.dart';
 
@@ -45,10 +47,14 @@ class _OnBoardingActionButtonsState extends State<OnBoardingActionButtons> {
         ),
         ElevatedButton(
           onPressed: () {
-            widget.controller.nextPage(
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.ease,
-            );
+            if (widget.controller.page! >= 1.5) {
+              GoRouter.of(context).go(AppRouter.kAuthView);
+            } else {
+              widget.controller.nextPage(
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            }
           },
           child: SizedBox(
             height: 50.h,
@@ -57,7 +63,10 @@ class _OnBoardingActionButtonsState extends State<OnBoardingActionButtons> {
               child: Center(
                 child: Text(
                   text,
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
