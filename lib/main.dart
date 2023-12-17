@@ -4,6 +4,7 @@ import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/theme_manager.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

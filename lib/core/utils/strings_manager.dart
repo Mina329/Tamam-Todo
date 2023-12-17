@@ -1,3 +1,16 @@
 abstract class StringsManager {
   static const appName = "UpTodo";
+  static const onboarding1 = "Manage your tasks";
+  static const onboarding1Description =
+      "You can easily manage all of your daily \n tasks in UpTodo for free";
+  static const onboarding2 = "Create daily routine";
+  static const onboarding2Description =
+      "In Uptodo  you can create your\n personalized routine to stay productive";
+  static const onboarding3 = "Orgonaize your tasks";
+  static const onboarding3Description =
+      "You can organize your daily tasks by\n adding your tasks into separate categories";
+  static const skip = 'SKIP';
+  static const next = 'NEXT';
+  static const back = 'BACK';
+  static const getStarted = 'GETSTARTED';
 }

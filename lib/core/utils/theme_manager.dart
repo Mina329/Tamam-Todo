@@ -8,6 +8,8 @@ abstract class ThemeManager {
         ////////////////// TEXT THEME ////////////////
         textTheme: TextTheme(
           displayLarge: StylesManager.displayLargeLight,
+          displayMedium: StylesManager.displayMediumLight,
+          headlineSmall: StylesManager.headlineSmallLight,
         ),
       );
   static ThemeData get darkThemeData => ThemeData.dark().copyWith(
@@ -15,6 +17,19 @@ abstract class ThemeManager {
         ////////////////// TEXT THEME ////////////////
         textTheme: TextTheme(
           displayLarge: StylesManager.displayLargeDark,
+          displayMedium: StylesManager.displayMediumDark,
+          headlineSmall: StylesManager.headlineSmallDark,
+        ),
+        ///////////////// ELEVATED BUTTON //////////////
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorManager.primaryColor,
+            foregroundColor: Colors.white,
+            alignment: Alignment.center,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
         ),
       );
 }
