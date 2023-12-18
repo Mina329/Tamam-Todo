@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/assets_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
@@ -32,55 +34,67 @@ class _AuthViewBodyState extends State<AuthViewBody> {
         SliverSizedBox(
           height: 30.h,
         ),
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: CustomLoginButton(
             asset: AssetsManager.googleIcon,
             text: StringsManager.loginWithGoogle,
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kHomeView);
+            },
           ),
         ),
         SliverSizedBox(
           height: 20.h,
         ),
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: CustomLoginButton(
             asset: AssetsManager.facebookIcon,
             text: StringsManager.loginWithFacebook,
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kHomeView);
+            },
           ),
         ),
         SliverSizedBox(
           height: 50.h,
         ),
         SliverToBoxAdapter(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                isLogin
-                    ? StringsManager.dontHaveAccount
-                    : StringsManager.alreadyHaveAccount,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isLogin = !isLogin;
-                  });
-                },
-                child: Text(
-                  isLogin ? StringsManager.register : StringsManager.login,
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        color: Colors.white.withOpacity(
-                          0.87,
-                        ),
-                      ),
-                ),
-              )
-            ],
-          ),
+          child: _loginRegisterSwitcher(context),
         ),
         SliverSizedBox(
           height: 30.h,
         ),
+      ],
+    );
+  }
+
+  Row _loginRegisterSwitcher(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          isLogin
+              ? StringsManager.dontHaveAccount
+              : StringsManager.alreadyHaveAccount,
+          style: Theme.of(context).textTheme.labelSmall,
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              isLogin = !isLogin;
+            });
+          },
+          child: Text(
+            isLogin ? StringsManager.register : StringsManager.login,
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white.withOpacity(
+                          0.87,
+                        )
+                      : Colors.grey[900],
+                ),
+          ),
+        )
       ],
     );
   }

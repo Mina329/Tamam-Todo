@@ -24,4 +24,8 @@ abstract class StringsManager {
   static const loginWithFacebook = 'Login with Facebook';
   static const dontHaveAccount = 'Don’t have an account? ';
   static const alreadyHaveAccount = 'Already have an account? ';
+  static const index = 'Index';
+  static const calendar = 'Calendar';
+  static const focus = 'Focus';
+  static const profile = 'Profile';
 }

@@ -19,14 +19,20 @@ class CustomLoginButton extends StatelessWidget {
       height: 48.h,
       child: ElevatedButton(
         onPressed: onPressed,
-        style: const ButtonStyle(
-          side: MaterialStatePropertyAll(
+        style: ButtonStyle(
+          side: const MaterialStatePropertyAll(
             BorderSide(
               color: ColorManager.primaryColor,
             ),
           ),
-          backgroundColor: MaterialStatePropertyAll(
+          backgroundColor: const MaterialStatePropertyAll(
             Colors.transparent,
+          ),
+          elevation: const MaterialStatePropertyAll(
+            0,
+          ),
+          overlayColor: MaterialStatePropertyAll(
+            ColorManager.primaryColor.withAlpha(40),
           ),
         ),
         child: Row(
