@@ -28,4 +28,8 @@ abstract class StringsManager {
   static const calendar = 'Calendar';
   static const focus = 'Focus';
   static const profile = 'Profile';
+  static const addTask = 'Add Task';
+  static const taskTitle = 'Task Title';
+  static const taskDescription = 'Task Description';
+  static const chooseTime = 'Choose Time';
 }

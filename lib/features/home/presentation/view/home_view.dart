@@ -36,6 +36,8 @@ class _HomeViewState extends State<HomeView> {
 
   AnimatedBottomNavigationBar _buildBottomNavigationBar(BuildContext context) {
     return AnimatedBottomNavigationBar.builder(
+      splashColor: Colors.transparent,
+      splashRadius: 0,
       itemCount: 4,
       activeIndex: activeIndex,
       gapLocation: GapLocation.center,
