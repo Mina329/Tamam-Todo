@@ -20,6 +20,7 @@ class AddTaskForm extends StatelessWidget {
                 label: Text(
                   StringsManager.taskTitle,
                 ),
+                hintText: StringsManager.taskTitle,
               ),
             ),
           ),
@@ -34,6 +35,7 @@ class AddTaskForm extends StatelessWidget {
                 label: Text(
                   StringsManager.taskDescription,
                 ),
+                hintText: StringsManager.taskDescription,
               ),
             ),
           ),

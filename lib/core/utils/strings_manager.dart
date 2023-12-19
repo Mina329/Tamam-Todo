@@ -35,4 +35,12 @@ abstract class StringsManager {
   static const taskPriority = 'Task Priority';
   static const cancel = 'Cancel';
   static const save = 'Save';
+  static const chooseCategory = 'Choose Category';
+  static const createNew = 'Create New Category';
+  static const categoryName = 'Category Name';
+  static const categoryIcon = 'Category Icon';
+  static const categoryColor = 'Category Color';
+  static const chooseIcon = 'Choose Icon';
+  static const chooseColor = 'Choose Color';
+  static const pickAColor = 'Pick a color';
 }

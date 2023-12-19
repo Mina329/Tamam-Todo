@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
+import 'package:todo/features/home/presentation/view/widgets/add_category_button.dart';
+import 'package:todo/features/home/presentation/view/widgets/task_category_item.dart';
 import 'package:todo/features/home/presentation/view/widgets/task_priority_action_buttons.dart';
 import 'package:todo/features/home/presentation/view/widgets/task_priority_item.dart';
 
@@ -20,6 +22,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
   DateTime? selectedDate;
   TimeOfDay? selectedTimeOfDay;
   int? selectedTaskPriority;
+  int? selectedCategoryIndex;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -38,10 +41,15 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
           width: 10.w,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            buildChooseCategoryDialog(context);
+          },
           icon: Icon(
             CustomIcons.tag_icon,
             size: 27.sp,
+            color: selectedCategoryIndex != null
+                ? ColorManager.primaryColor
+                : null,
           ),
         ),
         SizedBox(
@@ -68,6 +76,85 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
           ),
         ),
       ],
+    );
+  }
+
+  void buildChooseCategoryDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          child: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) => Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    StringsManager.chooseCategory,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  const Divider(),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  _buildChooseCategoryGridView(setState),
+                  SizedBox(height: 16.h),
+                  TaskPriorityActionButtons(
+                    cancelOnPressed: () {
+                      selectedCategoryIndex = null;
+                      GoRouter.of(context).pop();
+                    },
+                    saveOnPressed: () {
+                      GoRouter.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+    setState(() {});
+  }
+
+  Widget _buildChooseCategoryGridView(StateSetter setState) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.6,
+      child: CustomScrollView(
+        slivers: [
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 20.w,
+              mainAxisSpacing: 20.h,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                if (index < 29) {
+                  return TaskCategoryItem(
+                    color: const Color(0xff80FFFF),
+                    icon: CustomIcons.grocery_icon,
+                    selected: selectedCategoryIndex == index,
+                    title: 'Grocery',
+                    onTap: () {
+                      selectedCategoryIndex = index;
+                      setState(() {});
+                    },
+                  );
+                } else {
+                  return const AddCategoryButton();
+                }
+              },
+              childCount: 30,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -111,9 +198,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
         );
       },
     );
-    if (context.mounted) {
-      setState(() {});
-    }
+    setState(() {});
   }
 
   GridView _buildTaskPriorityGridView(StateSetter setState) {
@@ -164,3 +249,5 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
     }
   }
 }
+
+
