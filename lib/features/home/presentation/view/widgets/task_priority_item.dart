@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:todo/core/utils/assets_manager.dart';
 import 'package:todo/core/utils/color_manager.dart';
+import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 
 class TaskPriorityItem extends StatelessWidget {
   const TaskPriorityItem({
@@ -33,18 +32,13 @@ class TaskPriorityItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              AssetsManager.flagIcon,
-              width: 24.w,
-              height: 24.h,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : selected
-                        ? Colors.white
-                        : Colors.black,
-                BlendMode.srcIn,
-              ),
+            Icon(
+              CustomIcons.flag_icon,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : selected
+                      ? Colors.white
+                      : Colors.black,
             ),
             SizedBox(
               height: 5.h,

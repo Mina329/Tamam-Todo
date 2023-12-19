@@ -51,15 +51,8 @@ class _HomeViewState extends State<HomeView> {
           ? ColorManager.greyColor
           : ColorManager.primaryColor,
       tabBuilder: (int index, bool isActive) {
-        final color = isActive
-            ? Theme.of(context).brightness == Brightness.dark
-                ? ColorManager.primaryColor
-                : Colors.white
-            : Theme.of(context).brightness == Brightness.dark
-                ? Colors.white
-                : Colors.black54;
         return CustomBottomNavigationBarItem(
-          color: color,
+          isActive: isActive,
           index: index,
         );
       },

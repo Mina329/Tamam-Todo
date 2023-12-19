@@ -5,5 +5,4 @@ abstract class AssetsManager {
   static const onboarding3 = "assets/images/onboarding3.svg";
   static const googleIcon = "assets/images/google_icon.svg";
   static const facebookIcon = "assets/images/facebook_icon.svg";
-  static const flagIcon = "assets/images/flag_icon.svg";
 }
