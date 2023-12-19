@@ -14,6 +14,11 @@ abstract class StylesManager {
         fontSize: 32.sp,
         fontWeight: FontWeight.w700,
       );
+  static TextStyle get displaySmallDark => GoogleFonts.lato(
+        color: Colors.white.withOpacity(0.87),
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w700,
+      );
   static TextStyle get headlineSmallDark => GoogleFonts.lato(
         color: Colors.white.withOpacity(0.87),
         fontSize: 16.sp,
@@ -39,6 +44,11 @@ abstract class StylesManager {
   static TextStyle get displayMediumLight => GoogleFonts.lato(
         color: Colors.black.withOpacity(0.87),
         fontSize: 32.sp,
+        fontWeight: FontWeight.w700,
+      );
+  static TextStyle get displaySmallLight => GoogleFonts.lato(
+        color: Colors.black.withOpacity(0.87),
+        fontSize: 16.sp,
         fontWeight: FontWeight.w700,
       );
   static TextStyle get headlineSmallLight => GoogleFonts.lato(

@@ -32,4 +32,7 @@ abstract class StringsManager {
   static const taskTitle = 'Task Title';
   static const taskDescription = 'Task Description';
   static const chooseTime = 'Choose Time';
+  static const taskPriority = 'Task Priority';
+  static const cancel = 'Cancel';
+  static const save = 'Save';
 }

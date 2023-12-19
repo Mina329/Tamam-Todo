@@ -7,16 +7,16 @@ abstract class ThemeManager {
         scaffoldBackgroundColor: ColorManager.scaffoldColorLight,
         ////////////////// TEXT THEME ////////////////
         textTheme: TextTheme(
-          displayLarge: StylesManager.displayLargeLight,
-          displayMedium: StylesManager.displayMediumLight,
-          headlineSmall: StylesManager.headlineSmallLight,
-          labelSmall: StylesManager.labelSmallLight,
-          headlineMedium: StylesManager.headlineMediumLight,
-          bodySmall: const TextStyle(
-            color: Colors.black,
-          ),
-          bodyMedium: const TextStyle(color: Colors.black),
-        ),
+            displayLarge: StylesManager.displayLargeLight,
+            displayMedium: StylesManager.displayMediumLight,
+            headlineSmall: StylesManager.headlineSmallLight,
+            labelSmall: StylesManager.labelSmallLight,
+            headlineMedium: StylesManager.headlineMediumLight,
+            bodySmall: const TextStyle(
+              color: Colors.black,
+            ),
+            bodyMedium: const TextStyle(color: Colors.black),
+            displaySmall: StylesManager.displaySmallLight),
 
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -48,6 +48,7 @@ abstract class ThemeManager {
           headlineSmall: StylesManager.headlineSmallDark,
           labelSmall: StylesManager.labelSmallDark,
           headlineMedium: StylesManager.headlineMediumDark,
+          displaySmall: StylesManager.displaySmallDark,
         ),
         ///////////////// ELEVATED BUTTON //////////////
         elevatedButtonTheme: ElevatedButtonThemeData(
