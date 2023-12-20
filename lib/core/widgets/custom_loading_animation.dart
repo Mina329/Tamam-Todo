@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+
 import 'package:todo/core/utils/assets_manager.dart';
 
 class CustomLoadingAnimation extends StatelessWidget {
@@ -26,6 +28,24 @@ class CustomLoadingAnimation extends StatelessWidget {
       builder: (BuildContext context) {
         return const CustomLoadingAnimation();
       },
+    );
+  }
+}
+
+class CustomCircularIndicator extends StatelessWidget {
+  const CustomCircularIndicator({
+    Key? key,
+    this.width,
+    this.height,
+  }) : super(key: key);
+  final double? width;
+  final double? height;
+  @override
+  Widget build(BuildContext context) {
+    return Lottie.asset(
+      AssetsManager.loading,
+      width: width ?? 50.w,
+      height: height ?? 100.h,
     );
   }
 }

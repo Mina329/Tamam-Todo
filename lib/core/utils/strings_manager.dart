@@ -43,4 +43,12 @@ abstract class StringsManager {
   static const chooseIcon = 'Choose Icon';
   static const chooseColor = 'Choose Color';
   static const pickAColor = 'Pick a color';
+  static const name = 'Name';
+  static const priority = 'Priority';
+  static const search = 'Search for your task...';
+  static const today = 'Today';
+  static const tomorrow = 'Tomorrow';
+  static const yesterday = 'Yesterday';
+  static const completed = 'Completed';
+  static const uncompleted = 'Uncompleted';
 }

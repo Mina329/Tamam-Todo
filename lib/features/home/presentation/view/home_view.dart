@@ -29,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: _children[activeIndex],
       floatingActionButton: const CustomFloatingActionButton(),
+      resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _buildBottomNavigationBar(context),
     );

@@ -15,9 +15,10 @@ abstract class ThemeManager {
           bodySmall: const TextStyle(color: Colors.black),
           bodyMedium: const TextStyle(color: Colors.black),
           bodyLarge: const TextStyle(color: Colors.black),
-          titleMedium: const TextStyle(color: Colors.black),
+          titleMedium: StylesManager.titleMediumLight,
           displaySmall: StylesManager.displaySmallLight,
           titleSmall: StylesManager.titleSmallLight,
+          labelMedium: StylesManager.labelMediumLight,
         ),
 
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -45,14 +46,15 @@ abstract class ThemeManager {
         scaffoldBackgroundColor: ColorManager.scaffoldColorDark,
         ////////////////// TEXT THEME ////////////////
         textTheme: TextTheme(
-          displayLarge: StylesManager.displayLargeDark,
-          displayMedium: StylesManager.displayMediumDark,
-          headlineSmall: StylesManager.headlineSmallDark,
-          labelSmall: StylesManager.labelSmallDark,
-          headlineMedium: StylesManager.headlineMediumDark,
-          displaySmall: StylesManager.displaySmallDark,
-          titleSmall: StylesManager.titleSmallDark,
-        ),
+            displayLarge: StylesManager.displayLargeDark,
+            displayMedium: StylesManager.displayMediumDark,
+            headlineSmall: StylesManager.headlineSmallDark,
+            labelSmall: StylesManager.labelSmallDark,
+            headlineMedium: StylesManager.headlineMediumDark,
+            displaySmall: StylesManager.displaySmallDark,
+            titleSmall: StylesManager.titleSmallDark,
+            titleMedium: StylesManager.titleMediumDark,
+            labelMedium: StylesManager.labelMediumDark),
         ///////////////// ELEVATED BUTTON //////////////
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

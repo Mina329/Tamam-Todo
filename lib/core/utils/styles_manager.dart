@@ -29,6 +29,11 @@ abstract class StylesManager {
         fontSize: 20.sp,
         fontWeight: FontWeight.w700,
       );
+  static TextStyle get titleMediumDark => GoogleFonts.lato(
+        color: Colors.white.withOpacity(0.87),
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w400,
+      );
   static TextStyle get titleSmallDark => GoogleFonts.lato(
         color: Colors.white.withOpacity(0.87),
         fontSize: 14.sp,
@@ -37,6 +42,11 @@ abstract class StylesManager {
   static TextStyle get labelSmallDark => GoogleFonts.lato(
         color: ColorManager.borderColor,
         fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle get labelMediumDark => GoogleFonts.lato(
+        color: const Color(0xFFAFAFAF),
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
       );
   /////////////////////////////////////////
@@ -69,6 +79,16 @@ abstract class StylesManager {
   static TextStyle get labelSmallLight => GoogleFonts.lato(
         color: ColorManager.borderColor,
         fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle get labelMediumLight => GoogleFonts.lato(
+        color: const Color(0xFFAFAFAF),
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle get titleMediumLight => GoogleFonts.lato(
+        color: Colors.black.withOpacity(0.87),
+        fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       );
   static TextStyle get titleSmallLight => GoogleFonts.lato(
