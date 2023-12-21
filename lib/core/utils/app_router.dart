@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:todo/features/auth/presentation/view/auth_view.dart';
 import 'package:todo/features/home/presentation/view/create_category_view.dart';
 import 'package:todo/features/home/presentation/view/home_view.dart';
+import 'package:todo/features/index/presentation/view/edit%20task%20view/edit_task_view.dart';
 import 'package:todo/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:todo/features/splash/presentation/view/splash_view.dart';
 
@@ -12,6 +13,7 @@ abstract class AppRouter {
   static const kAuthView = '/auth';
   static const kHomeView = '/home';
   static const kCreateCategoryView = '/create_category';
+  static const kEditTaskView = '/edit_task';
 
   static final router = GoRouter(
     routes: [
@@ -47,11 +49,19 @@ abstract class AppRouter {
           const CreateCategoryView(),
         ),
       ),
+      GoRoute(
+        path: kEditTaskView,
+        pageBuilder: (context, state) => screenTransition(
+          state,
+          const EditTaskView(),
+        ),
+      ),
     ],
   );
 }
 
-CustomTransitionPage<void> screenTransition(GoRouterState state, Widget screen) {
+CustomTransitionPage<void> screenTransition(
+    GoRouterState state, Widget screen) {
   return CustomTransitionPage<void>(
     key: state.pageKey,
     child: screen,

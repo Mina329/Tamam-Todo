@@ -6,7 +6,7 @@ import 'package:todo/features/calendar/presentation/view/calendar_view.dart';
 import 'package:todo/features/focus/presentation/view/focus_view.dart';
 import 'package:todo/features/home/presentation/view/widgets/custom_bottom_navigation_bar_item.dart';
 import 'package:todo/features/home/presentation/view/widgets/custom_floating_action_button.dart';
-import 'package:todo/features/index/presentation/view/index_view.dart';
+import 'package:todo/features/index/presentation/view/index%20view/index_view.dart';
 import 'package:todo/features/profile/presentation/view/profile_view.dart';
 
 class HomeView extends StatefulWidget {

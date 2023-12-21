@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
-import 'package:todo/features/index/presentation/view/index_view.dart';
-import 'package:todo/features/index/presentation/view/widgets/completed_label.dart';
-import 'package:todo/features/index/presentation/view/widgets/custom_drop_down.dart';
-import 'package:todo/features/index/presentation/view/widgets/custom_index_app_bar.dart';
-import 'package:todo/features/index/presentation/view/widgets/custom_search_field.dart';
-import 'package:todo/features/index/presentation/view/widgets/task_item.dart';
+import 'package:todo/features/index/presentation/view/index%20view/index_view.dart';
+import 'package:todo/core/widgets/custom_clickable_container.dart';
+import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_drop_down.dart';
+import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_index_app_bar.dart';
+import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_search_field.dart';
+import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item.dart';
 
 class IndexViewBody extends StatelessWidget {
   const IndexViewBody({super.key});
@@ -71,7 +71,9 @@ class IndexViewBody extends StatelessWidget {
             height: 20.h,
           ),
           const SliverToBoxAdapter(
-            child: CompletedLabel(),
+            child: CustomClickableContainer(
+              text: StringsManager.completed,
+            ),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(

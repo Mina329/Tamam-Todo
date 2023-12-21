@@ -6,7 +6,7 @@ import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 import 'package:todo/features/home/presentation/view/widgets/add_category_button.dart';
 import 'package:todo/features/home/presentation/view/widgets/task_category_item.dart';
-import 'package:todo/features/home/presentation/view/widgets/task_priority_action_buttons.dart';
+import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
 import 'package:todo/features/home/presentation/view/widgets/task_priority_item.dart';
 
 class AddTaskActionButtons extends StatefulWidget {
@@ -103,7 +103,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                   ),
                   _buildChooseCategoryGridView(setState),
                   SizedBox(height: 16.h),
-                  TaskPriorityActionButtons(
+                  SaveCancelActionButtons(
                     cancelOnPressed: () {
                       selectedCategoryIndex = null;
                       GoRouter.of(context).pop();
@@ -182,7 +182,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                   ),
                   _buildTaskPriorityGridView(setState),
                   SizedBox(height: 16.h),
-                  TaskPriorityActionButtons(
+                  SaveCancelActionButtons(
                     cancelOnPressed: () {
                       selectedTaskPriority = null;
                       GoRouter.of(context).pop();

@@ -50,5 +50,8 @@ abstract class StringsManager {
   static const tomorrow = 'Tomorrow';
   static const yesterday = 'Yesterday';
   static const completed = 'Completed';
-  static const uncompleted = 'Uncompleted';
+  static const editTitleAndDescription = 'Edit Title and Description';
+  static const taskTime = 'Task Time';
+  static const taskCategory = 'Task Category';
+  static const deleteTask = 'Delete Task';
 }
