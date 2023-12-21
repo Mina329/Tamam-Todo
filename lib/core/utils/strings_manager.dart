@@ -54,4 +54,6 @@ abstract class StringsManager {
   static const taskTime = 'Task Time';
   static const taskCategory = 'Task Category';
   static const deleteTask = 'Delete Task';
+  static const finished = 'Finished';
+  static const missed = 'Missed';
 }

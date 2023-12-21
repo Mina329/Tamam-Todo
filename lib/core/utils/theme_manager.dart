@@ -12,8 +12,8 @@ abstract class ThemeManager {
           headlineSmall: StylesManager.headlineSmallLight,
           labelSmall: StylesManager.labelSmallLight,
           headlineMedium: StylesManager.headlineMediumLight,
-          bodySmall: const TextStyle(color: Colors.black),
-          bodyMedium: const TextStyle(color: Colors.black),
+          bodySmall: StylesManager.bodySmallLight,
+          bodyMedium: StylesManager.bodyMediumLight,
           bodyLarge: const TextStyle(color: Colors.black),
           titleMedium: StylesManager.titleMediumLight,
           displaySmall: StylesManager.displaySmallLight,
@@ -46,15 +46,18 @@ abstract class ThemeManager {
         scaffoldBackgroundColor: ColorManager.scaffoldColorDark,
         ////////////////// TEXT THEME ////////////////
         textTheme: TextTheme(
-            displayLarge: StylesManager.displayLargeDark,
-            displayMedium: StylesManager.displayMediumDark,
-            headlineSmall: StylesManager.headlineSmallDark,
-            labelSmall: StylesManager.labelSmallDark,
-            headlineMedium: StylesManager.headlineMediumDark,
-            displaySmall: StylesManager.displaySmallDark,
-            titleSmall: StylesManager.titleSmallDark,
-            titleMedium: StylesManager.titleMediumDark,
-            labelMedium: StylesManager.labelMediumDark),
+          displayLarge: StylesManager.displayLargeDark,
+          displayMedium: StylesManager.displayMediumDark,
+          headlineSmall: StylesManager.headlineSmallDark,
+          labelSmall: StylesManager.labelSmallDark,
+          headlineMedium: StylesManager.headlineMediumDark,
+          displaySmall: StylesManager.displaySmallDark,
+          titleSmall: StylesManager.titleSmallDark,
+          titleMedium: StylesManager.titleMediumDark,
+          labelMedium: StylesManager.labelMediumDark,
+          bodySmall: StylesManager.bodySmallDark,
+          bodyMedium: StylesManager.bodyMediumDark,
+        ),
         ///////////////// ELEVATED BUTTON //////////////
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

@@ -74,4 +74,3 @@ class EditTaskViewBody extends StatelessWidget {
     );
   }
 }
-

@@ -16,6 +16,7 @@ class CreateCategoryViewBody extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverSizedBox(
             height: 50.h,

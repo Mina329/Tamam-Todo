@@ -95,6 +95,7 @@ class _EditTaskCategoryState extends State<EditTaskCategory> {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.6,
       child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverGrid(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
