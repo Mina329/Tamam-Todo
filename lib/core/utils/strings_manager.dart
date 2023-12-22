@@ -56,4 +56,12 @@ abstract class StringsManager {
   static const deleteTask = 'Delete Task';
   static const finished = 'Finished';
   static const missed = 'Missed';
+  static const notificationSuppress =
+      'While your focus mode is on, all of your notifications will be off';
+  static const startFocusing = 'Start Focusing';
+  static const stopFocusing = 'Stop Focusing';
+  static const overview = 'Overview';
+  static const applications = 'Applications';
+  static const youSpent = 'You Spent ';
+  static const on = ' on ';
 }
