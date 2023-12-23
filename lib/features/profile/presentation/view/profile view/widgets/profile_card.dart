@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/core/widgets/custom_loading_animation.dart';
-import 'package:todo/features/profile/presentation/view/widgets/task_progress_card.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/task_progress_card.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard(

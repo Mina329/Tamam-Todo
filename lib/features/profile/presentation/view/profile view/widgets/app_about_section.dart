@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
-import 'package:todo/features/profile/presentation/view/widgets/custom_list_tile.dart';
-import 'package:todo/features/profile/presentation/view/widgets/custom_profile_section_title.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/custom_list_tile.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/custom_profile_section_title.dart';
 
 class AppAboutSection extends StatelessWidget {
   AppAboutSection({super.key});
@@ -25,7 +25,7 @@ class AppAboutSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const CustomProfileSectionTitle(
-          title: StringsManager.account,
+          title: StringsManager.appName,
         ),
         SizedBox(
           height: 5.h,

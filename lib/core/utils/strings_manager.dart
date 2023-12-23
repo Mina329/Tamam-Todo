@@ -75,4 +75,9 @@ abstract class StringsManager {
   static const helpAndFeedback = "Help & Feedback";
   static const supportUs = "Support Us";
   static const logOut = "Log Out";
+  static const accountName = "Account Name";
+  static const oldPassword = "Old Password";
+  static const newPassword = "New Password";
+  static const changeAppColor = "Change App Color";
+  static const changeAppLanguage = "Change App Language";
 }

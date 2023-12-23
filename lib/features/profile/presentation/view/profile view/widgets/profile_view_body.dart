@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_simple_appbar.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
-import 'package:todo/features/profile/presentation/view/widgets/account_section.dart';
-import 'package:todo/features/profile/presentation/view/widgets/app_about_section.dart';
-import 'package:todo/features/profile/presentation/view/widgets/log_out_button.dart';
-import 'package:todo/features/profile/presentation/view/widgets/profile_card.dart';
-import 'package:todo/features/profile/presentation/view/widgets/settings_section.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/account_section.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/app_about_section.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/log_out_button.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/profile_card.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/settings_section.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -47,7 +47,7 @@ class ProfileViewBody extends StatelessWidget {
           SliverSizedBox(
             height: 16.h,
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: AccountSection(),
           ),
           SliverSizedBox(
