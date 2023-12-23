@@ -64,4 +64,15 @@ abstract class StringsManager {
   static const applications = 'Applications';
   static const youSpent = 'You Spent ';
   static const on = ' on ';
+  static const settings = "Settings";
+  static const appSettings = "App Settings";
+  static const account = "Account";
+  static const changeAccountName = "Change Account Name";
+  static const changeAccountPassword = "Change Account Password";
+  static const changeAccountImage = "Change Account Image";
+  static const aboutUs = "About Us";
+  static const faq = "FAQ";
+  static const helpAndFeedback = "Help & Feedback";
+  static const supportUs = "Support Us";
+  static const logOut = "Log Out";
 }
