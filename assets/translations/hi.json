@@ -82,5 +82,7 @@
   "german": "Deutsch",
   "spanish": "Español",
   "hindi": "हिन्दी",
-  "chinese": "中文"
+  "chinese": "中文",
+  "lightMode": "प्रकाश थीम",
+  "darkMode": "अंधकार थीम"
 }

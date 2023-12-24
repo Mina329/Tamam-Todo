@@ -1,14 +1,14 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:todo/core/cache/cache_helper.dart';
+import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/custom_list_tile.dart';
+import 'package:todo/main.dart';
 
 class SettingsListTiles extends StatefulWidget {
   const SettingsListTiles({
@@ -29,6 +29,10 @@ class _SettingsListTilesState extends State<SettingsListTiles> {
     StringsManager.hindi.tr(): const Locale('hi'),
     StringsManager.chinese.tr(): const Locale('zh'),
   };
+  final Map<String, ThemeMode> themes = {
+    StringsManager.lightMode.tr(): ThemeMode.light,
+    StringsManager.darkMode.tr(): ThemeMode.dark,
+  };
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,7 +40,24 @@ class _SettingsListTilesState extends State<SettingsListTiles> {
         CustomListTile(
           icon: CustomIcons.change_theme_icon,
           name: StringsManager.changeAppColor.tr(),
-          onTap: () {},
+          onTap: () {
+            _showDynamicDialog(
+              context: context,
+              dialogTitle: StringsManager.changeAppColor.tr(),
+              options: themes.keys.toList(),
+              groupValue: Theme.of(context).brightness == Brightness.dark
+                  ? StringsManager.darkMode.tr()
+                  : StringsManager.lightMode.tr(),
+              onChanged: (value) {
+                notifier.value = themes[value]!;
+                value == StringsManager.lightMode.tr()
+                    ? CacheData.setData(
+                        key: CacheKeys.kDARKMODE, value: CacheValues.LIGHT)
+                    : CacheData.setData(
+                        key: CacheKeys.kDARKMODE, value: CacheValues.DARK);
+              },
+            );
+          },
         ),
         SizedBox(
           height: 16.h,
@@ -61,7 +82,7 @@ class _SettingsListTilesState extends State<SettingsListTiles> {
     );
   }
 
-  String? getKeyForLocale(Locale value, Map<String, Locale> locales) {
+  String? getKeyForLocale(dynamic value, Map<String, dynamic> locales) {
     for (var entry in locales.entries) {
       if (entry.value == value) {
         return entry.key;

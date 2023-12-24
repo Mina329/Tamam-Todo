@@ -83,4 +83,6 @@ abstract class StringsManager {
   static const String spanish = "spanish";
   static const String hindi = "hindi";
   static const String chinese = "chinese";
+  static const String lightMode = "lightMode";
+  static const String darkMode = "darkMode";
 }
