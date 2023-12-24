@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/color_manager.dart';
@@ -29,7 +30,7 @@ class SaveCancelActionButtons extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                StringsManager.cancel,
+                StringsManager.cancel.tr(),
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!
@@ -42,7 +43,7 @@ class SaveCancelActionButtons extends StatelessWidget {
         ElevatedButton(
           onPressed: saveOnPressed,
           child: Text(
-            StringsManager.save,
+            StringsManager.save.tr(),
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall!

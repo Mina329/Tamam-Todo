@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -22,9 +23,9 @@ class ProfileViewBody extends StatelessWidget {
           SliverSizedBox(
             height: 56.h,
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: CustomSimpleAppBar(
-              title: StringsManager.profile,
+              title: StringsManager.profile.tr(),
             ),
           ),
           SliverSizedBox(

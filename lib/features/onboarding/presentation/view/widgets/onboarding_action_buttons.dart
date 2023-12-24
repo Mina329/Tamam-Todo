@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -19,17 +20,17 @@ class OnBoardingActionButtons extends StatefulWidget {
 }
 
 class _OnBoardingActionButtonsState extends State<OnBoardingActionButtons> {
-  String text = StringsManager.next;
+  String text = StringsManager.next.tr();
   @override
   Widget build(BuildContext context) {
     widget.controller.addListener(() {
       if (widget.controller.page! >= 1.5) {
         setState(() {
-          text = StringsManager.getStarted;
+          text = StringsManager.getStarted.tr();
         });
       } else {
         setState(() {
-          text = StringsManager.next;
+          text = StringsManager.next.tr();
         });
       }
     });
@@ -37,7 +38,7 @@ class _OnBoardingActionButtonsState extends State<OnBoardingActionButtons> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SkipBackButton(
-          text: StringsManager.back,
+          text: StringsManager.back.tr(),
           onPressed: () {
             widget.controller.previousPage(
               duration: const Duration(milliseconds: 500),

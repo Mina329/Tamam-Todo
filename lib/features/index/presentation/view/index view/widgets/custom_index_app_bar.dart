@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,7 +21,7 @@ class CustomIndexAppBar extends StatelessWidget {
       children: [
         _buildSortDropDown(),
         Text(
-          StringsManager.index,
+          StringsManager.index.tr(),
           style: Theme.of(context).textTheme.titleMedium,
         ),
         _buildProfileImage(),
@@ -38,14 +39,14 @@ class CustomIndexAppBar extends StatelessWidget {
         PopupMenuItem<String>(
           value: 'name',
           child: Text(
-            StringsManager.name,
+            StringsManager.name.tr(),
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
         PopupMenuItem<String>(
           value: 'priority',
           child: Text(
-            StringsManager.priority,
+            StringsManager.priority.tr(),
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),

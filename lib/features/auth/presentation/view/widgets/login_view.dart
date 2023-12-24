@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -14,7 +15,7 @@ class LoginView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          StringsManager.login,
+          StringsManager.login.tr(),
           style: Theme.of(context).textTheme.displayMedium,
         ),
         SizedBox(
@@ -31,7 +32,7 @@ class LoginView extends StatelessWidget {
             width: double.infinity,
             child: Center(
               child: Text(
-                StringsManager.login,
+                StringsManager.login.tr(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme

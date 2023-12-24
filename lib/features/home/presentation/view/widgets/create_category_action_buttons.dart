@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -37,7 +38,7 @@ class CreateCategoryActionButtons extends StatelessWidget {
                 width: 150.w,
                 child: Center(
                   child: Text(
-                    StringsManager.cancel,
+                    StringsManager.cancel.tr(),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                           color: ColorManager.primaryColor,
@@ -55,7 +56,7 @@ class CreateCategoryActionButtons extends StatelessWidget {
                   CustomLoadingAnimation.buildLoadingIndicator(context);
                 },
                 child: Text(
-                  StringsManager.save,
+                  StringsManager.save.tr(),
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                         color: Colors.white,
                       ),

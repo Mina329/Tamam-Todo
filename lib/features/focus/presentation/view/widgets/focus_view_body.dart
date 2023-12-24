@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -20,9 +21,9 @@ class FocusViewBody extends StatelessWidget {
           SliverSizedBox(
             height: 56.h,
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: CustomSimpleAppBar(
-              title: StringsManager.focus,
+              title: StringsManager.focus.tr(),
             ),
           ),
           SliverSizedBox(
@@ -42,7 +43,7 @@ class FocusViewBody extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Text(
-              StringsManager.applications,
+              StringsManager.applications.tr(),
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),

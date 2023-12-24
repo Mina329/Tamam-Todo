@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -21,7 +22,7 @@ class SettingsAppBar extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          StringsManager.settings,
+          StringsManager.settings.tr(),
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const Spacer(),

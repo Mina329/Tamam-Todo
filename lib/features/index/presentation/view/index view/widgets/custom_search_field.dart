@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/color_manager.dart';
@@ -16,12 +17,12 @@ class CustomSearchField extends StatelessWidget {
       child: TextField(
         textAlignVertical: TextAlignVertical.bottom,
         style: Theme.of(context).textTheme.headlineSmall,
-        decoration: const InputDecoration(
-          prefixIcon: Icon(
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
             CustomIcons.search_icon,
             color: ColorManager.greyColor,
           ),
-          hintText: StringsManager.search,
+          hintText: StringsManager.search.tr(),
         ),
       ),
     );

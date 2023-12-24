@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -14,7 +15,7 @@ class CategoryNameSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          StringsManager.categoryName,
+          StringsManager.categoryName.tr(),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         SizedBox(
@@ -26,11 +27,11 @@ class CategoryNameSection extends StatelessWidget {
             child: TextFormField(
               style: Theme.of(context).textTheme.headlineSmall,
               textAlignVertical: TextAlignVertical.bottom,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 label: Text(
-                  StringsManager.categoryName,
+                  StringsManager.categoryName.tr(),
                 ),
-                hintText: StringsManager.categoryName,
+                hintText: StringsManager.categoryName.tr(),
               ),
             ),
           ),

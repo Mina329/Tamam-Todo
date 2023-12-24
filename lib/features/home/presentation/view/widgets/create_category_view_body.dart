@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -29,7 +30,7 @@ class CreateCategoryViewBody extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Text(
-              StringsManager.createNew,
+              StringsManager.createNew.tr(),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),

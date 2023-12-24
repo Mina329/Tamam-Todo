@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +39,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
         SliverToBoxAdapter(
           child: CustomLoginButton(
             asset: AssetsManager.googleIcon,
-            text: StringsManager.loginWithGoogle,
+            text: StringsManager.loginWithGoogle.tr(),
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kHomeView);
             },
@@ -50,7 +51,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
         SliverToBoxAdapter(
           child: CustomLoginButton(
             asset: AssetsManager.facebookIcon,
-            text: StringsManager.loginWithFacebook,
+            text: StringsManager.loginWithFacebook.tr(),
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kHomeView);
             },
@@ -75,8 +76,8 @@ class _AuthViewBodyState extends State<AuthViewBody> {
       children: [
         Text(
           isLogin
-              ? StringsManager.dontHaveAccount
-              : StringsManager.alreadyHaveAccount,
+              ? StringsManager.dontHaveAccount.tr()
+              : StringsManager.alreadyHaveAccount.tr(),
           style: Theme.of(context).textTheme.labelSmall,
         ),
         GestureDetector(
@@ -86,7 +87,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
             });
           },
           child: Text(
-            isLogin ? StringsManager.register : StringsManager.login,
+            isLogin ? StringsManager.register.tr() : StringsManager.login.tr(),
             style: Theme.of(context).textTheme.labelSmall!.copyWith(
                   color: Theme.of(context).brightness == Brightness.dark
                       ? Colors.white.withOpacity(

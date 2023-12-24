@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -91,7 +92,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    StringsManager.chooseCategory,
+                    StringsManager.chooseCategory.tr(),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   SizedBox(
@@ -171,7 +172,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    StringsManager.taskPriority,
+                    StringsManager.taskPriority.tr(),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   SizedBox(
@@ -229,7 +230,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
         context: context,
         firstDate: DateTime.now(),
         lastDate: DateTime(2223),
-        confirmText: StringsManager.chooseTime,
+        confirmText: StringsManager.chooseTime.tr(),
         initialDate: DateTime.now());
     if (selectedDate != null && context.mounted) {
       selectedTimeOfDay = await showTimePicker(

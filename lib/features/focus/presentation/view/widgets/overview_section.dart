@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/features/focus/presentation/view/widgets/bar_graph_widget.dart';
 
@@ -13,7 +13,7 @@ class OverviewSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          StringsManager.overview,
+          StringsManager.overview.tr(),
           style: Theme.of(context).textTheme.titleMedium,
         ),
         SizedBox(

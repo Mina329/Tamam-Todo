@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class _CategoryColorSectionState extends State<CategoryColorSection> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          StringsManager.categoryColor,
+          StringsManager.categoryColor.tr(),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         SizedBox(
@@ -47,7 +48,7 @@ class _CategoryColorSectionState extends State<CategoryColorSection> {
                 _buildColorPicker(context);
               },
               child: Text(
-                StringsManager.chooseColor,
+                StringsManager.chooseColor.tr(),
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!
@@ -65,7 +66,7 @@ class _CategoryColorSectionState extends State<CategoryColorSection> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          StringsManager.pickAColor,
+          StringsManager.pickAColor.tr(),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         content: SingleChildScrollView(
@@ -79,7 +80,7 @@ class _CategoryColorSectionState extends State<CategoryColorSection> {
         actions: <Widget>[
           ElevatedButton(
             child: Text(
-              StringsManager.save,
+              StringsManager.save.tr(),
               style: Theme.of(context)
                   .textTheme
                   .headlineSmall!

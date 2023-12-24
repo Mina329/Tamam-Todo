@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class _CategoryIconSectionState extends State<CategoryIconSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          StringsManager.categoryIcon,
+          StringsManager.categoryIcon.tr(),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         SizedBox(
@@ -54,7 +55,7 @@ class _CategoryIconSectionState extends State<CategoryIconSection> {
                 setState(() {});
               },
               child: Text(
-                StringsManager.chooseIcon,
+                StringsManager.chooseIcon.tr(),
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -20,27 +21,7 @@ class _LoginFormState extends State<LoginForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            StringsManager.username,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          SizedBox(
-            height: 48.h,
-            child: TextFormField(
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlignVertical: TextAlignVertical.bottom,
-              decoration: const InputDecoration(
-                hintText: StringsManager.enterUsername,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25.h,
-          ),
-          Text(
-            StringsManager.password,
+            StringsManager.username.tr(),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           SizedBox(
@@ -52,7 +33,27 @@ class _LoginFormState extends State<LoginForm> {
               style: Theme.of(context).textTheme.headlineSmall,
               textAlignVertical: TextAlignVertical.bottom,
               decoration: InputDecoration(
-                hintText: StringsManager.enterPassword,
+                hintText: StringsManager.enterUsername.tr(),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 25.h,
+          ),
+          Text(
+            StringsManager.password.tr(),
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          SizedBox(
+            height: 48.h,
+            child: TextFormField(
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlignVertical: TextAlignVertical.bottom,
+              decoration: InputDecoration(
+                hintText: StringsManager.enterPassword.tr(),
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -14,18 +15,18 @@ class AppAboutSection extends StatelessWidget {
     CustomIcons.support_icon,
   ];
   final List<String> names = [
-    StringsManager.aboutUs,
-    StringsManager.faq,
-    StringsManager.helpAndFeedback,
-    StringsManager.supportUs,
+    StringsManager.aboutUs.tr(),
+    StringsManager.faq.tr(),
+    StringsManager.helpAndFeedback.tr(),
+    StringsManager.supportUs.tr(),
   ];
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomProfileSectionTitle(
-          title: StringsManager.appName,
+        CustomProfileSectionTitle(
+          title: StringsManager.appName.tr(),
         ),
         SizedBox(
           height: 5.h,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
@@ -18,27 +19,7 @@ class _RegisterFormState extends State<RegisterForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            StringsManager.username,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          SizedBox(
-            height: 48.h,
-            child: TextFormField(
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlignVertical: TextAlignVertical.bottom,
-              decoration: const InputDecoration(
-                hintText: StringsManager.enterUsername,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25.h,
-          ),
-          Text(
-            StringsManager.password,
+            StringsManager.username.tr(),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           SizedBox(
@@ -50,7 +31,27 @@ class _RegisterFormState extends State<RegisterForm> {
               style: Theme.of(context).textTheme.headlineSmall,
               textAlignVertical: TextAlignVertical.bottom,
               decoration: InputDecoration(
-                hintText: StringsManager.enterPassword,
+                hintText: StringsManager.enterUsername.tr(),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 25.h,
+          ),
+          Text(
+            StringsManager.password.tr(),
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          SizedBox(
+            height: 48.h,
+            child: TextFormField(
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlignVertical: TextAlignVertical.bottom,
+              decoration: InputDecoration(
+                hintText: StringsManager.enterPassword.tr(),
                 suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
@@ -68,7 +69,7 @@ class _RegisterFormState extends State<RegisterForm> {
             height: 25.h,
           ),
           Text(
-            StringsManager.confirmPassword,
+            StringsManager.confirmPassword.tr(),
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           SizedBox(
@@ -79,8 +80,8 @@ class _RegisterFormState extends State<RegisterForm> {
             child: TextFormField(
               style: Theme.of(context).textTheme.headlineSmall,
               textAlignVertical: TextAlignVertical.bottom,
-              decoration: const InputDecoration(
-                hintText: StringsManager.enterPassword,
+              decoration: InputDecoration(
+                hintText: StringsManager.enterPassword.tr(),
               ),
               obscureText: obsecure,
             ),

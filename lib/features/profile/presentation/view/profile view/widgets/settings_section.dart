@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -15,15 +16,15 @@ class SettingSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomProfileSectionTitle(
-          title: StringsManager.settings,
+        CustomProfileSectionTitle(
+          title: StringsManager.settings.tr(),
         ),
         SizedBox(
           height: 5.h,
         ),
         CustomListTile(
           icon: CustomIcons.setting_icon,
-          name: StringsManager.appSettings,
+          name: StringsManager.appSettings.tr(),
           onTap: () {
             GoRouter.of(context).push(
               AppRouter.kSettingsView,

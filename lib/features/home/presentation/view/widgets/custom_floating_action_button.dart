@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -53,7 +54,7 @@ class _CustomFloatingActionButtonState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                StringsManager.addTask,
+                StringsManager.addTask.tr(),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               SizedBox(
