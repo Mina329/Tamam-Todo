@@ -1,7 +1,6 @@
 class CacheKeys {
   static String kDARKMODE = "darkMode";
   static String kONBOARDING = "firstTime";
-  static String kOAUTHTOKEN = "authToken";
 }
 
 class CacheValues {

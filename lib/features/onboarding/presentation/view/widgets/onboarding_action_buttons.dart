@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:todo/core/cache/cache_helper.dart';
+import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/features/onboarding/presentation/view/widgets/skip_button.dart';
@@ -49,6 +51,8 @@ class _OnBoardingActionButtonsState extends State<OnBoardingActionButtons> {
         ElevatedButton(
           onPressed: () {
             if (widget.controller.page! >= 1.5) {
+              CacheData.setData(
+                  key: CacheKeys.kONBOARDING, value: CacheValues.ONBOARDING);
               GoRouter.of(context).go(AppRouter.kAuthView);
             } else {
               widget.controller.nextPage(

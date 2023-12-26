@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,19 +24,22 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   runApp(
-    EasyLocalization(
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ar'),
-        Locale('fr'),
-        Locale('de'),
-        Locale('es'),
-        Locale('hi'),
-        Locale('zh'),
-      ],
-      path: 'assets/translations',
-      fallbackLocale: const Locale('en'),
-      child: const MyApp(),
+    DevicePreview(
+      enabled: true,
+      builder: (context) => EasyLocalization(
+        supportedLocales: const [
+          Locale('en'),
+          Locale('ar'),
+          Locale('fr'),
+          Locale('de'),
+          Locale('es'),
+          Locale('hi'),
+          Locale('zh'),
+        ],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en'),
+        child: const MyApp(),
+      ),
     ),
   );
 }
