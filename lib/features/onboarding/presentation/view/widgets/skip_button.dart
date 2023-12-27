@@ -12,19 +12,17 @@ class SkipBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Flexible(
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: TextButton(
-            onPressed: onPressed,
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white.withOpacity(0.4)
-                        : Colors.black.withOpacity(0.4),
-                  ),
-            ),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: TextButton(
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white.withOpacity(0.4)
+                      : Colors.black.withOpacity(0.4),
+                ),
           ),
         ),
       ),

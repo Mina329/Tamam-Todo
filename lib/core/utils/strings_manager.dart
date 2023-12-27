@@ -12,13 +12,16 @@ abstract class StringsManager {
   static const String getStarted = 'getStarted';
   static const String login = 'login';
   static const String register = 'register';
-  static const String username = 'username';
-  static const String enterUsername = 'enterUsername';
+  static const String email = 'email';
+  static const String enterEmail = 'enterEmail';
+  static const String verify = 'verify';
   static const String password = 'password';
+  static const String enterName = 'enterName';
   static const String confirmPassword = 'confirmPassword';
   static const String enterPassword = 'enterPassword';
   static const String loginWithGoogle = 'loginWithGoogle';
   static const String loginWithFacebook = 'loginWithFacebook';
+  static const String loginWithTwitter = 'loginWithTwitter';
   static const String dontHaveAccount = 'dontHaveAccount';
   static const String alreadyHaveAccount = 'alreadyHaveAccount';
   static const String index = 'index';
@@ -85,4 +88,14 @@ abstract class StringsManager {
   static const String chinese = "chinese";
   static const String lightMode = "lightMode";
   static const String darkMode = "darkMode";
+  static const String invalidData = "invalidData";
+  static const String nameValidation = "nameValidation";
+  static const String emailValidation = "emailValidation";
+  static const String passwordValidation = "passwordValidation";
+  static const String lowercaseValidation = "lowercaseValidation";
+  static const String uppercaseValidation = "uppercaseValidation";
+  static const String numberValidation = "numberValidation";
+  static const String lengthValidation = "lengthValidation";
+  static const String specialValidation = "specialValidation";
+  static const String confirmPasswordValidation = "confirmPasswordValidation";
 }

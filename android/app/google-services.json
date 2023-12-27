@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "552778303525",
+    "project_id": "tamam-todo",
+    "storage_bucket": "tamam-todo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552778303525:android:b43eb84b67e20a42ead7cc",
+        "android_client_info": {
+          "package_name": "com.mina329.tamam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5NZiy9G-p45qB5U4psq5Gv0G8W-Muqnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,6 +7,8 @@ import 'package:todo/core/cache/cache_helper.dart';
 import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/theme_manager.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 final ValueNotifier<ThemeMode> notifier = ValueNotifier(
     CacheData.getData(key: CacheKeys.kDARKMODE) == CacheValues.LIGHT
@@ -15,8 +17,14 @@ final ValueNotifier<ThemeMode> notifier = ValueNotifier(
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await CacheData.casheIntialization();
-  await EasyLocalization.ensureInitialized();
+  await Future.wait<void>([
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
+    CacheData.casheIntialization(),
+    EasyLocalization.ensureInitialized(),
+  ]);
+
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   SystemChrome.setPreferredOrientations([
@@ -25,7 +33,7 @@ void main() async {
   ]);
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => EasyLocalization(
         supportedLocales: const [
           Locale('en'),

@@ -38,18 +38,24 @@ class CustomLoginButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(
+              flex: 10,
+            ),
             SvgPicture.asset(
               asset,
               width: 24.w,
               height: 24.w,
             ),
-            SizedBox(
-              width: 10.w,
+            const Spacer(
+              flex: 1,
             ),
             Text(
               text,
               style: Theme.of(context).textTheme.headlineSmall,
-            )
+            ),
+            const Spacer(
+              flex: 10,
+            ),
           ],
         ),
       ),

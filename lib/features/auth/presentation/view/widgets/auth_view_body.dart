@@ -58,6 +58,18 @@ class _AuthViewBodyState extends State<AuthViewBody> {
           ),
         ),
         SliverSizedBox(
+          height: 20.h,
+        ),
+        SliverToBoxAdapter(
+          child: CustomLoginButton(
+            asset: AssetsManager.twiiterIcon,
+            text: StringsManager.loginWithTwitter.tr(),
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kHomeView);
+            },
+          ),
+        ),
+        SliverSizedBox(
           height: 50.h,
         ),
         SliverToBoxAdapter(

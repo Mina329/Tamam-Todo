@@ -1,4 +1,4 @@
-package com.example.todo
+package com.mina329.tamam
 
 import io.flutter.embedding.android.FlutterActivity
 
