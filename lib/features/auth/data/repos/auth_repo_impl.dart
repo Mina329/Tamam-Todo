@@ -26,7 +26,7 @@ class AuthRepoImpl extends AuthRepo {
         await firebaseUser.reload();
       }
       return right(null);
-    } on FirebaseAuthException catch (e) {      
+    } on FirebaseAuthException catch (e) {
       return left(
         FirebaseAuthFailure.fromFirebaseAuthException(e),
       );
@@ -40,8 +40,43 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> logInUserWithEmailAndPassword(UserData user) {
-    // TODO: implement logInUserWithEmailAndPassword
-    throw UnimplementedError();
+  Future<Either<Failure, void>> logInUserWithEmailAndPassword(
+      UserData user) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: user.email,
+        password: user.password,
+      );
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(
+        FirebaseAuthFailure.fromFirebaseAuthException(e),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> logInUserWithGoogle() async {
+    try {
+      GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      await _firebaseAuth.signInWithProvider(googleAuthProvider);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(
+        FirebaseAuthFailure.fromFirebaseAuthException(e),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> forgetPassword(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(
+        FirebaseAuthFailure.fromFirebaseAuthException(e),
+      );
+    }
   }
 }

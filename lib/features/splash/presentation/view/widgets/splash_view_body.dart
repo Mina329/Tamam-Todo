@@ -58,20 +58,24 @@ class SplashViewBodyState extends State<SplashViewBody>
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Transform.scale(
-              scale: _logoScaleAnimation.value,
-              child: SvgPicture.asset(
-                AssetsManager.logo,
-                width: 113.w,
-                height: 113.h,
+            Center(
+              child: Transform.scale(
+                scale: _logoScaleAnimation.value,
+                child: SvgPicture.asset(
+                  AssetsManager.logo,
+                  width: 113.w,
+                  height: 113.h,
+                ),
               ),
             ),
-            Opacity(
-              opacity: _textOpacityAnimation.value,
-              child: Text(
-                StringsManager.appName.tr(),
-                style: Theme.of(context).textTheme.displayLarge,
-                textAlign: TextAlign.center,
+            Center(
+              child: Opacity(
+                opacity: _textOpacityAnimation.value,
+                child: Text(
+                  StringsManager.appName.tr(),
+                  style: Theme.of(context).textTheme.displayLarge,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ],

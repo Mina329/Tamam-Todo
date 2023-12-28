@@ -10,8 +10,3 @@ class IndexView extends StatelessWidget {
   }
 }
 
-enum TaskState {
-  completed,
-  uncompleted,
-  active,
-}

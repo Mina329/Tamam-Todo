@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/color_manager.dart';
-import 'package:todo/features/index/presentation/view/index%20view/index_view.dart';
+import 'package:todo/core/widgets/functions/enums.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item_category.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item_priority.dart';
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/features/auth/presentation/view/auth%20view/widgets/auth_view_body.dart';
 
 class AuthView extends StatelessWidget {
@@ -7,10 +6,10 @@ class AuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: const AuthViewBody(),
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child: AuthViewBody(),
       ),
     );
   }

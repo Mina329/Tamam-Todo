@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/service_locator.dart';
+import 'package:todo/features/auth/domain/usecases/forget_password_use_case.dart';
+import 'package:todo/features/auth/domain/usecases/log_in_user_with_email_and_password_use_case.dart';
+import 'package:todo/features/auth/domain/usecases/log_in_user_with_google_use_case.dart';
 import 'package:todo/features/auth/domain/usecases/register_user_with_email_and_password_use_case.dart';
+import 'package:todo/features/auth/presentation/manager/forget_password_cubit/forget_password_cubit.dart';
+import 'package:todo/features/auth/presentation/manager/log_in_user_with_email_and_password_cubit/log_in_user_with_email_and_password_cubit.dart';
+import 'package:todo/features/auth/presentation/manager/log_in_user_with_google_cubit/log_in_user_with_google_cubit.dart';
 import 'package:todo/features/auth/presentation/manager/register_user_with_email_and_password_cubit/register_user_with_email_and_password_cubit.dart';
 import 'package:todo/features/auth/presentation/view/auth%20view/auth_view.dart';
+import 'package:todo/features/auth/presentation/view/forget%20password%20view/forget_password_view.dart';
 import 'package:todo/features/home/presentation/view/create_category_view.dart';
 import 'package:todo/features/home/presentation/view/home_view.dart';
 import 'package:todo/features/index/presentation/view/edit%20task%20view/edit_task_view.dart';
@@ -20,6 +27,7 @@ abstract class AppRouter {
   static const kCreateCategoryView = '/create_category';
   static const kEditTaskView = '/edit_task';
   static const kSettingsView = '/settings';
+  static const kForgetPasswordView = '/forget_password';
 
   static final router = GoRouter(
     routes: [
@@ -38,10 +46,24 @@ abstract class AppRouter {
         path: kAuthView,
         pageBuilder: (context, state) => screenTransition(
           state,
-          BlocProvider(
-            create: (context) => RegisterUserWithEmailAndPasswordCubit(
-              getIt.get<RegisterUserWithEmailAndPasswordUseCase>(),
-            ),
+          MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => RegisterUserWithEmailAndPasswordCubit(
+                  getIt.get<RegisterUserWithEmailAndPasswordUseCase>(),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => LogInUserWithEmailAndPasswordCubit(
+                  getIt.get<LogInUserWithEmailAndPasswordUseCase>(),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => LogInUserWithGoogleCubit(
+                  getIt.get<LogInUserWithGoogleUseCase>(),
+                ),
+              ),
+            ],
             child: const AuthView(),
           ),
         ),
@@ -72,6 +94,18 @@ abstract class AppRouter {
         pageBuilder: (context, state) => screenTransition(
           state,
           const SettingsView(),
+        ),
+      ),
+      GoRoute(
+        path: kForgetPasswordView,
+        pageBuilder: (context, state) => screenTransition(
+          state,
+          BlocProvider(
+            create: (context) => ForgetPasswordCubit(
+              getIt.get<ForgetPasswordUseCase>(),
+            ),
+            child: const ForgetPasswordView(),
+          ),
         ),
       ),
     ],

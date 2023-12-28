@@ -103,4 +103,17 @@ abstract class StringsManager {
   static const String operationNotAllowed = "operationNotAllowed";
   static const String weakPassword = "weakPassword";
   static const String userRegisteredSuccessfully = "userRegisteredSuccessfully";
+  static const String userDisabled = "userDisabled";
+  static const String userNotRegistered = "userNotRegistered";
+  static const String wrongPassword = "wrongPassword";
+  static const String wrongCredentials = "wrongCredentials";
+  static const String accountExistsWithDifferentCredential =
+      "accountExistsWithDifferentCredential";
+  static const String forgotPassword = "forgotPassword";
+  static const String send = "send";
+  static const String resetPassword = "resetPassword";
+  static const String sendPasswordResetEmail = "sendPasswordResetEmail";
+  static const String resendIn = "resendIn";
+  static const String seconds = "seconds";
+  static const String emailIsNotRegistered = "emailIsNotRegistered";
 }

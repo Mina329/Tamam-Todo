@@ -19,9 +19,21 @@ class FirebaseAuthFailure extends Failure {
             message: StringsManager.operationNotAllowed.tr());
       case 'weak-password':
         return FirebaseAuthFailure(message: StringsManager.weakPassword.tr());
-      default:
+      case 'user-disabled':
+        return FirebaseAuthFailure(message: StringsManager.userDisabled.tr());
+      case 'user-not-found':
         return FirebaseAuthFailure(
-            message: StringsManager.operationNotAllowed.tr());
+            message: StringsManager.userNotRegistered.tr());
+      case 'wrong-password':
+        return FirebaseAuthFailure(message: StringsManager.wrongPassword.tr());
+      case 'invalid-credential':
+        return FirebaseAuthFailure(
+            message: StringsManager.wrongCredentials.tr());
+      case 'account-exists-with-different-credential':
+        return FirebaseAuthFailure(
+            message: StringsManager.accountExistsWithDifferentCredential.tr());
+      default:
+        return FirebaseAuthFailure(message: exception.code);
     }
   }
 }

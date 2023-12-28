@@ -102,5 +102,17 @@
   "invalidEmail": "Invalid Email.",
   "operationNotAllowed": "Something went wrong.",
   "weakPassword": "Weak Password",
-  "userRegisteredSuccessfully": "User registered successfully"
+  "userRegisteredSuccessfully": "User registered successfully",
+  "userDisabled": "User is disabled",
+  "userNotRegistered": "User is not registered",
+  "wrongPassword": "Wrong Password",
+  "wrongCredentials": "Wrong credentials",
+  "accountExistsWithDifferentCredential": "Account already exists with different credentials",
+  "forgotPassword": "Forgot Password",
+  "send": "Send",
+  "resetPassword": "Reset Password Email Sent",
+  "sendPasswordResetEmail": "Send Password Reset Email",
+  "resendIn": "Resend In ",
+  "seconds": " Seconds",
+  "emailIsNotRegistered": "Email Is Not Registered"
 }

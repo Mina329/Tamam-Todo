@@ -10,7 +10,7 @@ class SettingsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
