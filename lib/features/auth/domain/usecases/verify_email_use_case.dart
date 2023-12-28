@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:todo/core/use_cases/use_case.dart';
-import 'package:todo/core/utils/failures.dart';
+import 'package:todo/core/errors/failures.dart';
 import 'package:todo/features/auth/domain/repos/auth_repo.dart';
 
 class VerifyEmailUseCase extends UseCase<void, String> {

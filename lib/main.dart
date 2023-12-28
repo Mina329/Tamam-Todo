@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/cache/cache_helper.dart';
 import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/utils/app_router.dart';
+import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/theme_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -24,7 +25,7 @@ void main() async {
     CacheData.casheIntialization(),
     EasyLocalization.ensureInitialized(),
   ]);
-
+  setupServiceLocator();
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   SystemChrome.setPreferredOrientations([

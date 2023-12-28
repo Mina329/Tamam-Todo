@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todo/features/auth/presentation/view/widgets/auth_view_body.dart';
+import 'package:todo/features/auth/presentation/view/auth%20view/widgets/auth_view_body.dart';
 
 class AuthView extends StatelessWidget {
   const AuthView({super.key});

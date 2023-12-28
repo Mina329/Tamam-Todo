@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo/features/auth/presentation/view/auth_view.dart';
+import 'package:todo/core/utils/service_locator.dart';
+import 'package:todo/features/auth/domain/usecases/register_user_with_email_and_password_use_case.dart';
+import 'package:todo/features/auth/presentation/manager/register_user_with_email_and_password_cubit/register_user_with_email_and_password_cubit.dart';
+import 'package:todo/features/auth/presentation/view/auth%20view/auth_view.dart';
 import 'package:todo/features/home/presentation/view/create_category_view.dart';
 import 'package:todo/features/home/presentation/view/home_view.dart';
 import 'package:todo/features/index/presentation/view/edit%20task%20view/edit_task_view.dart';
@@ -34,7 +38,12 @@ abstract class AppRouter {
         path: kAuthView,
         pageBuilder: (context, state) => screenTransition(
           state,
-          const AuthView(),
+          BlocProvider(
+            create: (context) => RegisterUserWithEmailAndPasswordCubit(
+              getIt.get<RegisterUserWithEmailAndPasswordUseCase>(),
+            ),
+            child: const AuthView(),
+          ),
         ),
       ),
       GoRoute(

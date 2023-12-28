@@ -97,5 +97,10 @@
   "numberValidation": "Password must contain at least one number.",
   "specialValidation": "Password must contain at least one special character.",
   "lengthValidation": "Password must be at least 6 characters long.",
-  "confirmPasswordValidation": "Passwords do not match"
+  "confirmPasswordValidation": "Passwords do not match",
+  "emailAlreadyInUse": "Email already in use.",
+  "invalidEmail": "Invalid Email.",
+  "operationNotAllowed": "Something went wrong.",
+  "weakPassword": "Weak Password",
+  "userRegisteredSuccessfully": "User registered successfully"
 }

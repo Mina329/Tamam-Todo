@@ -62,45 +62,17 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(
             height: 10.h,
           ),
-          Row(
-            children: [
-              Expanded(
-                flex: 3,
-                child: TextFormField(
-                  style: Theme.of(context).textTheme.headlineSmall,
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(15),
-                    hintText: StringsManager.enterEmail.tr(),
-                    suffixIcon: const Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                    ),
-                  ),
-                  validator: _buildEmailValidation,
-                  onSaved: widget.onSavedEmail,
-                ),
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Expanded(
-                child: SizedBox(
-                  height: 48.h,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: FittedBox(
-                      child: Text(
-                        StringsManager.verify.tr(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
+          TextFormField(
+            style: Theme.of(context).textTheme.headlineSmall,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(15),
+              hintText: StringsManager.enterEmail.tr(),
+            ),
+            validator: _buildEmailValidation,
+            onSaved: widget.onSavedEmail,
+          ),
+          SizedBox(
+            width: 10.w,
           ),
           SizedBox(
             height: 20.h,

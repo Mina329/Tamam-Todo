@@ -98,4 +98,9 @@ abstract class StringsManager {
   static const String lengthValidation = "lengthValidation";
   static const String specialValidation = "specialValidation";
   static const String confirmPasswordValidation = "confirmPasswordValidation";
+  static const String invalidEmail = "invalidEmail";
+  static const String emailAlreadyInUse = "emailAlreadyInUse";
+  static const String operationNotAllowed = "operationNotAllowed";
+  static const String weakPassword = "weakPassword";
+  static const String userRegisteredSuccessfully = "userRegisteredSuccessfully";
 }

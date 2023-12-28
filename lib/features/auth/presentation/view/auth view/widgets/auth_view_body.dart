@@ -6,9 +6,9 @@ import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/assets_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
-import 'package:todo/features/auth/presentation/view/widgets/custom_login_button.dart';
-import 'package:todo/features/auth/presentation/view/widgets/login_view.dart';
-import 'package:todo/features/auth/presentation/view/widgets/register_view.dart';
+import 'package:todo/features/auth/presentation/view/auth%20view/widgets/custom_login_button.dart';
+import 'package:todo/features/auth/presentation/view/auth%20view/widgets/login_view.dart';
+import 'package:todo/features/auth/presentation/view/auth%20view/widgets/register_view.dart';
 
 class AuthViewBody extends StatefulWidget {
   const AuthViewBody({super.key});
