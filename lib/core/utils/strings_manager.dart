@@ -116,4 +116,7 @@ abstract class StringsManager {
   static const String resendIn = "resendIn";
   static const String seconds = "seconds";
   static const String emailIsNotRegistered = "emailIsNotRegistered";
+  static const String yourEmailIsNotVerified = "yourEmailIsNotVerified";
+  static const String sendVerificationEmail = "sendVerificationEmail";
+  static const String verificationEmail = "verificationEmail";
 }

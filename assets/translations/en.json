@@ -114,5 +114,8 @@
   "sendPasswordResetEmail": "Send Password Reset Email",
   "resendIn": "Resend In ",
   "seconds": " Seconds",
-  "emailIsNotRegistered": "Email Is Not Registered"
+  "emailIsNotRegistered": "Email Is Not Registered",
+  "yourEmailIsNotVerified": "Your Email Is Not Verified",
+  "sendVerificationEmail": "Send Verification Email",
+  "verificationEmail": "Verification Email Sent"
 }

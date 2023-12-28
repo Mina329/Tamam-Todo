@@ -6,6 +6,7 @@ import 'package:todo/features/auth/domain/usecases/forget_password_use_case.dart
 import 'package:todo/features/auth/domain/usecases/log_in_user_with_email_and_password_use_case.dart';
 import 'package:todo/features/auth/domain/usecases/log_in_user_with_google_use_case.dart';
 import 'package:todo/features/auth/domain/usecases/register_user_with_email_and_password_use_case.dart';
+import 'package:todo/features/auth/domain/usecases/verify_email_use_case.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
@@ -34,6 +35,11 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<ForgetPasswordUseCase>(
     ForgetPasswordUseCase(
+      authRepo: getIt.get<AuthRepo>(),
+    ),
+  );
+  getIt.registerSingleton<VerifyEmailUseCase>(
+    VerifyEmailUseCase(
       authRepo: getIt.get<AuthRepo>(),
     ),
   );

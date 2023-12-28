@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 import 'package:todo/features/auth/domain/entities/user.dart';
 import 'package:todo/features/auth/domain/usecases/log_in_user_with_email_and_password_use_case.dart';
@@ -22,8 +23,8 @@ class LogInUserWithEmailAndPasswordCubit
       (failure) => emit(
         LogInUserWithEmailAndPasswordFailure(errMessage: failure.message),
       ),
-      (r) => emit(
-        LogInUserWithEmailAndPasswordSuccess(),
+      (user) => emit(
+        LogInUserWithEmailAndPasswordSuccess(user: user),
       ),
     );
   }

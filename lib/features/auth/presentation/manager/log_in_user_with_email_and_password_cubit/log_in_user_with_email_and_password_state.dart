@@ -10,7 +10,11 @@ final class LogInUserWithEmailAndPasswordLoading
     extends LogInUserWithEmailAndPasswordState {}
 
 final class LogInUserWithEmailAndPasswordSuccess
-    extends LogInUserWithEmailAndPasswordState {}
+    extends LogInUserWithEmailAndPasswordState {
+  final UserCredential user;
+
+  LogInUserWithEmailAndPasswordSuccess({required this.user});
+}
 
 final class LogInUserWithEmailAndPasswordFailure
     extends LogInUserWithEmailAndPasswordState {

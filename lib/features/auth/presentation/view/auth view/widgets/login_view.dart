@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/app_router.dart';
+import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_loading_animation.dart';
 import 'package:todo/features/auth/domain/entities/user.dart';
@@ -63,7 +65,12 @@ class _LoginViewState extends State<LoginView> {
               );
             } else if (state is LogInUserWithEmailAndPasswordSuccess) {
               GoRouter.of(context).pop();
-              GoRouter.of(context).push(AppRouter.kHomeView);
+              if (getIt.get<FirebaseAuth>().currentUser != null &&
+                  getIt.get<FirebaseAuth>().currentUser!.emailVerified) {
+                GoRouter.of(context).go(AppRouter.kHomeView);
+              } else {
+                GoRouter.of(context).go(AppRouter.kEmailVerifyView);
+              }
             }
           },
           child: ElevatedButton(
