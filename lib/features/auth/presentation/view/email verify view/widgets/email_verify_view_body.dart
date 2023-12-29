@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +7,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/app_router.dart';
-import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_loading_animation.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
+import 'package:todo/features/auth/presentation/manager/sign_out_cubit/sign_out_cubit.dart';
 import 'package:todo/features/auth/presentation/manager/verify_email_cubit/verify_email_cubit.dart';
 import 'package:todo/features/auth/presentation/view/email%20verify%20view/widgets/send_email_verify.dart';
 
@@ -48,16 +47,31 @@ class _EmailVerifyBodyState extends State<EmailVerifyBody> {
             height: 60.h,
           ),
           SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                ),
-                onPressed: () {
-                  getIt.get<FirebaseAuth>().signOut();
+            child: BlocListener<SignOutCubit, SignOutState>(
+              listener: (context, state) {
+                if (state is SignOutLoading) {
+                  CustomLoadingAnimation.buildLoadingIndicator(context);
+                } else if (state is SignOutFailure) {
+                  GoRouter.of(context).pop();
+                  Fluttertoast.showToast(
+                    msg: state.errMessage,
+                    toastLength: Toast.LENGTH_SHORT,
+                  );
+                } else if (state is SignOutSuccess) {
+                  GoRouter.of(context).pop();
                   GoRouter.of(context).go(AppRouter.kAuthView);
-                },
+                }
+              },
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                  ),
+                  onPressed: () {
+                    BlocProvider.of<SignOutCubit>(context).signOut();
+                  },
+                ),
               ),
             ),
           ),

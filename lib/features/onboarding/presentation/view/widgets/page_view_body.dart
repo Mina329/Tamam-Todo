@@ -70,13 +70,27 @@ class PageViewBody extends StatelessWidget {
                 height: 40.h,
               ),
               SliverToBoxAdapter(
-                child: FittedBox(
-                  child: Text(
-                    subTitles[index],
-                    style: Theme.of(context).textTheme.headlineSmall,
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                  ),
+                child: Column(
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        subTitles[index].split('\n')[0],
+                        style: Theme.of(context).textTheme.headlineSmall,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        subTitles[index].split('\n')[1],
+                        style: Theme.of(context).textTheme.headlineSmall,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

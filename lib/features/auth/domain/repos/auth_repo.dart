@@ -10,4 +10,5 @@ abstract class AuthRepo {
   Future<Either<Failure, void>> logInUserWithGoogle();
   Future<Either<Failure, void>> verifyEmail();
   Future<Either<Failure, void>> forgetPassword(String email);
+  Future<Either<Failure, void>> signOut();
 }

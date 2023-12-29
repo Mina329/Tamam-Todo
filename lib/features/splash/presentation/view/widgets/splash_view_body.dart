@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,6 +8,7 @@ import 'package:todo/core/cache/cache_helper.dart';
 import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/assets_manager.dart';
+import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -85,16 +87,23 @@ class SplashViewBodyState extends State<SplashViewBody>
   }
 
   void _navigateToOnBoarding() async {
-    if (CacheData.getData(key: CacheKeys.kONBOARDING) == null || true) {
+    if (CacheData.getData(key: CacheKeys.kONBOARDING) == null) {
       await Future.delayed(
         const Duration(milliseconds: 2000),
         () => GoRouter.of(context).go(AppRouter.kOnboardingView),
       );
     } else {
-      await Future.delayed(
-        const Duration(milliseconds: 2000),
-        () => GoRouter.of(context).go(AppRouter.kAuthView),
-      );
+      if (getIt.get<FirebaseAuth>().currentUser != null) {
+        await Future.delayed(
+          const Duration(milliseconds: 2000),
+          () => GoRouter.of(context).go(AppRouter.kHomeView),
+        );
+      } else {
+        await Future.delayed(
+          const Duration(milliseconds: 2000),
+          () => GoRouter.of(context).go(AppRouter.kAuthView),
+        );
+      }
     }
   }
 

@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_simple_appbar.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
@@ -9,6 +12,8 @@ import 'package:todo/features/profile/presentation/view/profile%20view/widgets/a
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/log_out_button.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/profile_card.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/settings_section.dart';
+
+import '../../../../../../core/utils/app_router.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -54,12 +59,15 @@ class ProfileViewBody extends StatelessWidget {
           SliverSizedBox(
             height: 8.h,
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: AppAboutSection(),
           ),
           SliverToBoxAdapter(
             child: LogOutButton(
-              onTap: () {},
+              onTap: () {
+                getIt.get<FirebaseAuth>().signOut();
+                GoRouter.of(context).go(AppRouter.kAuthView);
+              },
             ),
           ),
           SliverSizedBox(

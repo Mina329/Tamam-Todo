@@ -86,4 +86,16 @@ class AuthRepoImpl extends AuthRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, void>> signOut() async {
+    try {
+      await _firebaseAuth.signOut();
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(
+        FirebaseAuthFailure.fromFirebaseAuthException(e),
+      );
+    }
+  }
 }
