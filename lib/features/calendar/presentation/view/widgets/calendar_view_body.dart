@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_simple_appbar.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
-import 'package:todo/core/widgets/functions/enums.dart';
+import 'package:todo/core/utils/functions/enums.dart';
 import 'package:todo/features/calendar/presentation/view/widgets/calendar.dart';
 import 'package:todo/features/calendar/presentation/view/widgets/day_choices_buttons.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item.dart';

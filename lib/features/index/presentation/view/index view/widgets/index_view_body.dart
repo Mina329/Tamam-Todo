@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
-import 'package:todo/core/widgets/functions/enums.dart';
+import 'package:todo/core/utils/functions/enums.dart';
 import 'package:todo/core/widgets/custom_clickable_container.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_drop_down.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_index_app_bar.dart';

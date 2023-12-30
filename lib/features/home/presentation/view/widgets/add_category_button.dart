@@ -6,7 +6,7 @@ import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
-import 'package:todo/core/widgets/functions/blend_colors.dart';
+import 'package:todo/core/utils/functions/blend_colors.dart';
 
 class AddCategoryButton extends StatelessWidget {
   const AddCategoryButton({

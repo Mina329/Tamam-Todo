@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
-import 'package:todo/core/widgets/functions/blend_colors.dart';
+import 'package:todo/core/utils/functions/blend_colors.dart';
 
 class TaskItemCategory extends StatelessWidget {
   const TaskItemCategory(
