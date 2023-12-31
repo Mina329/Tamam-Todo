@@ -119,4 +119,8 @@ abstract class StringsManager {
   static const String yourEmailIsNotVerified = "yourEmailIsNotVerified";
   static const String sendVerificationEmail = "sendVerificationEmail";
   static const String verificationEmail = "verificationEmail";
+  static const String pleaseChooseAnIcon = "pleaseChooseAnIcon";
+  static const String pleasePickAColor = "pleasePickAColor";
+  static const String categoryCreatedSuccessfully =
+      "categoryCreatedSuccessfully";
 }

@@ -5,12 +5,21 @@ import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
-import 'package:todo/features/home/presentation/view/widgets/add_task_form.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/add_task_form.dart';
 
-class EditTaskNameAndDescription extends StatelessWidget {
+class EditTaskNameAndDescription extends StatefulWidget {
   const EditTaskNameAndDescription({
     super.key,
   });
+
+  @override
+  State<EditTaskNameAndDescription> createState() =>
+      _EditTaskNameAndDescriptionState();
+}
+
+class _EditTaskNameAndDescriptionState
+    extends State<EditTaskNameAndDescription> {
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +77,7 @@ class EditTaskNameAndDescription extends StatelessWidget {
               SizedBox(
                 height: 5.h,
               ),
-              const AddTaskForm(),
+              AddTaskForm(formkey: formkey),
               SizedBox(
                 height: 10.h,
               ),

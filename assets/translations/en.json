@@ -117,5 +117,8 @@
   "emailIsNotRegistered": "Email Is Not Registered",
   "yourEmailIsNotVerified": "Your Email Is Not Verified",
   "sendVerificationEmail": "Send Verification Email",
-  "verificationEmail": "Verification Email Sent"
+  "verificationEmail": "Verification Email Sent",
+  "pleaseChooseAnIcon": "Please Choose An Icon",
+  "pleasePickAColor": "Please Pick a Color",
+  "categoryCreatedSuccessfully": "Category Created Successfully"
 }

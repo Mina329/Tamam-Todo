@@ -1,6 +1,6 @@
 import 'package:todo/features/home/domain/entities/category.dart';
 
-class CategoryModel extends CategoryData {
+class CategoryModel extends CategoryEntity {
   final String categoryId;
   @override
   // ignore: overridden_fields
@@ -38,7 +38,7 @@ class CategoryModel extends CategoryData {
     };
   }
 
-  factory CategoryModel.fromEntity(CategoryData data) {
+  factory CategoryModel.fromEntity(CategoryEntity data) {
     return CategoryModel(
         categoryId: data.id,
         name: data.name,

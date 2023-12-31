@@ -14,7 +14,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl(
       {required this.firebaseAuth, required this.firestore});
   @override
-  Future<void> createCategory(CategoryData categoryData) async {
+  Future<void> createCategory(CategoryEntity categoryData) async {
     await firestore
         .collection('users')
         .doc(firebaseAuth.currentUser!.uid)
@@ -34,20 +34,20 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   @override
-  Future<List<CategoryData>> getAllCategories() async {
+  Future<List<CategoryEntity>> getAllCategories() async {
     QuerySnapshot querySnapshot = await firestore
         .collection('users')
         .doc(firebaseAuth.currentUser!.uid)
         .collection('categories')
         .get();
-    List<CategoryData> categories = [];
+    List<CategoryEntity> categories = [];
     _parseCategories(querySnapshot, categories);
     await saveCategories(categories, kCategoriesBox);
     return categories;
   }
 
   void _parseCategories(
-      QuerySnapshot<Object?> querySnapshot, List<CategoryData> categories) {
+      QuerySnapshot<Object?> querySnapshot, List<CategoryEntity> categories) {
     for (var category in querySnapshot.docs) {
       categories
           .add(CategoryModel.fromJson(category.data() as Map<String, dynamic>));

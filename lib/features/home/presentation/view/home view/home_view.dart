@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/features/calendar/presentation/view/calendar_view.dart';
 import 'package:todo/features/focus/presentation/view/focus_view.dart';
-import 'package:todo/features/home/presentation/view/widgets/custom_bottom_navigation_bar_item.dart';
-import 'package:todo/features/home/presentation/view/widgets/custom_floating_action_button.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/custom_bottom_navigation_bar_item.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/custom_floating_action_button.dart';
 import 'package:todo/features/index/presentation/view/index%20view/index_view.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/profile_view.dart';
 

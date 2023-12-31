@@ -6,8 +6,8 @@ const kTasksBox = 'tasks_box';
 const kCategoriesBox = 'categories_box';
 
 Future<void> setupDataBase() async {
-  Hive.registerAdapter(CategoryDataAdapter());
+  Hive.registerAdapter(CategoryEntityAdapter());
   Hive.registerAdapter(TaskEntityAdapter());
   await Hive.openBox<TaskEntity>(kTasksBox);
-  await Hive.openBox<CategoryData>(kCategoriesBox);
+  await Hive.openBox<CategoryEntity>(kCategoriesBox);
 }

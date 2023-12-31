@@ -20,7 +20,7 @@ class TaskEntityAdapter extends TypeAdapter<TaskEntity> {
       id: fields[0] as String,
       name: fields[1] as String,
       description: fields[2] as String,
-      category: fields[3] as CategoryData,
+      category: fields[3] as CategoryEntity,
       priority: fields[4] as int,
       utcTime: fields[5] as DateTime,
       status: fields[6] as String,

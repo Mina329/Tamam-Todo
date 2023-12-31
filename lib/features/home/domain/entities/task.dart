@@ -11,7 +11,7 @@ class TaskEntity extends HiveObject {
   @HiveField(2)
   final String description;
   @HiveField(3)
-  final CategoryData category;
+  final CategoryEntity category;
   @HiveField(4)
   final int priority;
   @HiveField(5)

@@ -5,8 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_clickable_container.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
-import 'package:todo/features/home/presentation/view/widgets/add_category_button.dart';
-import 'package:todo/features/home/presentation/view/widgets/task_category_item.dart';
+import 'package:todo/features/home/domain/entities/category.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/add_category_button.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/task_category_item.dart';
 import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
 
 class EditTaskCategory extends StatefulWidget {
@@ -108,10 +109,12 @@ class _EditTaskCategoryState extends State<EditTaskCategory> {
               (BuildContext context, int index) {
                 if (index < 29) {
                   return TaskCategoryItem(
-                    color: const Color(0xff80FFFF),
-                    icon: CustomIcons.grocery_icon,
+                    category: CategoryEntity(
+                        id: 'id',
+                        name: 'Grocery',
+                        iconData: 58389,
+                        color: '#ffff0032'),
                     selected: selectedCategoryIndex == index,
-                    title: 'Grocery',
                     onTap: () {
                       selectedCategoryIndex = index;
                       setState(() {});

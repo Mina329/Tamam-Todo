@@ -7,8 +7,9 @@ import 'package:todo/core/utils/strings_manager.dart';
 class CategoryIconSection extends StatefulWidget {
   const CategoryIconSection({
     super.key,
+    required this.onChanged,
   });
-
+  final Function(int?) onChanged;
   @override
   State<CategoryIconSection> createState() => _CategoryIconSectionState();
 }
@@ -46,12 +47,12 @@ class _CategoryIconSectionState extends State<CategoryIconSection> {
                 icon = await FlutterIconPicker.showIconPicker(
                   context,
                   iconPackModes: [
-                    IconPack.cupertino,
-                    IconPack.fontAwesomeIcons,
-                    IconPack.lineAwesomeIcons,
                     IconPack.material,
                   ],
                 );
+                if (icon != null) {
+                  widget.onChanged(icon!.codePoint);
+                }
                 setState(() {});
               },
               child: Text(

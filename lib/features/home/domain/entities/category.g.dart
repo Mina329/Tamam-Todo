@@ -6,17 +6,17 @@ part of 'category.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CategoryDataAdapter extends TypeAdapter<CategoryData> {
+class CategoryEntityAdapter extends TypeAdapter<CategoryEntity> {
   @override
   final int typeId = 1;
 
   @override
-  CategoryData read(BinaryReader reader) {
+  CategoryEntity read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return CategoryData(
+    return CategoryEntity(
       id: fields[0] as String,
       name: fields[1] as String,
       iconData: fields[2] as int,
@@ -25,7 +25,7 @@ class CategoryDataAdapter extends TypeAdapter<CategoryData> {
   }
 
   @override
-  void write(BinaryWriter writer, CategoryData obj) {
+  void write(BinaryWriter writer, CategoryEntity obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)
@@ -44,7 +44,7 @@ class CategoryDataAdapter extends TypeAdapter<CategoryData> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CategoryDataAdapter &&
+      other is CategoryEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

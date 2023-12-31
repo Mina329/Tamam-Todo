@@ -4,13 +4,13 @@ import 'package:todo/core/errors/failures.dart';
 import 'package:todo/features/home/domain/entities/category.dart';
 import 'package:todo/features/home/domain/repos/home_repo.dart';
 
-class CreateCategoryUseCase extends UseCase<void, CategoryData> {
+class CreateCategoryUseCase extends UseCase<void, CategoryEntity> {
   final HomeRepo homeRepo;
 
   CreateCategoryUseCase({required this.homeRepo});
 
   @override
-  Future<Either<Failure, void>> execute([CategoryData? inputs]) async {
+  Future<Either<Failure, void>> execute([CategoryEntity? inputs]) async {
     return await homeRepo.createCategory(inputs!);
   }
 }

@@ -4,23 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/core/utils/functions/blend_colors.dart';
+import 'package:todo/core/utils/functions/extensions.dart';
+import 'package:todo/features/home/domain/entities/category.dart';
 import 'package:vibration/vibration.dart';
 
 class TaskCategoryItem extends StatefulWidget {
   const TaskCategoryItem({
     super.key,
-    required this.color,
-    required this.title,
-    required this.icon,
     required this.selected,
-    this.onTap,
+    this.onTap, required this.category,
   });
-  final Color color;
-  final String title;
-  final IconData icon;
+
   final bool selected;
   final Function()? onTap;
-
+  final CategoryEntity category;
   @override
   State<TaskCategoryItem> createState() => _TaskCategoryItemState();
 }
@@ -55,11 +52,11 @@ class _TaskCategoryItemState extends State<TaskCategoryItem> {
                         : Colors.transparent,
                     width: 2.w,
                   ),
-                  color: widget.color,
+                  color: widget.category.color.toColor(),
                 ),
                 child: Icon(
-                  widget.icon,
-                  color: blendColors(widget.color, Colors.black),
+                  IconData(widget.category.iconData, fontFamily: 'MaterialIcons'),
+                  color: blendColors(widget.category.color.toColor(), Colors.black),
                 ),
               ),
             ),
@@ -83,7 +80,7 @@ class _TaskCategoryItemState extends State<TaskCategoryItem> {
           ],
         ),
         Text(
-          widget.title,
+          widget.category.name,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.titleSmall,
         ),

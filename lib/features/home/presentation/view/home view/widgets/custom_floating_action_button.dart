@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
-import 'package:todo/features/home/presentation/view/widgets/add_task_action_buttons.dart';
-import 'package:todo/features/home/presentation/view/widgets/add_task_form.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/add_task_action_buttons.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/add_task_form.dart';
 
 class CustomFloatingActionButton extends StatefulWidget {
   const CustomFloatingActionButton({
@@ -21,6 +21,7 @@ class CustomFloatingActionButton extends StatefulWidget {
 class _CustomFloatingActionButtonState
     extends State<CustomFloatingActionButton> {
   bool isShowing = false;
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
@@ -60,9 +61,11 @@ class _CustomFloatingActionButtonState
               SizedBox(
                 height: 15.h,
               ),
-              const AddTaskForm(),
+              AddTaskForm(formkey: formkey),
               const Spacer(),
-              const AddTaskActionButtons()
+              AddTaskActionButtons(
+                onSend: () {},
+              )
             ],
           ),
         ),

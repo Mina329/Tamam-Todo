@@ -6,7 +6,7 @@ import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_clickable_container.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
-import 'package:todo/features/home/presentation/view/widgets/task_priority_item.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/task_priority_item.dart';
 
 class EditTaskPriority extends StatefulWidget {
   const EditTaskPriority({super.key});

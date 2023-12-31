@@ -6,11 +6,13 @@ import 'package:todo/core/utils/strings_manager.dart';
 class AddTaskForm extends StatelessWidget {
   const AddTaskForm({
     super.key,
+    required this.formkey,
   });
-
+  final GlobalKey<FormState> formkey;
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: formkey,
       child: Column(
         children: [
           SizedBox(

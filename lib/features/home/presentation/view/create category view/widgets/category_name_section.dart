@@ -6,8 +6,11 @@ import 'package:todo/core/utils/strings_manager.dart';
 class CategoryNameSection extends StatelessWidget {
   const CategoryNameSection({
     super.key,
+    required this.categoryNameKey,
+    this.onSaved,
   });
-
+  final GlobalKey<FormFieldState<String>> categoryNameKey;
+  final Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,20 +24,23 @@ class CategoryNameSection extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        Form(
-          child: SizedBox(
-            height: 50.h,
-            child: TextFormField(
-              style: Theme.of(context).textTheme.headlineSmall,
-              textAlignVertical: TextAlignVertical.bottom,
-              decoration: InputDecoration(
-                label: Text(
-                  StringsManager.categoryName.tr(),
-                ),
-                hintText: StringsManager.categoryName.tr(),
-              ),
+        TextFormField(
+          key: categoryNameKey,
+          style: Theme.of(context).textTheme.headlineSmall,
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(15),
+            label: Text(
+              StringsManager.categoryName.tr(),
             ),
+            hintText: StringsManager.categoryName.tr(),
           ),
+          validator: (value) {
+            if (value == null || value.length < 3) {
+              return StringsManager.nameValidation.tr();
+            }
+            return null;
+          },
+          onSaved: onSaved,
         ),
         SizedBox(
           height: 20.h,

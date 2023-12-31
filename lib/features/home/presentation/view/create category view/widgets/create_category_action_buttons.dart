@@ -9,8 +9,9 @@ import 'package:todo/core/widgets/custom_loading_animation.dart';
 class CreateCategoryActionButtons extends StatelessWidget {
   const CreateCategoryActionButtons({
     super.key,
+    this.onPressed,
   });
-
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,9 +53,7 @@ class CreateCategoryActionButtons extends StatelessWidget {
               height: 50.h,
               width: 150.w,
               child: ElevatedButton(
-                onPressed: () {
-                  CustomLoadingAnimation.buildLoadingIndicator(context);
-                },
+                onPressed: onPressed,
                 child: Text(
                   StringsManager.save.tr(),
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(

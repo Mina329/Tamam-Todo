@@ -1,20 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
-import 'package:todo/features/home/presentation/view/widgets/add_category_button.dart';
-import 'package:todo/features/home/presentation/view/widgets/task_category_item.dart';
+import 'package:todo/features/home/domain/entities/category.dart';
+import 'package:todo/features/home/presentation/manager/get_categories_cubit/get_categories_cubit.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/add_category_button.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/task_category_item.dart';
 import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
-import 'package:todo/features/home/presentation/view/widgets/task_priority_item.dart';
+import 'package:todo/features/home/presentation/view/home%20view/widgets/task_priority_item.dart';
 
 class AddTaskActionButtons extends StatefulWidget {
   const AddTaskActionButtons({
     super.key,
+    this.onSend,
   });
-
+  final Function()? onSend;
   @override
   State<AddTaskActionButtons> createState() => _AddTaskActionButtonsState();
 }
@@ -41,17 +46,38 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
         SizedBox(
           width: 10.w,
         ),
-        IconButton(
-          onPressed: () {
-            buildChooseCategoryDialog(context);
+        BlocConsumer<GetCategoriesCubit, GetCategoriesState>(
+          listener: (context, state) {
+            if (state is GetCategoriesFailure) {
+              Fluttertoast.showToast(msg: state.errMessage);
+            }
           },
-          icon: Icon(
-            CustomIcons.tag_icon,
-            size: 27.sp,
-            color: selectedCategoryIndex != null
-                ? ColorManager.primaryColor
-                : null,
-          ),
+          builder: (context, state) {
+            if (state is GetCategoriesSucecess) {
+              return IconButton(
+                onPressed: () {
+                  buildChooseCategoryDialog(context, state.categories);
+                },
+                icon: Icon(
+                  CustomIcons.tag_icon,
+                  size: 27.sp,
+                  color: selectedCategoryIndex != null
+                      ? ColorManager.primaryColor
+                      : null,
+                ),
+              );
+            }
+            return IconButton(
+              onPressed: null,
+              icon: Icon(
+                CustomIcons.tag_icon,
+                size: 27.sp,
+                color: selectedCategoryIndex != null
+                    ? ColorManager.primaryColor
+                    : null,
+              ),
+            );
+          },
         ),
         SizedBox(
           width: 10.w,
@@ -69,7 +95,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
         ),
         const Spacer(),
         IconButton(
-          onPressed: () {},
+          onPressed: widget.onSend,
           icon: Icon(
             CustomIcons.send_icon,
             size: 27.sp,
@@ -80,7 +106,8 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
     );
   }
 
-  void buildChooseCategoryDialog(BuildContext context) async {
+  void buildChooseCategoryDialog(
+      BuildContext context, List<CategoryEntity> categories) async {
     await showDialog(
       context: context,
       builder: (context) {
@@ -102,7 +129,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                   SizedBox(
                     height: 5.h,
                   ),
-                  _buildChooseCategoryGridView(setState),
+                  _buildChooseCategoryGridView(setState, categories),
                   SizedBox(height: 16.h),
                   SaveCancelActionButtons(
                     cancelOnPressed: () {
@@ -123,7 +150,8 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
     setState(() {});
   }
 
-  Widget _buildChooseCategoryGridView(StateSetter setState) {
+  Widget _buildChooseCategoryGridView(
+      StateSetter setState, List<CategoryEntity> categories) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.6,
       child: CustomScrollView(
@@ -137,12 +165,10 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                if (index < 29) {
+                if (index < categories.length) {
                   return TaskCategoryItem(
-                    color: const Color(0xff80FFFF),
-                    icon: CustomIcons.grocery_icon,
                     selected: selectedCategoryIndex == index,
-                    title: 'Grocery',
+                    category: categories[index],
                     onTap: () {
                       selectedCategoryIndex = index;
                       setState(() {});
@@ -152,7 +178,7 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                   return const AddCategoryButton();
                 }
               },
-              childCount: 30,
+              childCount: categories.length + 1,
             ),
           ),
         ],
