@@ -7,7 +7,6 @@ import 'package:todo/features/auth/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuth _firebaseAuth;
-
   AuthRepoImpl({required FirebaseAuth firebaseAuth})
       : _firebaseAuth = firebaseAuth;
 

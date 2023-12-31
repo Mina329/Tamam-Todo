@@ -3,8 +3,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/core/cache/cache_helper.dart';
 import 'package:todo/core/cache/cache_keys_values.dart';
+import 'package:todo/core/database/database.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/theme_manager.dart';
@@ -24,7 +26,9 @@ void main() async {
     ),
     CacheData.casheIntialization(),
     EasyLocalization.ensureInitialized(),
+    Hive.initFlutter(),
   ]);
+  await setupDataBase();
   setupServiceLocator();
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
