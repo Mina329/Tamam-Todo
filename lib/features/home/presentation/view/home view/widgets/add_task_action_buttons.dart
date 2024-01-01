@@ -133,34 +133,36 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
                 create: (context) => DeleteCategoryCubit(
                   getIt.get<DeleteCategoryUseCase>(),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      StringsManager.chooseCategory.tr(),
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                    const Divider(),
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                    _buildChooseCategoryGridView(
-                        setState, categories, getCategoriesCubit),
-                    SizedBox(height: 16.h),
-                    SaveCancelActionButtons(
-                      cancelOnPressed: () {
-                        selectedCategoryIndex = null;
-                        widget.onSelectCategory(null);
-                        GoRouter.of(context).pop();
-                      },
-                      saveOnPressed: () {
-                        GoRouter.of(context).pop();
-                      },
-                    ),
-                  ],
+                child: IntrinsicHeight(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        StringsManager.chooseCategory.tr(),
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      const Divider(),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      _buildChooseCategoryGridView(
+                          setState, categories, getCategoriesCubit),
+                      SizedBox(height: 16.h),
+                      SaveCancelActionButtons(
+                        cancelOnPressed: () {
+                          selectedCategoryIndex = null;
+                          widget.onSelectCategory(null);
+                          GoRouter.of(context).pop();
+                        },
+                        saveOnPressed: () {
+                          GoRouter.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
