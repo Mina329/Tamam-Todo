@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/color_manager.dart';
@@ -12,12 +10,15 @@ class TaskCategoryItem extends StatefulWidget {
   const TaskCategoryItem({
     super.key,
     required this.selected,
-    this.onTap, required this.category,
+    required this.onTap,
+    required this.category,
+    required this.onDelete,
   });
 
   final bool selected;
   final Function()? onTap;
   final CategoryEntity category;
+  final Function()? onDelete;
   @override
   State<TaskCategoryItem> createState() => _TaskCategoryItemState();
 }
@@ -55,8 +56,10 @@ class _TaskCategoryItemState extends State<TaskCategoryItem> {
                   color: widget.category.color.toColor(),
                 ),
                 child: Icon(
-                  IconData(widget.category.iconData, fontFamily: 'MaterialIcons'),
-                  color: blendColors(widget.category.color.toColor(), Colors.black),
+                  IconData(widget.category.iconData,
+                      fontFamily: 'MaterialIcons'),
+                  color: blendColors(
+                      widget.category.color.toColor(), Colors.black),
                 ),
               ),
             ),
@@ -66,9 +69,7 @@ class _TaskCategoryItemState extends State<TaskCategoryItem> {
                 top: 0,
                 right: 0,
                 child: GestureDetector(
-                  onTap: () {
-                    log('Category Deleted');
-                  },
+                  onTap: widget.onDelete,
                   child: Icon(
                     Icons.delete,
                     color: Colors.red,

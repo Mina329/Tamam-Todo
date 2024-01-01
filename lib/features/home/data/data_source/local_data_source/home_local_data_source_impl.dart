@@ -22,4 +22,14 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     var box = Hive.box<CategoryEntity>(kCategoriesBox);
     return box.values.toList();
   }
+
+  @override
+  Future<void> deleteCategory(String categoryId) async {
+    var box = Hive.box<CategoryEntity>(kCategoriesBox);
+    int categoryIndex =
+        box.values.toList().indexWhere((category) => category.id == categoryId);
+    if (categoryIndex != -1) {
+      await box.deleteAt(categoryIndex);
+    }
+  }
 }

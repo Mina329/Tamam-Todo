@@ -62,4 +62,19 @@ class HomeRepoImpl extends HomeRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteCategory(String categoryId) async {
+    try {
+      await homeRemoteDataSource.deleteCategory(categoryId);
+      await homeLocalDataSource.deleteCategory(categoryId);
+      return right(null);
+    } catch (e) {
+      return left(
+        Failure(
+          message: StringsManager.operationNotAllowed.tr(),
+        ),
+      );
+    }
+  }
 }
