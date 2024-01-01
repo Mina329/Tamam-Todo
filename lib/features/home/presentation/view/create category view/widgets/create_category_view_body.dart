@@ -9,6 +9,7 @@ import 'package:todo/core/widgets/custom_loading_animation.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
 import 'package:todo/features/home/domain/entities/category.dart';
 import 'package:todo/features/home/presentation/manager/create_category_cubit/create_category_cubit.dart';
+import 'package:todo/features/home/presentation/manager/get_categories_cubit/get_categories_cubit.dart';
 import 'package:todo/features/home/presentation/view/create%20category%20view/widgets/category_color_section.dart';
 import 'package:todo/features/home/presentation/view/create%20category%20view/widgets/category_icon_section.dart';
 import 'package:todo/features/home/presentation/view/create%20category%20view/widgets/category_name_section.dart';
@@ -91,6 +92,8 @@ class _CreateCategoryViewBodyState extends State<CreateCategoryViewBody> {
                 } else if (state is CreateCategorySuccess) {
                   GoRouter.of(context).pop();
                   GoRouter.of(context).pop();
+                  BlocProvider.of<GetCategoriesCubit>(context)
+                      .getAllCategories();
                   Fluttertoast.showToast(
                     msg: StringsManager.categoryCreatedSuccessfully.tr(),
                     toastLength: Toast.LENGTH_SHORT,

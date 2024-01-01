@@ -18,8 +18,10 @@ import 'package:todo/features/auth/presentation/view/auth%20view/auth_view.dart'
 import 'package:todo/features/auth/presentation/view/email%20verify%20view/email_verify_view.dart';
 import 'package:todo/features/auth/presentation/view/forget%20password%20view/forget_password_view.dart';
 import 'package:todo/features/home/domain/usecases/create_category_use_case.dart';
+import 'package:todo/features/home/domain/usecases/create_task_use_case.dart';
 import 'package:todo/features/home/domain/usecases/get_all_categories_use_case.dart';
 import 'package:todo/features/home/presentation/manager/create_category_cubit/create_category_cubit.dart';
+import 'package:todo/features/home/presentation/manager/create_task_cubit/create_task_cubit.dart';
 import 'package:todo/features/home/presentation/manager/get_categories_cubit/get_categories_cubit.dart';
 import 'package:todo/features/home/presentation/view/create%20category%20view/create_category_view.dart';
 import 'package:todo/features/home/presentation/view/home%20view/home_view.dart';
@@ -89,6 +91,11 @@ abstract class AppRouter {
                   getIt.get<GetAllCategoriesUseCase>(),
                 )..getAllCategories(),
               ),
+              BlocProvider(
+                create: (context) => CreateTaskCubit(
+                  getIt.get<CreateTaskUseCase>(),
+                ),
+              )
             ],
             child: const HomeView(),
           ),
@@ -96,15 +103,23 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kCreateCategoryView,
-        pageBuilder: (context, state) => screenTransition(
-          state,
-          BlocProvider(
-            create: (context) => CreateCategoryCubit(
-              getIt.get<CreateCategoryUseCase>(),
+        pageBuilder: (context, state) {
+          GetCategoriesCubit cubit = state.extra as GetCategoriesCubit;
+          return screenTransition(
+            state,
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => CreateCategoryCubit(
+                    getIt.get<CreateCategoryUseCase>(),
+                  ),
+                ),
+                BlocProvider.value(value: cubit),
+              ],
+              child: const CreateCategoryView(),
             ),
-            child: const CreateCategoryView(),
-          ),
-        ),
+          );
+        },
       ),
       GoRoute(
         path: kEditTaskView,

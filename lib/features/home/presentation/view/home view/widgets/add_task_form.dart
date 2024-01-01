@@ -7,40 +7,48 @@ class AddTaskForm extends StatelessWidget {
   const AddTaskForm({
     super.key,
     required this.formkey,
+    required this.onSavedTaskTitle,
+    required this.onSavedTaskDescription,
   });
   final GlobalKey<FormState> formkey;
+  final Function(String?)? onSavedTaskTitle;
+  final Function(String?)? onSavedTaskDescription;
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formkey,
       child: Column(
         children: [
-          SizedBox(
-            height: 43.h,
-            child: TextFormField(
-              style: Theme.of(context).textTheme.headlineSmall,
-              decoration: InputDecoration(
-                label: Text(
-                  StringsManager.taskTitle.tr(),
-                ),
-                hintText: StringsManager.taskTitle.tr(),
+          TextFormField(
+            style: Theme.of(context).textTheme.headlineSmall,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(15),
+              label: Text(
+                StringsManager.taskTitle.tr(),
               ),
+              hintText: StringsManager.taskTitle.tr(),
             ),
+            validator: (value) {
+              if (value == null || value.length < 3) {
+                return StringsManager.nameValidation.tr();
+              }
+              return null;
+            },
+            onSaved: onSavedTaskTitle,
           ),
           SizedBox(
             height: 10.h,
           ),
-          SizedBox(
-            height: 43.h,
-            child: TextFormField(
-              style: Theme.of(context).textTheme.headlineSmall,
-              decoration: InputDecoration(
-                label: Text(
-                  StringsManager.taskDescription.tr(),
-                ),
-                hintText: StringsManager.taskDescription.tr(),
+          TextFormField(
+            style: Theme.of(context).textTheme.headlineSmall,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(15),
+              label: Text(
+                StringsManager.taskDescription.tr(),
               ),
+              hintText: StringsManager.taskDescription.tr(),
             ),
+            onSaved: onSavedTaskDescription,
           ),
         ],
       ),

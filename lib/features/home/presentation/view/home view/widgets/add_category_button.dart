@@ -7,12 +7,20 @@ import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 import 'package:todo/core/utils/functions/blend_colors.dart';
+import 'package:todo/features/home/presentation/manager/get_categories_cubit/get_categories_cubit.dart';
 
-class AddCategoryButton extends StatelessWidget {
+class AddCategoryButton extends StatefulWidget {
   const AddCategoryButton({
     super.key,
+    required this.getCategoriesCubit,
   });
+  final GetCategoriesCubit getCategoriesCubit;
 
+  @override
+  State<AddCategoryButton> createState() => _AddCategoryButtonState();
+}
+
+class _AddCategoryButtonState extends State<AddCategoryButton> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +28,14 @@ class AddCategoryButton extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kCreateCategoryView);
+            GoRouter.of(context)
+                .push(
+              AppRouter.kCreateCategoryView,
+              extra: widget.getCategoriesCubit,
+            )
+                .then((value) {
+              GoRouter.of(context).pop();
+            });
           },
           borderRadius: BorderRadius.circular(4),
           child: Container(

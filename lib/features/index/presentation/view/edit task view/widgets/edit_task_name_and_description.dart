@@ -77,7 +77,10 @@ class _EditTaskNameAndDescriptionState
               SizedBox(
                 height: 5.h,
               ),
-              AddTaskForm(formkey: formkey),
+              AddTaskForm(
+                  formkey: formkey,
+                  onSavedTaskDescription: (p0) {},
+                  onSavedTaskTitle: (p0) {}),
               SizedBox(
                 height: 10.h,
               ),

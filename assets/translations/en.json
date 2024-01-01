@@ -120,5 +120,9 @@
   "verificationEmail": "Verification Email Sent",
   "pleaseChooseAnIcon": "Please Choose An Icon",
   "pleasePickAColor": "Please Pick a Color",
-  "categoryCreatedSuccessfully": "Category Created Successfully"
+  "categoryCreatedSuccessfully": "Category Created Successfully",
+  "pleasePickATime": "Please Pick a Time",
+  "pleasePickACategory": "Please Pick a Category",
+  "pleaseSelectAPriorityLevel": "Please Select a Priority Level",
+  "taskCreatedSuccessfully": "Task Created Successfully"
 }
