@@ -1,28 +1,33 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_icons/custom_icons_icons.dart';
 import 'package:todo/core/widgets/custom_loading_animation.dart';
+import 'package:todo/features/home/domain/entities/task.dart';
+import 'package:todo/features/index/presentation/manager/get_tasks_by_day_cubit/get_tasks_by_day_cubit.dart';
 
 class CustomIndexAppBar extends StatelessWidget {
   const CustomIndexAppBar({
     Key? key,
     required this.isFilterActive,
+    this.uncompleted,
+    this.completed,
   }) : super(key: key);
   final bool isFilterActive;
+  final List<TaskEntity>? uncompleted;
+  final List<TaskEntity>? completed;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildSortDropDown(),
+        _buildSortDropDown(context),
         Text(
           StringsManager.index.tr(),
           style: Theme.of(context).textTheme.titleMedium,
@@ -32,7 +37,7 @@ class CustomIndexAppBar extends StatelessWidget {
     );
   }
 
-  Widget _buildSortDropDown() {
+  Widget _buildSortDropDown(BuildContext context) {
     return isFilterActive
         ? PopupMenuButton(
             icon: const Icon(
@@ -56,7 +61,19 @@ class CustomIndexAppBar extends StatelessWidget {
               ),
             ],
             onSelected: (selected) {
-              log(selected);
+              if (selected == 'name') {
+                BlocProvider.of<GetTasksByDayCubit>(context)
+                    .filterByNameAndPriority(
+                        byName: true,
+                        completed: completed!,
+                        uncompleted: uncompleted!);
+              } else {
+                BlocProvider.of<GetTasksByDayCubit>(context)
+                    .filterByNameAndPriority(
+                        byName: false,
+                        completed: completed!,
+                        uncompleted: uncompleted!);
+              }
             },
           )
         : PopupMenuButton(
@@ -78,7 +95,7 @@ class CustomIndexAppBar extends StatelessWidget {
       ),
       child: ClipOval(
         child: CachedNetworkImage(
-          imageUrl: 'https://avatars.githubusercontent.com/u/96777964?v=4',
+          imageUrl: getIt.get<FirebaseAuth>().currentUser!.photoURL ?? '',
           placeholder: (context, str) => const CustomCircularIndicator(),
           errorWidget: (context, str, obj) => Icon(
             FontAwesomeIcons.circleExclamation,

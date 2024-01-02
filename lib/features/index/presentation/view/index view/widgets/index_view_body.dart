@@ -125,6 +125,8 @@ class IndexViewBody extends StatelessWidget {
           child: CustomIndexAppBar(
             isFilterActive:
                 state.completed.isNotEmpty || state.uncompleted.isNotEmpty,
+            completed: state.completed,
+            uncompleted: state.uncompleted,
           ),
         ),
         SliverSizedBox(
