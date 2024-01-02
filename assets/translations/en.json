@@ -100,7 +100,7 @@
   "confirmPasswordValidation": "Passwords do not match",
   "emailAlreadyInUse": "Email already in use.",
   "invalidEmail": "Invalid Email.",
-  "operationNotAllowed": "Something went wrong.",
+  "operationNotAllowed": "Something went wrong",
   "weakPassword": "Weak Password",
   "userRegisteredSuccessfully": "User registered successfully",
   "userDisabled": "User is disabled",
@@ -124,5 +124,6 @@
   "pleasePickATime": "Please Pick a Time",
   "pleasePickACategory": "Please Pick a Category",
   "pleaseSelectAPriorityLevel": "Please Select a Priority Level",
-  "taskCreatedSuccessfully": "Task Created Successfully"
+  "taskCreatedSuccessfully": "Task Created Successfully",
+  "tapPlusToAddSomeTasks": "Tap + to add some tasks"
 }

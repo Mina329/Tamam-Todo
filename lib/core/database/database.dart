@@ -11,3 +11,8 @@ Future<void> setupDataBase() async {
   await Hive.openBox<TaskEntity>(kTasksBox);
   await Hive.openBox<CategoryEntity>(kCategoriesBox);
 }
+
+Future<void> clearDataBase() async {
+  await Hive.box<TaskEntity>(kTasksBox).clear();
+  await Hive.box<CategoryEntity>(kCategoriesBox).clear();
+}

@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_simple_appbar.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
-import 'package:todo/core/utils/functions/enums.dart';
 import 'package:todo/features/calendar/presentation/view/widgets/calendar.dart';
 import 'package:todo/features/calendar/presentation/view/widgets/day_choices_buttons.dart';
+import 'package:todo/features/home/domain/entities/category.dart';
+import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item.dart';
 
 class CalendarViewBody extends StatelessWidget {
@@ -44,8 +45,16 @@ class CalendarViewBody extends StatelessWidget {
           delegate: SliverChildBuilderDelegate(
             (context, index) => Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 24),
-              child: const TaskItem(
-                taskState: TaskState.active,
+              child: TaskItem(
+                task: TaskEntity(
+                    id: 'id',
+                    name: 'name',
+                    description: 'description',
+                    category: CategoryEntity(
+                        id: 'id', name: 'name', iconData: 8, color: 'color'),
+                    priority: 5,
+                    utcTime: DateTime.now(),
+                    status: 'status'),
               ),
             ),
             childCount: 4,

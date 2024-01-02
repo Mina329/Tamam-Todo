@@ -19,6 +19,13 @@ import 'package:todo/features/home/domain/usecases/create_category_use_case.dart
 import 'package:todo/features/home/domain/usecases/create_task_use_case.dart';
 import 'package:todo/features/home/domain/usecases/delete_category_use_case.dart';
 import 'package:todo/features/home/domain/usecases/get_all_categories_use_case.dart';
+import 'package:todo/features/index/data/data_sources/index_local_data_source/index_local_data_source.dart';
+import 'package:todo/features/index/data/data_sources/index_local_data_source/index_local_data_source_impl.dart';
+import 'package:todo/features/index/data/data_sources/index_remote_data_source/index_remote_data_source.dart';
+import 'package:todo/features/index/data/data_sources/index_remote_data_source/index_remote_data_source_impl.dart';
+import 'package:todo/features/index/data/repos/index_repo_impl.dart';
+import 'package:todo/features/index/domain/repos/index_repo.dart';
+import 'package:todo/features/index/domain/usecases/get_task_by_day_use_case.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
@@ -31,8 +38,17 @@ void setupServiceLocator() {
   getIt.registerSingleton<HomeLocalDataSource>(
     HomeLocalDataSourceImpl(),
   );
+  getIt.registerSingleton<IndexLocalDataSource>(
+    IndexLocalDataSourceImpl(),
+  );
   getIt.registerSingleton<HomeRemoteDataSource>(
     HomeRemoteDataSourceImpl(
+      firebaseAuth: getIt.get<FirebaseAuth>(),
+      firestore: getIt.get<FirebaseFirestore>(),
+    ),
+  );
+  getIt.registerSingleton<IndexRemoteDataSource>(
+    IndexRemoteDataSourceImpl(
       firebaseAuth: getIt.get<FirebaseAuth>(),
       firestore: getIt.get<FirebaseFirestore>(),
     ),
@@ -40,6 +56,12 @@ void setupServiceLocator() {
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(
       firebaseAuth: getIt.get<FirebaseAuth>(),
+    ),
+  );
+  getIt.registerSingleton<IndexRepo>(
+    IndexRepoImpl(
+      indexLocalDataSource: getIt.get<IndexLocalDataSource>(),
+      indexRemoteDataSource: getIt.get<IndexRemoteDataSource>(),
     ),
   );
   getIt.registerSingleton<HomeRepo>(
@@ -96,6 +118,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<DeleteCategoryUseCase>(
     DeleteCategoryUseCase(
       homeRepo: getIt.get<HomeRepo>(),
+    ),
+  );
+  getIt.registerSingleton<GetTaskByDayUseCase>(
+    GetTaskByDayUseCase(
+      indexRepo: getIt.get<IndexRepo>(),
     ),
   );
 }

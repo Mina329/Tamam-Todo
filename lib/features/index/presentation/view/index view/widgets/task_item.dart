@@ -3,18 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:todo/core/utils/app_router.dart';
-import 'package:todo/core/utils/color_manager.dart';
-import 'package:todo/core/utils/functions/enums.dart';
+import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item_category.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/task_item_priority.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key, required this.taskState});
-  final TaskState taskState;
+  const TaskItem({super.key, required this.task});
+  final TaskEntity task;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: taskState != TaskState.active
+      onTap: task.status != "pending"
           ? null
           : () {
               GoRouter.of(context).push(AppRouter.kEditTaskView);
@@ -34,15 +33,10 @@ class TaskItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             RoundCheckBox(
-              checkedWidget: taskState != TaskState.uncompleted
-                  ? null
-                  : const Icon(Icons.close),
-              onTap: taskState != TaskState.active ? null : (p0) {},
-              isChecked: taskState == TaskState.completed
-                  ? true
-                  : taskState == TaskState.uncompleted
-                      ? true
-                      : false,
+              checkedWidget:
+                  task.status != "uncompleted" ? null : const Icon(Icons.close),
+              onTap: task.status != "pending" ? null : (p0) {},
+              isChecked: task.status != "pending" ? true : false,
               border: Border.all(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Colors.white
@@ -52,7 +46,7 @@ class TaskItem extends StatelessWidget {
               size: 30.w,
               uncheckedColor: Colors.transparent,
               disabledColor:
-                  taskState == TaskState.completed ? Colors.green : Colors.red,
+                  task.status == "completed" ? Colors.green : Colors.red,
             ),
             SizedBox(
               width: 16.w,
@@ -65,13 +59,13 @@ class TaskItem extends StatelessWidget {
                   flex: 1,
                 ),
                 Text(
-                  'Do Math',
+                  task.name,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 Text(
-                  'Do chapter 2 to 5 next week',
+                  task.description,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.labelMedium,
@@ -85,19 +79,18 @@ class TaskItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Today At ${DateTime.now().hour}:${DateTime.now().minute}',
+                        '${task.utcTime.year}/${task.utcTime.month}/${task.utcTime.day} ${task.utcTime.hour}:${task.utcTime.minute}',
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                       Row(
                         children: [
-                          const TaskItemCategory(
-                            color: ColorManager.primaryColor,
-                            categoryName: 'Music',
+                          TaskItemCategory(
+                            category: task.category,
                           ),
                           SizedBox(
                             width: 13.w,
                           ),
-                          const TaskItemPriority(priority: '2'),
+                          TaskItemPriority(priority: '${task.priority}'),
                         ],
                       ),
                     ],

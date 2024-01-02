@@ -41,7 +41,7 @@ class TaskModel extends TaskEntity {
       description: json['description'],
       category: CategoryModel.fromJson(json['category']),
       priority: json['priority'],
-      utcTime: DateTime.parse(json['utc_time']),
+      utcTime: DateTime.parse(json['utc_time']).toLocal(),
       status: json['status'],
     );
   }

@@ -13,6 +13,7 @@ import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/home/presentation/manager/create_task_cubit/create_task_cubit.dart';
 import 'package:todo/features/home/presentation/view/home%20view/widgets/add_task_action_buttons.dart';
 import 'package:todo/features/home/presentation/view/home%20view/widgets/add_task_form.dart';
+import 'package:todo/features/index/presentation/manager/get_tasks_by_day_cubit/get_tasks_by_day_cubit.dart';
 import 'package:uuid/uuid.dart';
 
 class CustomFloatingActionButton extends StatefulWidget {
@@ -98,6 +99,7 @@ class _CustomFloatingActionButtonState
                       msg: StringsManager.taskCreatedSuccessfully.tr(),
                       toastLength: Toast.LENGTH_SHORT,
                     );
+                    BlocProvider.of<GetTasksByDayCubit>(context).getTaskByDay(null);
                   }
                 },
                 child: AddTaskActionButtons(
@@ -129,7 +131,7 @@ class _CustomFloatingActionButtonState
                           description: taskDescription ?? '',
                           category: categoryEntity!,
                           priority: priority!,
-                          utcTime: time!.toUtc(),
+                          utcTime: time!,
                           status: 'pending',
                         ),
                       );

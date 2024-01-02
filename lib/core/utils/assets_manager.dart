@@ -7,5 +7,6 @@ abstract class AssetsManager {
   static const facebookIcon = "assets/images/facebook_icon.svg";
   static const twiiterIcon = "assets/images/twitter_icon.svg";
   static const loading = "assets/animations/loading.json";
-  static const checklist = "assets/animations/checklist.svg";
+  static const checklist = "assets/images/checklist.svg";
+  static const error = "assets/images/error.svg";
 }
