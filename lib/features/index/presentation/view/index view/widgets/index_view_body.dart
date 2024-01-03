@@ -4,10 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo/core/utils/assets_manager.dart';
+import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_loading_animation.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
 import 'package:todo/core/widgets/custom_clickable_container.dart';
+import 'package:todo/features/index/domain/usecases/change_task_status_use_case.dart';
+import 'package:todo/features/index/presentation/manager/change_task_status_cubit/change_task_status_cubit.dart';
 import 'package:todo/features/index/presentation/manager/get_tasks_by_day_cubit/get_tasks_by_day_cubit.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_drop_down.dart';
 import 'package:todo/features/index/presentation/view/index%20view/widgets/custom_index_app_bar.dart';
@@ -152,10 +155,15 @@ class IndexViewBody extends StatelessWidget {
         if (state.uncompleted.isNotEmpty)
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
-                child: TaskItem(
-                  task: state.uncompleted[index],
+              (context, index) => BlocProvider(
+                create: (context) => ChangeTaskStatusCubit(
+                  getIt.get<ChangeTaskStatusUseCase>(),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  child: TaskItem(
+                    task: state.uncompleted[index],
+                  ),
                 ),
               ),
               childCount: state.uncompleted.length,
@@ -176,8 +184,13 @@ class IndexViewBody extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.h),
-                child: TaskItem(
-                  task: state.completed[index],
+                child: BlocProvider(
+                  create: (context) => ChangeTaskStatusCubit(
+                    getIt.get<ChangeTaskStatusUseCase>(),
+                  ),
+                  child: TaskItem(
+                    task: state.completed[index],
+                  ),
                 ),
               ),
               childCount: state.completed.length,

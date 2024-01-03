@@ -105,7 +105,7 @@ abstract class AppRouter {
                     DateTime(DateTime.now().year, DateTime.now().month,
                         DateTime.now().day, 0, 0, 0),
                   ),
-              )
+              ),
             ],
             child: const HomeView(),
           ),

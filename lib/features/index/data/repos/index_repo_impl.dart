@@ -32,4 +32,20 @@ class IndexRepoImpl extends IndexRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, void>> changeTaskStatus(
+      {required String status, required String taskId}) async {
+    try {
+      await indexRemoteDataSource.changeTaskStatus(status, taskId);
+      await indexLocalDataSource.changeTaskStatus(status, taskId);
+      return right(null);
+    } catch (e) {
+      return left(
+        Failure(
+          message: StringsManager.operationNotAllowed.tr(),
+        ),
+      );
+    }
+  }
 }

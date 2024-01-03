@@ -18,4 +18,22 @@ class IndexLocalDataSourceImpl extends IndexLocalDataSource {
     }
     return tasks;
   }
+
+  @override
+  Future<void> changeTaskStatus(String status, String taskId) async {
+    var box = Hive.box<TaskEntity>(kTasksBox);
+    var taskIndex = box.values.toList().indexWhere((task) => task.id == taskId);
+    if (taskIndex != -1) {
+      TaskEntity taskToUpdate = box.getAt(taskIndex)!;
+      TaskEntity newTask = TaskEntity(
+          id: taskToUpdate.id,
+          name: taskToUpdate.name,
+          description: taskToUpdate.description,
+          category: taskToUpdate.category,
+          priority: taskToUpdate.priority,
+          utcTime: taskToUpdate.utcTime,
+          status: status);
+      await box.putAt(taskIndex, newTask);
+    }
+  }
 }

@@ -25,6 +25,7 @@ import 'package:todo/features/index/data/data_sources/index_remote_data_source/i
 import 'package:todo/features/index/data/data_sources/index_remote_data_source/index_remote_data_source_impl.dart';
 import 'package:todo/features/index/data/repos/index_repo_impl.dart';
 import 'package:todo/features/index/domain/repos/index_repo.dart';
+import 'package:todo/features/index/domain/usecases/change_task_status_use_case.dart';
 import 'package:todo/features/index/domain/usecases/get_task_by_day_use_case.dart';
 
 final getIt = GetIt.instance;
@@ -122,6 +123,11 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<GetTaskByDayUseCase>(
     GetTaskByDayUseCase(
+      indexRepo: getIt.get<IndexRepo>(),
+    ),
+  );
+  getIt.registerSingleton<ChangeTaskStatusUseCase>(
+    ChangeTaskStatusUseCase(
       indexRepo: getIt.get<IndexRepo>(),
     ),
   );
