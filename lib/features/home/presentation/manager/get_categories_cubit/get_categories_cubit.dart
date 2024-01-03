@@ -17,7 +17,7 @@ class GetCategoriesCubit extends Cubit<GetCategoriesState> {
         GetCategoriesFailure(errMessage: failure.message),
       ),
       (categories) => emit(
-        GetCategoriesSucecess(categories: categories),
+        GetCategoriesSuccess(categories: categories),
       ),
     );
   }

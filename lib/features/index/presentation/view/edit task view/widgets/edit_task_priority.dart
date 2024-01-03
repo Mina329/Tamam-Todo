@@ -9,14 +9,22 @@ import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
 import 'package:todo/features/home/presentation/view/home%20view/widgets/task_priority_item.dart';
 
 class EditTaskPriority extends StatefulWidget {
-  const EditTaskPriority({super.key});
+  const EditTaskPriority(
+      {super.key, required this.intialPriority, required this.onSavedPriority});
+  final int intialPriority;
+  final Function(int) onSavedPriority;
 
   @override
   State<EditTaskPriority> createState() => _EditTaskPriorityState();
 }
 
 class _EditTaskPriorityState extends State<EditTaskPriority> {
-  int? selectedTaskPriority;
+  late int selectedTaskPriority;
+  @override
+  void initState() {
+    super.initState();
+    selectedTaskPriority = widget.intialPriority;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class _EditTaskPriorityState extends State<EditTaskPriority> {
             color: Colors.white,
             size: 15.sp,
           ),
-          text: '1',
+          text: selectedTaskPriority.toString(),
           onTap: () {
             _buildTaskPriorityDialog(context);
           },
@@ -74,10 +82,12 @@ class _EditTaskPriorityState extends State<EditTaskPriority> {
                   SizedBox(height: 16.h),
                   SaveCancelActionButtons(
                     cancelOnPressed: () {
-                      selectedTaskPriority = null;
+                      selectedTaskPriority = widget.intialPriority;
+                      widget.onSavedPriority(selectedTaskPriority);
                       GoRouter.of(context).pop();
                     },
                     saveOnPressed: () {
+                      widget.onSavedPriority(selectedTaskPriority);
                       GoRouter.of(context).pop();
                     },
                   ),

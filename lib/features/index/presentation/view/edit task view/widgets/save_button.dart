@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 
 class SaveButton extends StatelessWidget {
   const SaveButton({
     super.key,
+    this.onPressed,
   });
-
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,9 +18,7 @@ class SaveButton extends StatelessWidget {
           width: double.infinity,
           height: 50.h,
           child: ElevatedButton(
-            onPressed: () {
-              GoRouter.of(context).pop();
-            },
+            onPressed: onPressed,
             child: Text(
               StringsManager.save.tr(),
               style: Theme.of(context).textTheme.headlineSmall!.copyWith(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:todo/core/errors/failures.dart';
@@ -23,6 +25,7 @@ class IndexRepoImpl extends IndexRepo {
         return right(tasks);
       }
       var remoteTasks = await indexRemoteDataSource.getTasksByDay(day);
+      log('remote');
       return right(remoteTasks);
     } catch (e) {
       return left(
@@ -39,6 +42,37 @@ class IndexRepoImpl extends IndexRepo {
     try {
       await indexRemoteDataSource.changeTaskStatus(status, taskId);
       await indexLocalDataSource.changeTaskStatus(status, taskId);
+      return right(null);
+    } catch (e) {
+      return left(
+        Failure(
+          message: StringsManager.operationNotAllowed.tr(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteTask(String taskId) async {
+    try {
+      await indexRemoteDataSource.deleteTask(taskId);
+      await indexLocalDataSource.deleteTask(taskId);
+      return right(null);
+    } catch (e) {
+      return left(
+        Failure(
+          message: StringsManager.operationNotAllowed.tr(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> editTask(
+      {required TaskEntity oldTask, required TaskEntity newTask}) async {
+    try {
+      await indexRemoteDataSource.editTask(oldTask: oldTask, newTask: newTask);
+      await indexLocalDataSource.editTask(oldTask: oldTask, newTask: newTask);
       return right(null);
     } catch (e) {
       return left(

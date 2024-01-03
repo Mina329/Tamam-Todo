@@ -13,8 +13,8 @@ final class GetCategoriesFailure extends GetCategoriesState {
   GetCategoriesFailure({required this.errMessage});
 }
 
-final class GetCategoriesSucecess extends GetCategoriesState {
+final class GetCategoriesSuccess extends GetCategoriesState {
   final List<CategoryEntity> categories;
 
-  GetCategoriesSucecess({required this.categories});
+  GetCategoriesSuccess({required this.categories});
 }

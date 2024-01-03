@@ -125,5 +125,7 @@
   "pleasePickACategory": "Please Pick a Category",
   "pleaseSelectAPriorityLevel": "Please Select a Priority Level",
   "taskCreatedSuccessfully": "Task Created Successfully",
-  "tapPlusToAddSomeTasks": "Tap + to add some tasks"
+  "tapPlusToAddSomeTasks": "Tap + to add some tasks",
+  "taskEditedSuccessfully": "Task Edited Successfully",
+  "taskDeletedSuccessfully": "Task Deleted Successfully"
 }

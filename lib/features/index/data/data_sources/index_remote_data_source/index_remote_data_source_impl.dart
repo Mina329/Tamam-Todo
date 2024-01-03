@@ -51,4 +51,27 @@ class IndexRemoteDataSourceImpl extends IndexRemoteDataSource {
       },
     );
   }
+
+  @override
+  Future<void> deleteTask(String taskId) async {
+    await firestore
+        .collection('users')
+        .doc(firebaseAuth.currentUser!.uid)
+        .collection('tasks')
+        .doc(taskId)
+        .delete();
+  }
+
+  @override
+  Future<void> editTask(
+      {required TaskEntity oldTask, required TaskEntity newTask}) async {
+    DocumentReference taskRef = firestore
+        .collection('users')
+        .doc(firebaseAuth.currentUser!.uid)
+        .collection('tasks')
+        .doc(oldTask.id);
+    await taskRef.update(
+      TaskModel.fromEntity(newTask).toJson(),
+    );
+  }
 }

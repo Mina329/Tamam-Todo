@@ -17,15 +17,19 @@ import 'package:todo/features/auth/presentation/manager/verify_email_cubit/verif
 import 'package:todo/features/auth/presentation/view/auth%20view/auth_view.dart';
 import 'package:todo/features/auth/presentation/view/email%20verify%20view/email_verify_view.dart';
 import 'package:todo/features/auth/presentation/view/forget%20password%20view/forget_password_view.dart';
+import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/home/domain/usecases/create_category_use_case.dart';
 import 'package:todo/features/home/domain/usecases/create_task_use_case.dart';
-import 'package:todo/features/home/domain/usecases/get_all_categories_use_case.dart';
 import 'package:todo/features/home/presentation/manager/create_category_cubit/create_category_cubit.dart';
 import 'package:todo/features/home/presentation/manager/create_task_cubit/create_task_cubit.dart';
 import 'package:todo/features/home/presentation/manager/get_categories_cubit/get_categories_cubit.dart';
 import 'package:todo/features/home/presentation/view/create%20category%20view/create_category_view.dart';
 import 'package:todo/features/home/presentation/view/home%20view/home_view.dart';
+import 'package:todo/features/index/domain/usecases/delete_task_use_case.dart';
+import 'package:todo/features/index/domain/usecases/edit_task_use_case.dart';
 import 'package:todo/features/index/domain/usecases/get_task_by_day_use_case.dart';
+import 'package:todo/features/index/presentation/manager/delete_task_cubit/delete_task_cubit.dart';
+import 'package:todo/features/index/presentation/manager/edit_task_cubit/edit_task_cubit.dart';
 import 'package:todo/features/index/presentation/manager/get_tasks_by_day_cubit/get_tasks_by_day_cubit.dart';
 import 'package:todo/features/index/presentation/view/edit%20task%20view/edit_task_view.dart';
 import 'package:todo/features/onboarding/presentation/view/onboarding_view.dart';
@@ -89,11 +93,6 @@ abstract class AppRouter {
           MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => GetCategoriesCubit(
-                  getIt.get<GetAllCategoriesUseCase>(),
-                )..getAllCategories(),
-              ),
-              BlocProvider(
                 create: (context) => CreateTaskCubit(
                   getIt.get<CreateTaskUseCase>(),
                 ),
@@ -133,10 +132,31 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kEditTaskView,
-        pageBuilder: (context, state) => screenTransition(
-          state,
-          const EditTaskView(),
-        ),
+        pageBuilder: (context, state) {
+          (TaskEntity, GetTasksByDayCubit) model =
+              state.extra as (TaskEntity, GetTasksByDayCubit);
+          return screenTransition(
+            state,
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => EditTaskCubit(
+                    getIt.get<EditTaskUseCase>(),
+                  ),
+                ),
+                BlocProvider(
+                  create: (context) => DeleteTaskCubit(
+                    getIt.get<DeleteTaskUseCase>(),
+                  ),
+                ),
+                BlocProvider.value(
+                  value: model.$2,
+                ),
+              ],
+              child: EditTaskView(task: model.$1),
+            ),
+          );
+        },
       ),
       GoRoute(
         path: kSettingsView,

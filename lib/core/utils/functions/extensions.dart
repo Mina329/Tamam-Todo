@@ -7,3 +7,7 @@ extension ColorExtension on Color {
 extension StringExtension on String {
   Color toColor() => Color(int.parse(substring(1), radix: 16));
 }
+
+extension IntExtension on int {
+  IconData toIconData() => IconData(this, fontFamily: 'MaterialIcons');
+}

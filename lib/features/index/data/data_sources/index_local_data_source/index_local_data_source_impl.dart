@@ -11,7 +11,8 @@ class IndexLocalDataSourceImpl extends IndexLocalDataSource {
     DateTime endDate = day.add(const Duration(days: 1));
 
     for (var taskEntity in box.values.toList()) {
-      if (taskEntity.utcTime.isAfter(day) &&
+      if ((taskEntity.utcTime.isAtSameMomentAs(day) ||
+              taskEntity.utcTime.isAfter(day)) &&
           taskEntity.utcTime.isBefore(endDate)) {
         tasks.add(taskEntity);
       }
@@ -33,6 +34,26 @@ class IndexLocalDataSourceImpl extends IndexLocalDataSource {
           priority: taskToUpdate.priority,
           utcTime: taskToUpdate.utcTime,
           status: status);
+      await box.putAt(taskIndex, newTask);
+    }
+  }
+
+  @override
+  Future<void> deleteTask(String taskId) async {
+    var box = Hive.box<TaskEntity>(kTasksBox);
+    int taskIndex = box.values.toList().indexWhere((task) => task.id == taskId);
+    if (taskIndex != -1) {
+      await box.deleteAt(taskIndex);
+    }
+  }
+
+  @override
+  Future<void> editTask(
+      {required TaskEntity oldTask, required TaskEntity newTask}) async {
+    var box = Hive.box<TaskEntity>(kTasksBox);
+    var taskIndex =
+        box.values.toList().indexWhere((task) => task.id == oldTask.id);
+    if (taskIndex != -1) {
       await box.putAt(taskIndex, newTask);
     }
   }

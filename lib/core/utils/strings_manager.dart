@@ -128,5 +128,6 @@ abstract class StringsManager {
   static const String pleaseSelectAPriorityLevel = "pleaseSelectAPriorityLevel";
   static const String taskCreatedSuccessfully = "taskCreatedSuccessfully";
   static const String tapPlusToAddSomeTasks = "tapPlusToAddSomeTasks";
-
+  static const String taskEditedSuccessfully = "taskEditedSuccessfully";
+  static const String taskDeletedSuccessfully = "taskDeletedSuccessfully";
 }
