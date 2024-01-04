@@ -54,8 +54,7 @@ abstract class StringsManager {
   static const String taskTime = 'taskTime';
   static const String taskCategory = 'taskCategory';
   static const String deleteTask = 'deleteTask';
-  static const String finished = 'finished';
-  static const String missed = 'missed';
+  static const String uncompleted = 'uncompleted';
   static const String notificationSuppress = 'notificationSuppress';
   static const String startFocusing = 'startFocusing';
   static const String stopFocusing = 'stopFocusing';

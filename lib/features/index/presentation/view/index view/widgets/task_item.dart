@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:todo/core/utils/app_router.dart';
+import 'package:todo/features/calendar/presentation/manager/get_tasks_by_calendar_day_cubit/get_tasks_by_calendar_day_cubit.dart';
 import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/index/presentation/manager/change_task_status_cubit/change_task_status_cubit.dart';
 import 'package:todo/features/index/presentation/manager/get_tasks_by_day_cubit/get_tasks_by_day_cubit.dart';
@@ -42,6 +43,8 @@ class _TaskItemState extends State<TaskItem> {
           });
         } else if (state is ChangeTaskStatusSuccess) {
           BlocProvider.of<GetTasksByDayCubit>(context).getTaskByDay(null);
+          BlocProvider.of<GetTasksByCalendarDayCubit>(context)
+              .getTaskByDay(isCompleted: null, day: null);
         }
       },
       child: InkWell(
@@ -53,6 +56,7 @@ class _TaskItemState extends State<TaskItem> {
                   extra: (
                     widget.task,
                     BlocProvider.of<GetTasksByDayCubit>(context),
+                    BlocProvider.of<GetTasksByCalendarDayCubit>(context),
                   ),
                 );
               },
@@ -96,56 +100,64 @@ class _TaskItemState extends State<TaskItem> {
               SizedBox(
                 width: 16.w,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Text(
-                    widget.task.name,
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  Text(
-                    widget.task.description,
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  ),
-                  const Spacer(
-                    flex: 2,
-                  ),
-                  SizedBox(
-                    width: 250.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '${widget.task.utcTime.year}/${widget.task.utcTime.month}/${widget.task.utcTime.day} ${widget.task.utcTime.hour == 0 ? '00' : widget.task.utcTime.hour}:${widget.task.utcTime.minute == 0 ? '00' : widget.task.utcTime.minute}',
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                        Row(
-                          children: [
-                            TaskItemCategory(
-                              category: widget.task.category,
-                            ),
-                            SizedBox(
-                              width: 13.w,
-                            ),
-                            TaskItemPriority(
-                                priority: '${widget.task.priority}'),
-                          ],
-                        ),
-                      ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(
+                      flex: 1,
                     ),
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                ],
+                    Text(
+                      widget.task.name,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    Text(
+                      widget.task.description,
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    const Spacer(
+                      flex: 2,
+                    ),
+                    SizedBox(
+                      width: 250.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                '${widget.task.utcTime.year}/${widget.task.utcTime.month}/${widget.task.utcTime.day} ${widget.task.utcTime.hour == 0 ? '00' : widget.task.utcTime.hour}:${widget.task.utcTime.minute == 0 ? '00' : widget.task.utcTime.minute}',
+                                style: Theme.of(context).textTheme.labelMedium,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              TaskItemCategory(
+                                category: widget.task.category,
+                              ),
+                              SizedBox(
+                                width: 13.w,
+                              ),
+                              TaskItemPriority(
+                                  priority: '${widget.task.priority}'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

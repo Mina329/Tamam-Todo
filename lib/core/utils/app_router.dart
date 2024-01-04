@@ -17,6 +17,7 @@ import 'package:todo/features/auth/presentation/manager/verify_email_cubit/verif
 import 'package:todo/features/auth/presentation/view/auth%20view/auth_view.dart';
 import 'package:todo/features/auth/presentation/view/email%20verify%20view/email_verify_view.dart';
 import 'package:todo/features/auth/presentation/view/forget%20password%20view/forget_password_view.dart';
+import 'package:todo/features/calendar/presentation/manager/get_tasks_by_calendar_day_cubit/get_tasks_by_calendar_day_cubit.dart';
 import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/home/domain/usecases/create_category_use_case.dart';
 import 'package:todo/features/home/domain/usecases/create_task_use_case.dart';
@@ -105,6 +106,11 @@ abstract class AppRouter {
                         DateTime.now().day, 0, 0, 0),
                   ),
               ),
+              BlocProvider(
+                create: (context) => GetTasksByCalendarDayCubit(
+                  getIt.get<GetTaskByDayUseCase>(),
+                ),
+              )
             ],
             child: const HomeView(),
           ),
@@ -133,8 +139,12 @@ abstract class AppRouter {
       GoRoute(
         path: kEditTaskView,
         pageBuilder: (context, state) {
-          (TaskEntity, GetTasksByDayCubit) model =
-              state.extra as (TaskEntity, GetTasksByDayCubit);
+          (TaskEntity, GetTasksByDayCubit, GetTasksByCalendarDayCubit) model =
+              state.extra as (
+            TaskEntity,
+            GetTasksByDayCubit,
+            GetTasksByCalendarDayCubit
+          );
           return screenTransition(
             state,
             MultiBlocProvider(
@@ -151,6 +161,9 @@ abstract class AppRouter {
                 ),
                 BlocProvider.value(
                   value: model.$2,
+                ),
+                BlocProvider.value(
+                  value: model.$3,
                 ),
               ],
               child: EditTaskView(task: model.$1),

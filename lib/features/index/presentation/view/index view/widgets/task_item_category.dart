@@ -15,28 +15,32 @@ class TaskItemCategory extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 9.w),
       height: 29.h,
+      width: 90.w,
       decoration: BoxDecoration(
         color: category.color.toColor(),
         borderRadius: BorderRadius.circular(6),
       ),
-      child: Row(
-        children: [
-          Icon(
-            CustomIcons.music_icon,
-            size: 15.sp,
-            color: blendColors(category.color.toColor(), Colors.black),
-          ),
-          SizedBox(
-            width: 5.w,
-          ),
-          Text(
-            category.name,
-            style: Theme.of(context)
-                .textTheme
-                .labelSmall!
-                .copyWith(color: Colors.white),
-          ),
-        ],
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          children: [
+            Icon(
+              CustomIcons.music_icon,
+              size: 15.sp,
+              color: blendColors(category.color.toColor(), Colors.black),
+            ),
+            SizedBox(
+              width: 5.w,
+            ),
+            Text(
+              category.name,
+              style: Theme.of(context)
+                  .textTheme
+                  .labelSmall!
+                  .copyWith(color: Colors.white),
+            ),
+          ],
+        ),
       ),
     );
   }

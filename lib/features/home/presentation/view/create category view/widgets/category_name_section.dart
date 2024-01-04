@@ -35,7 +35,7 @@ class CategoryNameSection extends StatelessWidget {
             hintText: StringsManager.categoryName.tr(),
           ),
           validator: (value) {
-            if (value == null || value.length < 3) {
+            if (value == null || value.length < 3 || value.length > 10) {
               return StringsManager.nameValidation.tr();
             }
             return null;

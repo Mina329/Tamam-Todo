@@ -8,8 +8,9 @@ import 'package:todo/features/calendar/presentation/view/widgets/custom_choice_b
 class DayChoicesButtons extends StatefulWidget {
   const DayChoicesButtons({
     super.key,
+    required this.isCompleted,
   });
-
+  final Function(bool) isCompleted;
   @override
   State<DayChoicesButtons> createState() => _DayChoicesButtonsState();
 }
@@ -35,8 +36,9 @@ class _DayChoicesButtonsState extends State<DayChoicesButtons> {
           children: [
             CustomChoiceButton(
               isSelected: isFinished,
-              text: StringsManager.finished.tr(),
+              text: StringsManager.completed.tr(),
               onTap: () {
+                widget.isCompleted(true);
                 setState(() {
                   isFinished = !isFinished;
                 });
@@ -47,8 +49,9 @@ class _DayChoicesButtonsState extends State<DayChoicesButtons> {
             ),
             CustomChoiceButton(
               isSelected: !isFinished,
-              text: StringsManager.missed.tr(),
+              text: StringsManager.uncompleted.tr(),
               onTap: () {
+                widget.isCompleted(false);
                 setState(() {
                   isFinished = !isFinished;
                 });
@@ -60,4 +63,3 @@ class _DayChoicesButtonsState extends State<DayChoicesButtons> {
     );
   }
 }
-

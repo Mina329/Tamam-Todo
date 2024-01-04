@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/core/widgets/custom_loading_animation.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
+import 'package:todo/features/calendar/presentation/manager/get_tasks_by_calendar_day_cubit/get_tasks_by_calendar_day_cubit.dart';
 import 'package:todo/features/home/domain/entities/category.dart';
 import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/index/presentation/manager/delete_task_cubit/delete_task_cubit.dart';
@@ -134,6 +135,8 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                   );
                   BlocProvider.of<GetTasksByDayCubit>(context)
                       .getTaskByDay(null);
+                  BlocProvider.of<GetTasksByCalendarDayCubit>(context)
+                      .getTaskByDay(isCompleted: null, day: null);
                   GoRouter.of(context).pop();
                   GoRouter.of(context).pop();
                 }
@@ -165,6 +168,8 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                   );
                   BlocProvider.of<GetTasksByDayCubit>(context)
                       .getTaskByDay(null);
+                  BlocProvider.of<GetTasksByCalendarDayCubit>(context)
+                      .getTaskByDay(isCompleted: null, day: null);
                   GoRouter.of(context).pop();
                   GoRouter.of(context).pop();
                 }

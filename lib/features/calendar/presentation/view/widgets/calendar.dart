@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -11,8 +9,9 @@ import 'package:todo/features/calendar/presentation/view/widgets/custom_day_widg
 class Calendar extends StatefulWidget {
   const Calendar({
     super.key,
+    required this.onDaySelected,
   });
-
+  final Function(DateTime) onDaySelected;
   @override
   State<Calendar> createState() => _CalendarState();
 }
@@ -40,6 +39,7 @@ class _CalendarState extends State<Calendar> {
           setState(() {
             _focusedDay = selectedDay;
           });
+          widget.onDaySelected(_focusedDay);
         },
         calendarFormat: CalendarFormat.week,
         daysOfWeekVisible: false,
@@ -79,8 +79,8 @@ class _CalendarState extends State<Calendar> {
           setState(() {
             _focusedDay = date;
           });
+          widget.onDaySelected(_focusedDay);
         }
-        log(date.toString());
       },
     );
     return null;

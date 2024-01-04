@@ -29,7 +29,7 @@ class _EditTaskTimeState extends State<EditTaskTime> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Row( 
       children: [
         const Icon(
           CustomIcons.clock_icon,
