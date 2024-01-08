@@ -126,5 +126,6 @@
   "taskCreatedSuccessfully": "Task Created Successfully",
   "tapPlusToAddSomeTasks": "Tap + to add some tasks",
   "taskEditedSuccessfully": "Task Edited Successfully",
-  "taskDeletedSuccessfully": "Task Deleted Successfully"
+  "taskDeletedSuccessfully": "Task Deleted Successfully",
+  "youHaveFocused": "You have focused "
 }

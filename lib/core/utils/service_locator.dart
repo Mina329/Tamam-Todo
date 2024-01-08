@@ -9,6 +9,14 @@ import 'package:todo/features/auth/domain/usecases/log_in_user_with_google_use_c
 import 'package:todo/features/auth/domain/usecases/register_user_with_email_and_password_use_case.dart';
 import 'package:todo/features/auth/domain/usecases/sign_out_use_case.dart';
 import 'package:todo/features/auth/domain/usecases/verify_email_use_case.dart';
+import 'package:todo/features/focus/data/data_sources/focus_local_data_source/focus_local_data_source.dart';
+import 'package:todo/features/focus/data/data_sources/focus_local_data_source/focus_local_data_source_impl.dart';
+import 'package:todo/features/focus/data/data_sources/focus_remote_data_source/focus_remote_data_source.dart';
+import 'package:todo/features/focus/data/data_sources/focus_remote_data_source/focus_remote_data_source_impl.dart';
+import 'package:todo/features/focus/data/repos/focus_repo_impl.dart';
+import 'package:todo/features/focus/domain/repos/focus_repo.dart';
+import 'package:todo/features/focus/domain/usecases/add_time_for_today_use_case.dart';
+import 'package:todo/features/focus/domain/usecases/get_focused_time_use_case.dart';
 import 'package:todo/features/home/data/data_source/local_data_source/home_local_data_source.dart';
 import 'package:todo/features/home/data/data_source/local_data_source/home_local_data_source_impl.dart';
 import 'package:todo/features/home/data/data_source/remote_data_source/home_remote_data_source.dart';
@@ -44,6 +52,9 @@ void setupServiceLocator() {
   getIt.registerSingleton<IndexLocalDataSource>(
     IndexLocalDataSourceImpl(),
   );
+  getIt.registerSingleton<FocusLocalDataSource>(
+    FocusLocalDataSourceImpl(),
+  );
   getIt.registerSingleton<HomeRemoteDataSource>(
     HomeRemoteDataSourceImpl(
       firebaseAuth: getIt.get<FirebaseAuth>(),
@@ -52,6 +63,12 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<IndexRemoteDataSource>(
     IndexRemoteDataSourceImpl(
+      firebaseAuth: getIt.get<FirebaseAuth>(),
+      firestore: getIt.get<FirebaseFirestore>(),
+    ),
+  );
+  getIt.registerSingleton<FocusRemoteDataSource>(
+    FocusRemoteDataSourceImpl(
       firebaseAuth: getIt.get<FirebaseAuth>(),
       firestore: getIt.get<FirebaseFirestore>(),
     ),
@@ -71,6 +88,12 @@ void setupServiceLocator() {
     HomeRepoImpl(
       homeLocalDataSource: getIt.get<HomeLocalDataSource>(),
       homeRemoteDataSource: getIt.get<HomeRemoteDataSource>(),
+    ),
+  );
+  getIt.registerSingleton<FocusRepo>(
+    FocusRepoImpl(
+      focusLocalDataSource: getIt.get<FocusLocalDataSource>(),
+      focusRemoteDataSource: getIt.get<FocusRemoteDataSource>(),
     ),
   );
   getIt.registerSingleton<RegisterUserWithEmailAndPasswordUseCase>(
@@ -141,6 +164,16 @@ void setupServiceLocator() {
   getIt.registerSingleton<DeleteTaskUseCase>(
     DeleteTaskUseCase(
       indexRepo: getIt.get<IndexRepo>(),
+    ),
+  );
+  getIt.registerSingleton<GetFocusedTimeUseCase>(
+    GetFocusedTimeUseCase(
+      focusRepo: getIt.get<FocusRepo>(),
+    ),
+  );
+  getIt.registerSingleton<AddTimeForTodayUseCase>(
+    AddTimeForTodayUseCase(
+      focusRepo: getIt.get<FocusRepo>(),
     ),
   );
 }

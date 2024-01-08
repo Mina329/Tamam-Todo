@@ -6,7 +6,7 @@ import 'package:todo/core/widgets/custom_simple_appbar.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
 import 'package:todo/features/focus/presentation/view/widgets/application_item.dart';
 import 'package:todo/features/focus/presentation/view/widgets/counter_timer_widget.dart';
-import 'package:todo/features/focus/presentation/view/widgets/overview_section.dart';
+import 'package:todo/features/focus/presentation/view/widgets/today_focused.dart';
 
 class FocusViewBody extends StatelessWidget {
   const FocusViewBody({super.key});
@@ -30,16 +30,13 @@ class FocusViewBody extends StatelessWidget {
             height: 56.h,
           ),
           const SliverToBoxAdapter(
+            child: TodayFocused(),
+          ),
+          const SliverToBoxAdapter(
             child: CounterTimerWidget(),
           ),
           SliverSizedBox(
             height: 50.h,
-          ),
-          const SliverToBoxAdapter(
-            child: OverviewSection(),
-          ),
-          SliverSizedBox(
-            height: 25.h,
           ),
           SliverToBoxAdapter(
             child: Text(
@@ -70,3 +67,4 @@ class FocusViewBody extends StatelessWidget {
     );
   }
 }
+

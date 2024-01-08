@@ -129,4 +129,5 @@ abstract class StringsManager {
   static const String tapPlusToAddSomeTasks = "tapPlusToAddSomeTasks";
   static const String taskEditedSuccessfully = "taskEditedSuccessfully";
   static const String taskDeletedSuccessfully = "taskDeletedSuccessfully";
+  static const String youHaveFocused = "youHaveFocused";
 }

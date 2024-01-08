@@ -1,6 +1,8 @@
 class CacheKeys {
   static String kDARKMODE = "darkMode";
   static String kONBOARDING = "firstTime";
+  static String kDATE = "date";
+  static String kSECONDS = "seconds";
 }
 
 class CacheValues {

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:todo/core/errors/failures.dart';
@@ -25,7 +23,6 @@ class IndexRepoImpl extends IndexRepo {
         return right(tasks);
       }
       var remoteTasks = await indexRemoteDataSource.getTasksByDay(day);
-      log('remote');
       return right(remoteTasks);
     } catch (e) {
       return left(
