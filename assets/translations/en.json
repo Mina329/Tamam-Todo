@@ -127,5 +127,6 @@
   "tapPlusToAddSomeTasks": "Tap + to add some tasks",
   "taskEditedSuccessfully": "Task Edited Successfully",
   "taskDeletedSuccessfully": "Task Deleted Successfully",
-  "youHaveFocused": "You have focused "
+  "youHaveFocused": "You have focused ",
+  "refresh": "Refresh"
 }

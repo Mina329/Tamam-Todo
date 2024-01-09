@@ -16,6 +16,7 @@ import 'package:todo/features/focus/data/data_sources/focus_remote_data_source/f
 import 'package:todo/features/focus/data/repos/focus_repo_impl.dart';
 import 'package:todo/features/focus/domain/repos/focus_repo.dart';
 import 'package:todo/features/focus/domain/usecases/add_time_for_today_use_case.dart';
+import 'package:todo/features/focus/domain/usecases/get_apps_usage_list_use_case.dart';
 import 'package:todo/features/focus/domain/usecases/get_focused_time_use_case.dart';
 import 'package:todo/features/home/data/data_source/local_data_source/home_local_data_source.dart';
 import 'package:todo/features/home/data/data_source/local_data_source/home_local_data_source_impl.dart';
@@ -173,6 +174,11 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<AddTimeForTodayUseCase>(
     AddTimeForTodayUseCase(
+      focusRepo: getIt.get<FocusRepo>(),
+    ),
+  );
+  getIt.registerSingleton<GetAppsUsageListUseCase>(
+    GetAppsUsageListUseCase(
       focusRepo: getIt.get<FocusRepo>(),
     ),
   );

@@ -24,25 +24,30 @@ class ApplicationItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                appName,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              SizedBox(
-                height: 5.h,
-              ),
-              Text(
-                '${StringsManager.youSpent.tr()}$hours${StringsManager.on.tr()}$appName ${StringsManager.today.tr()}',
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-              ),
-            ],
+          Flexible(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  appName,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                SizedBox(
+                  height: 5.h,
+                ),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    '${StringsManager.youSpent.tr()}$hours${StringsManager.on.tr()}$appName ${StringsManager.today.tr()}',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Row(
             children: [

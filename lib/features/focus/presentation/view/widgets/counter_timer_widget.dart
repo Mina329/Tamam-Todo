@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dnd/flutter_dnd.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:todo/core/utils/color_manager.dart';
@@ -18,11 +19,11 @@ class CounterTimerWidget extends StatefulWidget {
 }
 
 class CounterTimerWidgetState extends State<CounterTimerWidget> {
-  int seconds = 0;
-  int minutes = 0;
-  int hours = 0;
-  bool isTimerRunning = false;
-  late Timer timer;
+  static int timerSeconds = 0;
+  static int timerMinutes = 0;
+  static int timerHours = 0;
+  static bool isTimerRunning = false;
+  static late Timer timer;
 
   @override
   void initState() {
@@ -32,13 +33,13 @@ class CounterTimerWidgetState extends State<CounterTimerWidget> {
       (timer) {
         if (isTimerRunning) {
           setState(() {
-            seconds++;
-            if (seconds == 60) {
-              seconds = 0;
-              minutes++;
-              if (minutes == 60) {
-                minutes = 0;
-                hours++;
+            timerSeconds++;
+            if (timerSeconds == 60) {
+              timerSeconds = 0;
+              timerMinutes++;
+              if (timerMinutes == 60) {
+                timerMinutes = 0;
+                timerHours++;
               }
             }
           });
@@ -58,7 +59,7 @@ class CounterTimerWidgetState extends State<CounterTimerWidget> {
             children: [
               Center(
                 child: Text(
-                  '${_twoDigits(hours)}:${_twoDigits(minutes)}:${_twoDigits(seconds)}',
+                  '${_twoDigits(timerHours)}:${_twoDigits(timerMinutes)}:${_twoDigits(timerSeconds)}',
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
@@ -104,15 +105,7 @@ class CounterTimerWidgetState extends State<CounterTimerWidget> {
               }
             },
             child: ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  isTimerRunning = !isTimerRunning;
-                  if (!isTimerRunning) {
-                    BlocProvider.of<AddFocusedTimeCubit>(context)
-                        .addFocusedTime(_saveTotalTime());
-                  }
-                });
-              },
+              onPressed: _toggleTimer,
               child: Text(
                 isTimerRunning
                     ? StringsManager.stopFocusing.tr()
@@ -134,11 +127,44 @@ class CounterTimerWidgetState extends State<CounterTimerWidget> {
     return '0$n';
   }
 
+  void _toggleTimer() async {
+    bool hasPermission = await _checkAndRequestPermission();
+    if (hasPermission && context.mounted) {
+      setState(() {
+        isTimerRunning = !isTimerRunning;
+      });
+
+      if (!isTimerRunning) {
+        BlocProvider.of<AddFocusedTimeCubit>(context)
+            .addFocusedTime(_saveTotalTime());
+
+        await FlutterDnd.setInterruptionFilter(
+          FlutterDnd.INTERRUPTION_FILTER_ALL,
+        );
+      } else {
+        await FlutterDnd.setInterruptionFilter(
+          FlutterDnd.INTERRUPTION_FILTER_NONE,
+        );
+      }
+    }
+  }
+
+  Future<bool> _checkAndRequestPermission() async {
+    bool isPermissionGranted =
+        await FlutterDnd.isNotificationPolicyAccessGranted ?? false;
+
+    if (!isPermissionGranted) {
+      FlutterDnd.gotoPolicySettings();
+    }
+
+    return isPermissionGranted;
+  }
+
   int _saveTotalTime() {
-    int totalSeconds = hours * 3600 + minutes * 60 + seconds;
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
+    int totalSeconds = timerHours * 3600 + timerMinutes * 60 + timerSeconds;
+    timerHours = 0;
+    timerMinutes = 0;
+    timerSeconds = 0;
     return totalSeconds;
   }
 

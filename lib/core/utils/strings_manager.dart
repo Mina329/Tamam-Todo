@@ -130,4 +130,5 @@ abstract class StringsManager {
   static const String taskEditedSuccessfully = "taskEditedSuccessfully";
   static const String taskDeletedSuccessfully = "taskDeletedSuccessfully";
   static const String youHaveFocused = "youHaveFocused";
+  static const String refresh = "refresh";
 }
