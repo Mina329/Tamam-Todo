@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:todo/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:todo/features/auth/domain/repos/auth_repo.dart';
@@ -38,11 +39,21 @@ import 'package:todo/features/index/domain/usecases/change_task_status_use_case.
 import 'package:todo/features/index/domain/usecases/delete_task_use_case.dart';
 import 'package:todo/features/index/domain/usecases/edit_task_use_case.dart';
 import 'package:todo/features/index/domain/usecases/get_task_by_day_use_case.dart';
+import 'package:todo/features/profile/data/data_sources/profile_remote_data_source/profile_remote_data_source.dart';
+import 'package:todo/features/profile/data/data_sources/profile_remote_data_source/profile_remote_data_source_impl.dart';
+import 'package:todo/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:todo/features/profile/domain/repos/profile_repo.dart';
+import 'package:todo/features/profile/domain/usecases/change_account_name_use_case.dart';
+import 'package:todo/features/profile/domain/usecases/change_account_password_use_case.dart';
+import 'package:todo/features/profile/domain/usecases/change_account_photo_use_case.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
   getIt.registerSingleton<FirebaseAuth>(
     FirebaseAuth.instance,
+  );
+  getIt.registerSingleton<FirebaseStorage>(
+    FirebaseStorage.instance,
   );
   getIt.registerSingleton<FirebaseFirestore>(
     FirebaseFirestore.instance,
@@ -55,6 +66,12 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<FocusLocalDataSource>(
     FocusLocalDataSourceImpl(),
+  );
+  getIt.registerSingleton<ProfileRemoteDataSource>(
+    ProfileRemoteDataSourceImpl(
+      firebaseAuth: getIt.get<FirebaseAuth>(),
+      firebaseStorage: getIt.get<FirebaseStorage>(),
+    ),
   );
   getIt.registerSingleton<HomeRemoteDataSource>(
     HomeRemoteDataSourceImpl(
@@ -95,6 +112,11 @@ void setupServiceLocator() {
     FocusRepoImpl(
       focusLocalDataSource: getIt.get<FocusLocalDataSource>(),
       focusRemoteDataSource: getIt.get<FocusRemoteDataSource>(),
+    ),
+  );
+  getIt.registerSingleton<ProfileRepo>(
+    ProfileRepoImpl(
+      profileRemoteDataSource: getIt.get<ProfileRemoteDataSource>(),
     ),
   );
   getIt.registerSingleton<RegisterUserWithEmailAndPasswordUseCase>(
@@ -180,6 +202,21 @@ void setupServiceLocator() {
   getIt.registerSingleton<GetAppsUsageListUseCase>(
     GetAppsUsageListUseCase(
       focusRepo: getIt.get<FocusRepo>(),
+    ),
+  );
+  getIt.registerSingleton<ChangeAccountNameUseCase>(
+    ChangeAccountNameUseCase(
+      profileRepo: getIt.get<ProfileRepo>(),
+    ),
+  );
+  getIt.registerSingleton<ChangeAccountPasswordUseCase>(
+    ChangeAccountPasswordUseCase(
+      profileRepo: getIt.get<ProfileRepo>(),
+    ),
+  );
+  getIt.registerSingleton<ChangeAccountPhotoUseCase>(
+    ChangeAccountPhotoUseCase(
+      profileRepo: getIt.get<ProfileRepo>(),
     ),
   );
 }

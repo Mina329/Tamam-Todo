@@ -131,4 +131,13 @@ abstract class StringsManager {
   static const String taskDeletedSuccessfully = "taskDeletedSuccessfully";
   static const String youHaveFocused = "youHaveFocused";
   static const String refresh = "refresh";
+  static const String unknownUser = "unknownUser";
+  static const String nameUpdatedSuccessfully = "nameUpdatedSuccessfully";
+  static const String oldNewPassword = "oldNewPassword";
+  static const String youCurrentilyLoggedInWithGoogle =
+      "youCurrentilyLoggedInWithGoogle";
+  static const String passwordUpdatedSuccessfully =
+      "passwordUpdatedSuccessfully";
+  static const String profilePhotoUpdatedSuccessfully =
+      "profilePhotoUpdatedSuccessfully";
 }

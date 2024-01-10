@@ -128,5 +128,11 @@
   "taskEditedSuccessfully": "Task Edited Successfully",
   "taskDeletedSuccessfully": "Task Deleted Successfully",
   "youHaveFocused": "You have focused ",
-  "refresh": "Refresh"
+  "refresh": "Refresh",
+  "unknownUser": "Unknown User",
+  "nameUpdatedSuccessfully": "Name Updated Successfully",
+  "youCurrentilyLoggedInWithGoogle": "You currently logged in with Google",
+  "oldNewPassword": "New password can't be same as old password",
+  "passwordUpdatedSuccessfully": "Password Updated Successfully",
+  "profilePhotoUpdatedSuccessfully": "Profile Photo Updated Successfully"
 }

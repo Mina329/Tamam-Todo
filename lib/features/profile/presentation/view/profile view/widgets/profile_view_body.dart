@@ -41,7 +41,6 @@ class ProfileViewBody extends StatelessWidget {
           ),
           const SliverToBoxAdapter(
             child: ProfileCard(
-              imgUrl: 'https://avatars.githubusercontent.com/u/96777964?v=4',
               name: 'Mina Emil',
               tasksDone: '7 Tasks Done',
               tasksMissed: '10 Tasks Missed',
