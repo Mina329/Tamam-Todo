@@ -12,6 +12,7 @@ import 'package:todo/core/widgets/custom_simple_appbar.dart';
 import 'package:todo/core/widgets/custom_sliver_sizedbox.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/account_section.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/app_about_section.dart';
+import 'package:todo/features/profile/presentation/view/profile%20view/widgets/delete_account_button.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/log_out_button.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/profile_card.dart';
 import 'package:todo/features/profile/presentation/view/profile%20view/widgets/settings_section.dart';
@@ -76,6 +77,9 @@ class ProfileViewBody extends StatelessWidget {
                 }
               },
             ),
+          ),
+          const SliverToBoxAdapter(
+            child: DeleteAccountButton(),
           ),
           SliverSizedBox(
             height: 30.h,

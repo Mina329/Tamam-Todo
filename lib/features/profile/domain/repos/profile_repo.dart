@@ -8,4 +8,5 @@ abstract class ProfileRepo {
   Future<Either<Failure, void>> changeAccountPassword(
       String oldPassword, String newPassword);
   Future<Either<Failure, void>> changeAccountPhoto(File image);
+  Future<Either<Failure, void>> deleteAccount(String? password);
 }

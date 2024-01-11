@@ -134,5 +134,7 @@
   "youCurrentilyLoggedInWithGoogle": "You currently logged in with Google",
   "oldNewPassword": "New password can't be same as old password",
   "passwordUpdatedSuccessfully": "Password Updated Successfully",
-  "profilePhotoUpdatedSuccessfully": "Profile Photo Updated Successfully"
+  "profilePhotoUpdatedSuccessfully": "Profile Photo Updated Successfully",
+  "deleteAccount": "Delete Account",
+  "accountDeletedSuccessfully": "Account Deleted Successfully"
 }
