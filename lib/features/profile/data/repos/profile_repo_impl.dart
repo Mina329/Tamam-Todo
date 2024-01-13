@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo/core/errors/failures.dart';
 import 'package:todo/core/errors/firebase_auth_failure.dart';
+import 'package:todo/core/notifications/local_notification.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/features/profile/data/data_sources/profile_local_data_source/profile_local_data_source.dart';
 import 'package:todo/features/profile/data/data_sources/profile_remote_data_source/profile_remote_data_source.dart';
@@ -70,6 +71,7 @@ class ProfileRepoImpl extends ProfileRepo {
     try {
       await profileRemoteDataSource.deleteAccount(password);
       await profileLocalDataSource.deleteAccount();
+      LocalNotification.cancelAllNotification();
       return right(null);
     } on FirebaseAuthException catch (e) {
       return left(

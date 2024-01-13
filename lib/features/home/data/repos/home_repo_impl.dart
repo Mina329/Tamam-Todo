@@ -7,6 +7,7 @@ import 'package:todo/features/home/data/data_source/remote_data_source/home_remo
 import 'package:todo/features/home/domain/entities/category.dart';
 import 'package:todo/features/home/domain/entities/task.dart';
 import 'package:todo/features/home/domain/repos/home_repo.dart';
+import 'package:todo/core/notifications/local_notification.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final HomeLocalDataSource homeLocalDataSource;
@@ -35,6 +36,12 @@ class HomeRepoImpl extends HomeRepo {
     try {
       await homeRemoteDataSource.createTask(task);
       await homeLocalDataSource.createTask(task);
+      LocalNotification.scheduleNotifications(
+        id: task.id,
+        title: task.name,
+        body: task.description,
+        scheduleTime: task.utcTime,
+      );
       return right(null);
     } catch (e) {
       return left(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo/core/database/database.dart';
+import 'package:todo/core/notifications/local_notification.dart';
 import 'package:todo/core/utils/functions/save_data.dart';
 import 'package:todo/features/home/data/models/task_model.dart/task_model.dart';
 import 'package:todo/features/home/domain/entities/task.dart';
@@ -28,7 +29,21 @@ class IndexRemoteDataSourceImpl extends IndexRemoteDataSource {
     List<TaskEntity> tasks = [];
     _parseTasks(querySnapshot, tasks);
     await saveTasks(tasks, kTasksBox);
+    scheduleDayTasksNotification(tasks);
     return tasks;
+  }
+
+  void scheduleDayTasksNotification(List<TaskEntity> tasks) {
+    for (TaskEntity task in tasks) {
+      if (task.status == 'pending') {
+        LocalNotification.scheduleNotifications(
+          id: task.id,
+          title: task.name,
+          body: task.description,
+          scheduleTime: task.utcTime,
+        );
+      }
+    }
   }
 
   void _parseTasks(
