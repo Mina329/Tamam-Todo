@@ -77,4 +77,32 @@ class HomeRepoImpl extends HomeRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, void>> changeTasksToUncompleted() async {
+    try {
+      await homeRemoteDataSource.changeTasksToUncompleted();
+      return right(null);
+    } catch (e) {
+      return left(
+        Failure(
+          message: StringsManager.operationNotAllowed.tr(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteOldTasks() async {
+    try {
+      await homeRemoteDataSource.deleteOldTasks();
+      return right(null);
+    } catch (e) {
+      return left(
+        Failure(
+          message: StringsManager.operationNotAllowed.tr(),
+        ),
+      );
+    }
+  }
 }

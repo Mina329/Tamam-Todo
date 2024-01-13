@@ -6,4 +6,6 @@ abstract class HomeRemoteDataSource {
   Future<void> createTask(TaskEntity task);
   Future<void> createCategory(CategoryEntity categoryData);
   Future<void> deleteCategory(String categoryId);
+  Future<void> changeTasksToUncompleted();
+  Future<void> deleteOldTasks();
 }

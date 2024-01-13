@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/core/cache/cache_helper.dart';
 import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/database/database.dart';
+import 'package:todo/core/notifications/local_notification.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/service_locator.dart';
 import 'package:todo/core/utils/theme_manager.dart';
@@ -24,6 +25,7 @@ void main() async {
     Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     ),
+    LocalNotification.init(),
     CacheData.casheIntialization(),
     EasyLocalization.ensureInitialized(),
     Hive.initFlutter(),

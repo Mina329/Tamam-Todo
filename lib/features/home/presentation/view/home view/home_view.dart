@@ -1,9 +1,12 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:todo/core/utils/color_manager.dart';
 import 'package:todo/features/calendar/presentation/view/calendar_view.dart';
 import 'package:todo/features/focus/presentation/view/focus_view.dart';
+import 'package:todo/features/home/presentation/manager/change_tasks_to_uncompleted_cubit/change_tasks_to_uncompleted_cubit.dart';
 import 'package:todo/features/home/presentation/view/home%20view/widgets/custom_bottom_navigation_bar_item.dart';
 import 'package:todo/features/home/presentation/view/home%20view/widgets/custom_floating_action_button.dart';
 import 'package:todo/features/index/presentation/view/index%20view/index_view.dart';
@@ -27,7 +30,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _children[activeIndex],
+      body: BlocListener<ChangeTasksToUncompletedCubit,
+          ChangeTasksToUncompletedState>(
+        listener: (context, state) {
+          if (state is ChangeTasksToUncompletedFailure) {
+            Fluttertoast.showToast(msg: state.errMessage);
+          }
+        },
+        child: _children[activeIndex],
+      ),
       floatingActionButton: const CustomFloatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _buildBottomNavigationBar(context),

@@ -25,9 +25,11 @@ import 'package:todo/features/home/data/data_source/remote_data_source/home_remo
 import 'package:todo/features/home/data/data_source/remote_data_source/home_remote_data_source_impl.dart';
 import 'package:todo/features/home/data/repos/home_repo_impl.dart';
 import 'package:todo/features/home/domain/repos/home_repo.dart';
+import 'package:todo/features/home/domain/usecases/change_tasks_to_uncompleted.dart';
 import 'package:todo/features/home/domain/usecases/create_category_use_case.dart';
 import 'package:todo/features/home/domain/usecases/create_task_use_case.dart';
 import 'package:todo/features/home/domain/usecases/delete_category_use_case.dart';
+import 'package:todo/features/home/domain/usecases/delete_old_tasks_use_case.dart';
 import 'package:todo/features/home/domain/usecases/get_all_categories_use_case.dart';
 import 'package:todo/features/index/data/data_sources/index_local_data_source/index_local_data_source.dart';
 import 'package:todo/features/index/data/data_sources/index_local_data_source/index_local_data_source_impl.dart';
@@ -164,6 +166,16 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<CreateTaskUseCase>(
     CreateTaskUseCase(
+      homeRepo: getIt.get<HomeRepo>(),
+    ),
+  );
+  getIt.registerSingleton<ChangeTasksToUncompletedUseCase>(
+    ChangeTasksToUncompletedUseCase(
+      homeRepo: getIt.get<HomeRepo>(),
+    ),
+  );
+  getIt.registerSingleton<DeleteOldTasksUseCase>(
+    DeleteOldTasksUseCase(
       homeRepo: getIt.get<HomeRepo>(),
     ),
   );
