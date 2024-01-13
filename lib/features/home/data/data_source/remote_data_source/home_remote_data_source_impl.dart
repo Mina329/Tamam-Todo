@@ -125,7 +125,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         )
         .where(
           'utc_time',
-          isLessThan: DateTime(DateTime.now().year, DateTime.now().month,
+          isLessThan: DateTime(DateTime.now().year, DateTime.now().month + 2,
                   DateTime.now().day, 0, 0, 0)
               .toUtc()
               .toIso8601String(),

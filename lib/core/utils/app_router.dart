@@ -37,6 +37,8 @@ import 'package:todo/features/index/presentation/manager/edit_task_cubit/edit_ta
 import 'package:todo/features/index/presentation/manager/get_tasks_by_day_cubit/get_tasks_by_day_cubit.dart';
 import 'package:todo/features/index/presentation/view/edit%20task%20view/edit_task_view.dart';
 import 'package:todo/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:todo/features/profile/presentation/view/about%20view/about_view.dart';
+import 'package:todo/features/profile/presentation/view/faq%20view/faq_view.dart';
 import 'package:todo/features/profile/presentation/view/settings%20view/settings_view.dart';
 import 'package:todo/features/splash/presentation/view/splash_view.dart';
 
@@ -50,6 +52,8 @@ abstract class AppRouter {
   static const kSettingsView = '/settings';
   static const kForgetPasswordView = '/forget_password';
   static const kEmailVerifyView = '/email_verify';
+  static const kFaqView = '/faq';
+  static const kAboutView = '/about';
 
   static final router = GoRouter(
     routes: [
@@ -218,6 +222,20 @@ abstract class AppRouter {
             ],
             child: const EmailVerifyView(),
           ),
+        ),
+      ),
+      GoRoute(
+        path: kFaqView,
+        pageBuilder: (context, state) => screenTransition(
+          state,
+          const FaqView(),
+        ),
+      ),
+      GoRoute(
+        path: kAboutView,
+        pageBuilder: (context, state) => screenTransition(
+          state,
+          const AboutView(),
         ),
       ),
     ],

@@ -9,4 +9,7 @@ abstract class AssetsManager {
   static const loading = "assets/animations/loading.json";
   static const checklist = "assets/images/checklist.svg";
   static const error = "assets/images/error.svg";
+  static const linkedin = "assets/images/linkedin.svg";
+  static const github = "assets/images/github.svg";
+  static const outlook = "assets/images/outlook.svg";
 }

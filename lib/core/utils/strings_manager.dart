@@ -142,5 +142,27 @@ abstract class StringsManager {
       "profilePhotoUpdatedSuccessfully";
   static const String deleteAccount = "deleteAccount";
   static const String accountDeletedSuccessfully = "accountDeletedSuccessfully";
-
+  static const String q1 = "q1";
+  static const String q1A = "q1A";
+  static const String q2 = "q2";
+  static const String q2A = "q2A";
+  static const String q3 = "q3";
+  static const String q3A = "q3A";
+  static const String q4 = "q4";
+  static const String q4A = "q4A";
+  static const String q5 = "q5";
+  static const String q5A = "q5A";
+  static const String q6 = "q6";
+  static const String q6A = "q6A";
+  static const String q7 = "q7";
+  static const String q7A = "q7A";
+  static const String q8 = "q8";
+  static const String q8A = "q8A";
+  static const String q9 = "q9";
+  static const String q9A = "q9A";
+  static const String q10 = "q10";
+  static const String q10A = "q10A";
+  static const String q11 = "q11";
+  static const String q11A = "q11A";
+  static const String faqDescription = "faqDescription";
 }
