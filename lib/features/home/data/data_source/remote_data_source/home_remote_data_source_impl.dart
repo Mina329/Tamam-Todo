@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive/hive.dart';
 import 'package:todo/core/database/database.dart';
+import 'package:todo/core/notifications/local_notification.dart';
 import 'package:todo/core/utils/functions/save_data.dart';
 import 'package:todo/features/home/data/data_source/remote_data_source/home_remote_data_source.dart';
 import 'package:todo/features/home/data/models/category_model/category_model.dart';
@@ -155,7 +156,16 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     List<TaskEntity> newTasks = retrievedTasks
         .where((task) => !storedTaskIds.contains(task.id))
         .toList();
-
+    for (var task in newTasks) {
+      if (task.status == 'pending' && task.utcTime.isAfter(DateTime.now())) {
+        LocalNotification.scheduleNotifications(
+          id: task.id,
+          title: task.name,
+          body: task.description,
+          scheduleTime: task.utcTime,
+        );
+      }
+    }
     return newTasks;
   }
 

@@ -36,12 +36,15 @@ class HomeRepoImpl extends HomeRepo {
     try {
       await homeRemoteDataSource.createTask(task);
       await homeLocalDataSource.createTask(task);
-      LocalNotification.scheduleNotifications(
-        id: task.id,
-        title: task.name,
-        body: task.description,
-        scheduleTime: task.utcTime,
-      );
+      if (task.utcTime.isAfter(DateTime.now())) {
+        LocalNotification.scheduleNotifications(
+          id: task.id,
+          title: task.name,
+          body: task.description,
+          scheduleTime: task.utcTime,
+        );
+      }
+
       return right(null);
     } catch (e) {
       return left(

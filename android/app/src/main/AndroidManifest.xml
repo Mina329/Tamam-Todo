@@ -26,7 +26,7 @@
         </intent>
     </queries>
     <application
-        android:label="todo"
+        android:label="Tamam"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />

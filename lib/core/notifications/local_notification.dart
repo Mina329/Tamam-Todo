@@ -9,7 +9,7 @@ class LocalNotification {
   static Future init() async {
     tz.initializeTimeZones();
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+        AndroidInitializationSettings('notification_icon');
 
     const InitializationSettings initializationSettings =
         InitializationSettings(

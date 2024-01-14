@@ -165,4 +165,6 @@ abstract class StringsManager {
   static const String q11 = "q11";
   static const String q11A = "q11A";
   static const String faqDescription = "faqDescription";
+  static const String about = "about";
+  static const String connectWithMe = "connectWithMe";
 }
