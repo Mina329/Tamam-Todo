@@ -31,6 +31,7 @@ class CategoryNameSection extends StatelessWidget {
             contentPadding: const EdgeInsets.all(15),
             label: Text(
               StringsManager.categoryName.tr(),
+              style: Theme.of(context).textTheme.labelMedium,
             ),
             hintText: StringsManager.categoryName.tr(),
           ),

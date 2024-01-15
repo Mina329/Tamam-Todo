@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ void main() async {
   ]);
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (context) => EasyLocalization(
         supportedLocales: const [
           Locale('en'),
@@ -59,8 +60,27 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: LocalNotification.onActionReceivedMethod,
+      onNotificationCreatedMethod:
+          LocalNotification.onNotificationCreatedMethod,
+      onDismissActionReceivedMethod:
+          LocalNotification.onDismissActionReceivedMethod,
+      onNotificationDisplayedMethod:
+          LocalNotification.onNotificationDisplayedMethod,
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

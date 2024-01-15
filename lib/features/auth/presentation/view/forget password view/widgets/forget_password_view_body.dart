@@ -81,6 +81,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                   contentPadding: const EdgeInsets.all(15),
                   label: Text(
                     StringsManager.email.tr(),
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                   hintText: StringsManager.email.tr(),
                 ),

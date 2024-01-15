@@ -50,7 +50,7 @@ class _CustomBottomNavigationBarItemState extends State<CustomBottomNavigationBa
         widget.isActive
             ? Icon(
                 activeIconList[widget.index],
-                size: 24,
+                size: 24.sp,
                 color: widget.isActive
                     ? Theme.of(context).brightness == Brightness.dark
                         ? ColorManager.primaryColor
@@ -61,7 +61,7 @@ class _CustomBottomNavigationBarItemState extends State<CustomBottomNavigationBa
               )
             : Icon(
                 inactiveIconList[widget.index],
-                size: 24,
+                size: 24.sp,
                 color: widget.isActive
                     ? Theme.of(context).brightness == Brightness.dark
                         ? ColorManager.primaryColor

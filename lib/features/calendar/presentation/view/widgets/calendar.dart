@@ -25,7 +25,7 @@ class _CalendarState extends State<Calendar> {
           ? ColorManager.greyColor
           : Colors.grey[200],
       padding: EdgeInsets.only(
-        bottom: 10.h,
+        bottom: 20.h,
       ),
       child: TableCalendar(
         firstDay: DateTime.utc(2000, 1, 1),

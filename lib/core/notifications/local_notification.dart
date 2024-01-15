@@ -1,56 +1,91 @@
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:todo/core/utils/functions/extensions.dart';
 
 class LocalNotification {
-  static final FlutterLocalNotificationsPlugin
-      _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   static Future init() async {
-    tz.initializeTimeZones();
-    const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('notification_icon');
-
-    const InitializationSettings initializationSettings =
-        InitializationSettings(
-      android: initializationSettingsAndroid,
-    );
-    await _flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onDidReceiveNotificationResponse: (details) {});
+    AwesomeNotifications().initialize(
+        'resource://drawable/ic_notification',
+        [
+          NotificationChannel(
+            channelGroupKey: 'basic_channel_group',
+            channelKey: 'basic_channel',
+            channelName: 'Basic notifications',
+            channelDescription: 'Notification channel for basic tests',
+            icon: 'resource://drawable/ic_notification',
+            importance: NotificationImportance.Max,
+          )
+        ],
+        channelGroups: [
+          NotificationChannelGroup(
+            channelGroupKey: 'basic_channel_group',
+            channelGroupName: 'Basic group',
+          )
+        ],
+        debug: true);
+    bool isAllowed = await AwesomeNotifications().isNotificationAllowed();
+    if (!isAllowed) {
+      AwesomeNotifications().requestPermissionToSendNotifications(permissions: [
+        NotificationPermission.Alert,
+        NotificationPermission.Sound,
+        NotificationPermission.Badge,
+        NotificationPermission.Vibration,
+        NotificationPermission.Light,
+        NotificationPermission.CriticalAlert,
+        NotificationPermission.FullScreenIntent,
+        NotificationPermission.PreciseAlarms,
+      ]);
+    }
   }
 
-  static Future _notificationDetails() async {
-    return const NotificationDetails(
-      android: AndroidNotificationDetails(
-        'channelId',
-        'channelName',
-        importance: Importance.max,
+  @pragma("vm:entry-point")
+  static Future<void> onNotificationCreatedMethod(
+      ReceivedNotification receivedNotification) async {}
+
+  @pragma("vm:entry-point")
+  static Future<void> onNotificationDisplayedMethod(
+      ReceivedNotification receivedNotification) async {}
+
+  @pragma("vm:entry-point")
+  static Future<void> onDismissActionReceivedMethod(
+      ReceivedAction receivedAction) async {}
+
+  @pragma("vm:entry-point")
+  static Future<void> onActionReceivedMethod(
+      ReceivedAction receivedAction) async {}
+
+  static Future<void> scheduleNotifications({
+    required String id,
+    String? title,
+    String? body,
+    required DateTime scheduleTime,
+  }) async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id.generateId(),
+        channelKey: 'basic_channel',
+        title: title,
+        body: body,
+        category: NotificationCategory.Reminder,
+        badge: 1,
+        wakeUpScreen: true,
+      ),
+      schedule: NotificationCalendar(
+        year: scheduleTime.year,
+        month: scheduleTime.month,
+        day: scheduleTime.day,
+        hour: scheduleTime.hour,
+        minute: scheduleTime.minute,
+        preciseAlarm: true,
+        allowWhileIdle: true,
       ),
     );
   }
 
-  static void scheduleNotifications(
-      {required String id,
-      String? title,
-      String? body,
-      required DateTime scheduleTime}) async {
-    _flutterLocalNotificationsPlugin.zonedSchedule(
-      id.generateId(),
-      title,
-      body,
-      tz.TZDateTime.from(scheduleTime, tz.local),
-      await _notificationDetails(),
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      androidScheduleMode: AndroidScheduleMode.alarmClock,
-    );
-  }
-
   static void cancelNotification(String id) async {
-    await _flutterLocalNotificationsPlugin.cancel(id.generateId());
+    await AwesomeNotifications().cancel(id.generateId());
   }
 
   static void cancelAllNotification() async {
-    await _flutterLocalNotificationsPlugin.cancelAll();
+    await AwesomeNotifications().cancelAll();
   }
 }

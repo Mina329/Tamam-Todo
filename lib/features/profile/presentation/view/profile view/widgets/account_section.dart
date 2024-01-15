@@ -218,6 +218,7 @@ class _AccountSectionState extends State<AccountSection> {
                         contentPadding: const EdgeInsets.all(15),
                         label: Text(
                           StringsManager.oldPassword.tr(),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                         hintText: StringsManager.oldPassword.tr(),
                       ),
@@ -257,6 +258,7 @@ class _AccountSectionState extends State<AccountSection> {
                         contentPadding: const EdgeInsets.all(15),
                         label: Text(
                           StringsManager.newPassword.tr(),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                         hintText: StringsManager.newPassword.tr(),
                       ),
@@ -391,6 +393,7 @@ class _AccountSectionState extends State<AccountSection> {
                         contentPadding: const EdgeInsets.all(15),
                         label: Text(
                           StringsManager.accountName.tr(),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                         hintText: StringsManager.accountName.tr(),
                       ),

@@ -22,6 +22,7 @@ class CustomChoiceButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
           hoverColor: Colors.red,
           child: Container(
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               color:
@@ -34,13 +35,16 @@ class CustomChoiceButton extends StatelessWidget {
                     ),
             ),
             height: 50.h,
-            child: Center(
-              child: Text(
-                text,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall!
-                    .copyWith(color: isSelected ? Colors.white : null),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Center(
+                child: Text(
+                  text,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(color: isSelected ? Colors.white : null),
+                ),
               ),
             ),
           ),

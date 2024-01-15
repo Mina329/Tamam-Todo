@@ -19,6 +19,7 @@ import 'package:todo/features/home/presentation/view/home%20view/widgets/add_cat
 import 'package:todo/features/home/presentation/view/home%20view/widgets/task_category_item.dart';
 import 'package:todo/core/widgets/save_cancel_action_buttons.dart';
 import 'package:todo/features/home/presentation/view/home%20view/widgets/task_priority_item.dart';
+import 'dart:math' as math;
 
 class AddTaskActionButtons extends StatefulWidget {
   const AddTaskActionButtons({
@@ -89,11 +90,22 @@ class _AddTaskActionButtonsState extends State<AddTaskActionButtons> {
         const Spacer(),
         IconButton(
           onPressed: widget.onSend,
-          icon: Icon(
-            CustomIcons.send_icon,
-            size: 27.sp,
-            color: ColorManager.primaryColor,
-          ),
+          icon: Localizations.localeOf(context).languageCode == 'ar'
+              ? Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationY(
+                      math.pi), // Rotate 180 degrees around Y-axis
+                  child: Icon(
+                    CustomIcons.send_icon,
+                    size: 27.sp,
+                    color: ColorManager.primaryColor,
+                  ),
+                )
+              : Icon(
+                  CustomIcons.send_icon,
+                  size: 27.sp,
+                  color: ColorManager.primaryColor,
+                ),
         ),
       ],
     );
