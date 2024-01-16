@@ -21,11 +21,9 @@ class TaskItem extends StatefulWidget {
 }
 
 class _TaskItemState extends State<TaskItem> {
-  late bool isChecked;
   @override
   void initState() {
     super.initState();
-    isChecked = widget.task.status != "pending";
   }
 
   @override
@@ -38,9 +36,7 @@ class _TaskItemState extends State<TaskItem> {
             msg: state.errMessage,
             toastLength: Toast.LENGTH_SHORT,
           );
-          setState(() {
-            isChecked = false;
-          });
+          setState(() {});
         } else if (state is ChangeTaskStatusSuccess) {
           BlocProvider.of<GetTasksByDayCubit>(context).getTaskByDay(null);
           BlocProvider.of<GetTasksByCalendarDayCubit>(context)
@@ -77,14 +73,17 @@ class _TaskItemState extends State<TaskItem> {
               RoundCheckBox(
                 checkedWidget: widget.task.status != "uncompleted"
                     ? null
-                    : const Icon(Icons.close),
+                    : const Icon(
+                        Icons.close,
+                        color: Colors.white,
+                      ),
                 onTap: widget.task.status != "pending"
                     ? null
                     : (p0) {
                         BlocProvider.of<ChangeTaskStatusCubit>(context)
                             .changeTaskStatus('completed', widget.task.id);
                       },
-                isChecked: isChecked,
+                isChecked: widget.task.status != "pending",
                 border: Border.all(
                   color: Theme.of(context).brightness == Brightness.dark
                       ? Colors.white
@@ -123,35 +122,32 @@ class _TaskItemState extends State<TaskItem> {
                     const Spacer(
                       flex: 2,
                     ),
-                    SizedBox(
-                      width: 250.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                '${widget.task.utcTime.year}/${widget.task.utcTime.month}/${widget.task.utcTime.day} ${widget.task.utcTime.hour == 0 ? '00' : widget.task.utcTime.hour}:${widget.task.utcTime.minute == 0 ? '00' : widget.task.utcTime.minute}',
-                                style: Theme.of(context).textTheme.labelMedium,
-                              ),
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            '${widget.task.utcTime.year}/${widget.task.utcTime.month}/${widget.task.utcTime.day} ${widget.task.utcTime.hour < 10 ? '0${widget.task.utcTime.hour}' : widget.task.utcTime.hour}:${widget.task.utcTime.minute < 10 ? '0${widget.task.utcTime.minute}' : widget.task.utcTime.minute}',
+                            style: Theme.of(context).textTheme.labelMedium,
                           ),
-                          Row(
-                            children: [
-                              TaskItemCategory(
-                                category: widget.task.category,
-                              ),
-                              SizedBox(
-                                width: 13.w,
-                              ),
-                              TaskItemPriority(
-                                  priority: '${widget.task.priority}'),
-                            ],
+                        ),
+                        const Spacer(),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: TaskItemCategory(
+                            category: widget.task.category,
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: TaskItemPriority(
+                              priority: '${widget.task.priority}'),
+                        ),
+                      ],
                     ),
                     const Spacer(
                       flex: 1,

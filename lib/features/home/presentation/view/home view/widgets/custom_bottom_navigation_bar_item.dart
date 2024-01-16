@@ -16,10 +16,12 @@ class CustomBottomNavigationBarItem extends StatefulWidget {
   final bool isActive;
 
   @override
-  State<CustomBottomNavigationBarItem> createState() => _CustomBottomNavigationBarItemState();
+  State<CustomBottomNavigationBarItem> createState() =>
+      _CustomBottomNavigationBarItemState();
 }
 
-class _CustomBottomNavigationBarItemState extends State<CustomBottomNavigationBarItem> {
+class _CustomBottomNavigationBarItemState
+    extends State<CustomBottomNavigationBarItem> {
   final List<IconData> inactiveIconList = const [
     CustomIcons.inactive_index_icon,
     CustomIcons.inactive_calendar_icon,
@@ -43,41 +45,27 @@ class _CustomBottomNavigationBarItemState extends State<CustomBottomNavigationBa
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        widget.isActive
-            ? Icon(
-                activeIconList[widget.index],
-                size: 24.sp,
-                color: widget.isActive
-                    ? Theme.of(context).brightness == Brightness.dark
-                        ? ColorManager.primaryColor
-                        : Colors.white
-                    : Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black54,
-              )
-            : Icon(
-                inactiveIconList[widget.index],
-                size: 24.sp,
-                color: widget.isActive
-                    ? Theme.of(context).brightness == Brightness.dark
-                        ? ColorManager.primaryColor
-                        : Colors.white
-                    : Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black54,
-              ),
-        SizedBox(height: 4.h),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Text(
-            labelList[widget.index],
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          widget.isActive
+              ? Icon(
+                  activeIconList[widget.index],
+                  size: 24.sp,
+                  color: widget.isActive
+                      ? Theme.of(context).brightness == Brightness.dark
+                          ? ColorManager.primaryColor
+                          : Colors.white
+                      : Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black54,
+                )
+              : Icon(
+                  inactiveIconList[widget.index],
+                  size: 24.sp,
                   color: widget.isActive
                       ? Theme.of(context).brightness == Brightness.dark
                           ? ColorManager.primaryColor
@@ -86,9 +74,28 @@ class _CustomBottomNavigationBarItemState extends State<CustomBottomNavigationBa
                           ? Colors.white
                           : Colors.black54,
                 ),
+          SizedBox(height: 4.h),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                labelList[widget.index],
+                maxLines: 1,
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: widget.isActive
+                          ? Theme.of(context).brightness == Brightness.dark
+                              ? ColorManager.primaryColor
+                              : Colors.white
+                          : Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black54,
+                    ),
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

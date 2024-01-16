@@ -36,7 +36,7 @@
   "cancel": "Annuler",
   "save": "Enregistrer",
   "chooseCategory": "Choisissez une catégorie",
-  "createNew": "Créer une nouvelle catégorie",
+  "createNew": "Nouvelle catégorie",
   "categoryName": "Nom de la catégorie",
   "categoryIcon": "Icône de la catégorie",
   "categoryColor": "Couleur de la catégorie",
@@ -161,5 +161,6 @@
   "q11A": "Le mode Focus vous permet de vous concentrer davantage sur vos tâches, calcule le temps total que vous y avez consacré et désactive les notifications pour assurer une concentration optimale.",
   "faqDescription": "Merci d'avoir choisi Tamam ! Nous espérons qu'il améliore votre productivité et facilite la gestion des tâches.",
   "about": "Salut, je suis Mina, une développeuse Flutter passionnée par la création d'applications utiles et magnifiques.",
-  "connectWithMe": "Connectez-vous avec moi"
+  "connectWithMe": "Connectez-vous avec moi",
+  "categoryNameValidation": "Le nom de la catégorie doit comporter entre 2 et 10 caractères"
 }

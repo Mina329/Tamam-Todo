@@ -96,7 +96,9 @@ class _RegisterFormState extends State<RegisterForm> {
                   });
                 },
                 icon: Icon(
-                    obsecure ? Icons.visibility_off : Icons.remove_red_eye),
+                  obsecure ? Icons.visibility_off : Icons.remove_red_eye,
+                  size: 24.sp,
+                ),
               ),
             ),
             obscureText: obsecure,

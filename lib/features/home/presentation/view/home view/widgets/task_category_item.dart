@@ -102,11 +102,17 @@ class _TaskCategoryItemState extends State<TaskCategoryItem> {
               ),
             ],
           ),
-          Text(
-            widget.category.name,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.titleSmall,
+          Flexible(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                widget.category.name,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+            ),
           ),
+          const Spacer()
         ],
       ),
     );

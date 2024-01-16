@@ -47,11 +47,16 @@ class _AddCategoryButtonState extends State<AddCategoryButton> {
             ),
           ),
         ),
-        Text(
-          StringsManager.createNew.tr(),
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.titleSmall,
+        Flexible(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              StringsManager.createNew.tr(),
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+          ),
         ),
+        const Spacer()
       ],
     );
   }

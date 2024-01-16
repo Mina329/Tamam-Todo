@@ -64,7 +64,6 @@ class _EditTaskCategoryState extends State<EditTaskCategory> {
           text: categoryName,
           icon: Icon(
             iconData.toIconData(),
-            color: Colors.white,
             size: 15.sp,
           ),
           onTap: () {

@@ -32,12 +32,13 @@ class CategoryNameSection extends StatelessWidget {
             label: Text(
               StringsManager.categoryName.tr(),
               style: Theme.of(context).textTheme.labelMedium,
+              overflow: TextOverflow.ellipsis,
             ),
             hintText: StringsManager.categoryName.tr(),
           ),
           validator: (value) {
             if (value == null || value.length < 3 || value.length > 10) {
-              return StringsManager.nameValidation.tr();
+              return StringsManager.categoryNameValidation.tr();
             }
             return null;
           },

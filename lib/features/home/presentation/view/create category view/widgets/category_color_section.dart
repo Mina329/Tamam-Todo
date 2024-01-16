@@ -49,12 +49,15 @@ class _CategoryColorSectionState extends State<CategoryColorSection> {
               onPressed: () {
                 _buildColorPicker(context);
               },
-              child: Text(
-                StringsManager.chooseColor.tr(),
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall!
-                    .copyWith(color: Colors.white),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  StringsManager.chooseColor.tr(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(color: Colors.white),
+                ),
               ),
             )
           ],
@@ -81,12 +84,15 @@ class _CategoryColorSectionState extends State<CategoryColorSection> {
         ),
         actions: <Widget>[
           ElevatedButton(
-            child: Text(
-              StringsManager.save.tr(),
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .copyWith(color: Colors.white),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                StringsManager.save.tr(),
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(color: Colors.white),
+              ),
             ),
             onPressed: () {
               color ??= ColorManager.primaryColor;

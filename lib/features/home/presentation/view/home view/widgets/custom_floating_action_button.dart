@@ -67,13 +67,16 @@ class _CustomFloatingActionButtonState
       builder: (context) => IntrinsicHeight(
         child: Padding(
           padding:
-              EdgeInsets.only(left: 25.w, right: 25.w, top: 20.h, bottom: 10.h),
+              EdgeInsets.only(left: 25.w, right: 25.w, top: 33.h, bottom: 10.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                StringsManager.addTask.tr(),
-                style: Theme.of(context).textTheme.headlineMedium,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  StringsManager.addTask.tr(),
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
               SizedBox(
                 height: 15.h,

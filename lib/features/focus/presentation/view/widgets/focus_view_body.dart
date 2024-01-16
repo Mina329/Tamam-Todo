@@ -97,12 +97,15 @@ class FocusViewBody extends StatelessWidget {
                           height: 200.h,
                         ),
                         ElevatedButton(
-                          child: Text(
-                            StringsManager.refresh.tr(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(color: Colors.white),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              StringsManager.refresh.tr(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .copyWith(color: Colors.white),
+                            ),
                           ),
                           onPressed: () {
                             BlocProvider.of<GetAppsUsageListCubit>(context)

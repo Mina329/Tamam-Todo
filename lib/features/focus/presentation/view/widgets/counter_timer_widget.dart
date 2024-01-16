@@ -106,14 +106,17 @@ class CounterTimerWidgetState extends State<CounterTimerWidget> {
             },
             child: ElevatedButton(
               onPressed: _toggleTimer,
-              child: Text(
-                isTimerRunning
-                    ? StringsManager.stopFocusing.tr()
-                    : StringsManager.startFocusing.tr(),
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall!
-                    .copyWith(color: Colors.white),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  isTimerRunning
+                      ? StringsManager.stopFocusing.tr()
+                      : StringsManager.startFocusing.tr(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(color: Colors.white),
+                ),
               ),
             ),
           ),

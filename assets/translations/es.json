@@ -36,7 +36,7 @@
   "cancel": "Cancelar",
   "save": "Guardar",
   "chooseCategory": "Seleccionar categoría",
-  "createNew": "Crear nueva categoría",
+  "createNew": "Nueva categoría",
   "categoryName": "Nombre de la categoría",
   "categoryIcon": "Ícono de la categoría",
   "categoryColor": "Color de la categoría",
@@ -161,5 +161,6 @@
   "q11A": "El modo de enfoque te permite concentrarte más en tus tareas, calcula el tiempo total que has trabajado en ellas y cierra las notificaciones para asegurar el enfoque.",
   "faqDescription": "¡Gracias por elegir Tamam! Esperamos que mejore tu productividad y haga que la gestión de tareas sea pan comido.",
   "about": "Hola, soy Mina, una desarrolladora de Flutter apasionada por \ncrear aplicaciones útiles y hermosas.",
-  "connectWithMe": "Conéctate conmigo"
+  "connectWithMe": "Conéctate conmigo",
+  "categoryNameValidation": "El nombre de la categoría debe tener entre 2 y 10 caracteres"
 }

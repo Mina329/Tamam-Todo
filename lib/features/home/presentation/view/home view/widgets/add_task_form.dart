@@ -31,6 +31,7 @@ class AddTaskForm extends StatelessWidget {
               label: Text(
                 StringsManager.taskTitle.tr(),
                 style: Theme.of(context).textTheme.labelMedium,
+                overflow: TextOverflow.ellipsis,
               ),
               hintText: StringsManager.taskTitle.tr(),
             ),
@@ -53,6 +54,7 @@ class AddTaskForm extends StatelessWidget {
               label: Text(
                 StringsManager.taskDescription.tr(),
                 style: Theme.of(context).textTheme.labelMedium,
+                overflow: TextOverflow.ellipsis,
               ),
               hintText: StringsManager.taskDescription.tr(),
             ),

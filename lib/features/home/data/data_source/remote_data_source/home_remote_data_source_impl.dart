@@ -94,11 +94,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         .collection('tasks')
         .doc(task.id);
     await taskRef.update(
-      {
-        'status': 'uncompleted',
+      {       'status': 'uncompleted',
       },
     );
-    var taskIndex = tasksStored.indexWhere((task) => task.id == task.id);
+    var taskIndex = tasksStored.indexWhere((taskStored) => taskStored.id == task.id);
     if (taskIndex != -1) {
       TaskEntity newTask = TaskEntity(
           id: task.id,

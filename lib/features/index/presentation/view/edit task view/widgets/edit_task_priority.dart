@@ -44,7 +44,6 @@ class _EditTaskPriorityState extends State<EditTaskPriority> {
         CustomClickableContainer(
           icon: Icon(
             CustomIcons.flag_icon,
-            color: Colors.white,
             size: 15.sp,
           ),
           text: selectedTaskPriority.toString(),

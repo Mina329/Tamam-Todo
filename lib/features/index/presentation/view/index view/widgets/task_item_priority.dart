@@ -13,8 +13,7 @@ class TaskItemPriority extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 29.h,
-      width: 50.w,
-      padding: EdgeInsets.symmetric(horizontal: 9.w),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
         border: Border.all(color: ColorManager.primaryColor, width: 2.w),
@@ -30,17 +29,23 @@ class TaskItemPriority extends StatelessWidget {
             SizedBox(
               width: 5.w,
             ),
-            Text(
-              priority,
-              style: Theme.of(context).brightness == Brightness.dark
-                  ? Theme.of(context)
-                      .textTheme
-                      .labelSmall!
-                      .copyWith(color: Colors.white)
-                  : Theme.of(context)
-                      .textTheme
-                      .labelSmall!
-                      .copyWith(color: Colors.black),
+            SizedBox(
+              width: 10.w,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  priority,
+                  style: Theme.of(context).brightness == Brightness.dark
+                      ? Theme.of(context)
+                          .textTheme
+                          .labelSmall!
+                          .copyWith(color: Colors.white)
+                      : Theme.of(context)
+                          .textTheme
+                          .labelSmall!
+                          .copyWith(color: Colors.black),
+                ),
+              ),
             ),
           ],
         ),

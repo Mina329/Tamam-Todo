@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:todo/core/cache/cache_helper.dart';
+import 'package:todo/core/cache/cache_keys_values.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/strings_manager.dart';
 import 'package:todo/features/onboarding/presentation/view/widgets/onboarding_action_buttons.dart';
@@ -42,11 +44,15 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           SkipBackButton(
             text: StringsManager.skip.tr(),
             onPressed: () {
+              CacheData.setData(
+                  key: CacheKeys.kONBOARDING, value: CacheValues.ONBOARDING);
               GoRouter.of(context).go(AppRouter.kAuthView);
             },
           ),
-          PageViewBody(
-            controller: controller,
+          Flexible(
+            child: PageViewBody(
+              controller: controller,
+            ),
           ),
           PageIndexIndicator(controller: controller),
           SizedBox(
@@ -54,7 +60,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           ),
           OnBoardingActionButtons(controller: controller),
           SizedBox(
-            height: 62.h,
+            height: 20.h,
           ),
         ],
       ),

@@ -82,6 +82,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                   label: Text(
                     StringsManager.email.tr(),
                     style: Theme.of(context).textTheme.labelMedium,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   hintText: StringsManager.email.tr(),
                 ),

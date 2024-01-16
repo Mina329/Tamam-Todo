@@ -66,7 +66,9 @@ class _LoginFormState extends State<LoginForm> {
                   });
                 },
                 icon: Icon(
-                    obsecure ? Icons.visibility_off : Icons.remove_red_eye),
+                  obsecure ? Icons.visibility_off : Icons.remove_red_eye,
+                  size: 24.sp,
+                ),
               ),
             ),
             obscureText: obsecure,

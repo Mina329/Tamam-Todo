@@ -4,14 +4,13 @@ import 'package:todo/core/utils/functions/extensions.dart';
 class LocalNotification {
   static Future init() async {
     AwesomeNotifications().initialize(
-        'resource://drawable/ic_notification',
+        null,
         [
           NotificationChannel(
             channelGroupKey: 'basic_channel_group',
             channelKey: 'basic_channel',
             channelName: 'Basic notifications',
             channelDescription: 'Notification channel for basic tests',
-            icon: 'resource://drawable/ic_notification',
             importance: NotificationImportance.Max,
           )
         ],

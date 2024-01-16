@@ -33,70 +33,68 @@ class PageViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: PageView.builder(
-        physics: const ClampingScrollPhysics(),
-        itemCount: 3,
-        controller: controller,
-        itemBuilder: (context, index) {
-          return CustomScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            slivers: [
-              SliverSizedBox(
-                height: 10.h,
+    return PageView.builder(
+      physics: const ClampingScrollPhysics(),
+      itemCount: 3,
+      controller: controller,
+      itemBuilder: (context, index) {
+        return CustomScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          slivers: [
+            SliverSizedBox(
+              height: 10.h,
+            ),
+            SliverToBoxAdapter(
+              child: SvgPicture.asset(
+                images[index],
+                width: 213.w,
+                height: 277.h,
               ),
-              SliverToBoxAdapter(
-                child: SvgPicture.asset(
-                  images[index],
-                  width: 213.w,
-                  height: 277.h,
+            ),
+            SliverSizedBox(
+              height: 80.h,
+            ),
+            SliverToBoxAdapter(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  titles[index],
+                  style: Theme.of(context).textTheme.displayMedium,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
                 ),
               ),
-              SliverSizedBox(
-                height: 80.h,
-              ),
-              SliverToBoxAdapter(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    titles[index],
-                    style: Theme.of(context).textTheme.displayMedium,
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
+            ),
+            SliverSizedBox(
+              height: 40.h,
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      subTitles[index].split('\n')[0],
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                    ),
                   ),
-                ),
-              ),
-              SliverSizedBox(
-                height: 40.h,
-              ),
-              SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        subTitles[index].split('\n')[0],
-                        style: Theme.of(context).textTheme.headlineSmall,
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                      ),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      subTitles[index].split('\n')[1],
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
                     ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        subTitles[index].split('\n')[1],
-                        style: Theme.of(context).textTheme.headlineSmall,
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          );
-        },
-      ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

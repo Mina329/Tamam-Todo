@@ -36,7 +36,7 @@
   "cancel": "Cancel",
   "save": "Save",
   "chooseCategory": "Choose Category",
-  "createNew": "Create New Category",
+  "createNew": "New Category",
   "categoryName": "Category Name",
   "categoryIcon": "Category Icon",
   "categoryColor": "Category Color",
@@ -161,5 +161,6 @@
   "q11A": "Focus Mode enables you to concentrate more on your tasks, calculates the total time you've worked on them, and closes notifications to ensure focus.",
   "faqDescription": "Thank you for choosing Tamam! We hope it enhances your productivity and makes task management a breeze.",
   "about": "Hi, I'm Mina, a Flutter developer passionate about \ncreating useful and beautiful applications.",
-  "connectWithMe": "Connect with me"
+  "connectWithMe": "Connect with me",
+  "categoryNameValidation": "Category name must 2-10 characters"
 }

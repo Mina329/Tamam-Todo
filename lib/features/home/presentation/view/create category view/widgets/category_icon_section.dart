@@ -55,12 +55,15 @@ class _CategoryIconSectionState extends State<CategoryIconSection> {
                 }
                 setState(() {});
               },
-              child: Text(
-                StringsManager.chooseIcon.tr(),
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall!
-                    .copyWith(color: Colors.white),
+              child: FittedBox(
+            fit: BoxFit.scaleDown,
+                child: Text(
+                  StringsManager.chooseIcon.tr(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(color: Colors.white),
+                ),
               ),
             )
           ],

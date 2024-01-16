@@ -213,12 +213,14 @@ class _AccountSectionState extends State<AccountSection> {
                             oldPasswordObsecured
                                 ? Icons.visibility_off
                                 : Icons.remove_red_eye,
+                            size: 24.sp,
                           ),
                         ),
                         contentPadding: const EdgeInsets.all(15),
                         label: Text(
                           StringsManager.oldPassword.tr(),
                           style: Theme.of(context).textTheme.labelMedium,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         hintText: StringsManager.oldPassword.tr(),
                       ),
@@ -253,12 +255,14 @@ class _AccountSectionState extends State<AccountSection> {
                             newPasswordObsecured
                                 ? Icons.visibility_off
                                 : Icons.remove_red_eye,
+                            size: 24.sp,
                           ),
                         ),
                         contentPadding: const EdgeInsets.all(15),
                         label: Text(
                           StringsManager.newPassword.tr(),
                           style: Theme.of(context).textTheme.labelMedium,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         hintText: StringsManager.newPassword.tr(),
                       ),
@@ -394,6 +398,7 @@ class _AccountSectionState extends State<AccountSection> {
                         label: Text(
                           StringsManager.accountName.tr(),
                           style: Theme.of(context).textTheme.labelMedium,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         hintText: StringsManager.accountName.tr(),
                       ),

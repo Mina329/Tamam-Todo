@@ -29,7 +29,7 @@ class _EditTaskTimeState extends State<EditTaskTime> {
 
   @override
   Widget build(BuildContext context) {
-    return Row( 
+    return Row(
       children: [
         const Icon(
           CustomIcons.clock_icon,
@@ -44,7 +44,7 @@ class _EditTaskTimeState extends State<EditTaskTime> {
         const Spacer(),
         CustomClickableContainer(
           text:
-              '${intialDate.year}/${intialDate.month}/${intialDate.day} ${intialDate.hour == 0 ? '00' : intialDate.hour}:${intialDate.minute == 0 ? '00' : intialDate.minute}',
+              '${intialDate.year}/${intialDate.month}/${intialDate.day} ${intialDate.hour < 10 ? '0${intialDate.hour}' : intialDate.hour}:${intialDate.minute < 10 ? '0${intialDate.minute}' : intialDate.minute}',
           onTap: () {
             _showCalendarAndTime(context);
           },

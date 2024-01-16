@@ -12,7 +12,6 @@ class ApplicationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80.h,
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
       decoration: BoxDecoration(
@@ -49,26 +48,14 @@ class ApplicationItem extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            children: [
-              VerticalDivider(
-                thickness: 3,
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : Colors.grey[700],
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Icon(
-                CustomIcons.info_icon,
-                size: 30.sp,
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? null
-                    : Colors.grey[700],
-              )
-            ],
-          ),
+          const Spacer(),
+          Icon(
+            CustomIcons.info_icon,
+            size: 30.sp,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? null
+                : Colors.grey[700],
+          )
         ],
       ),
     );
