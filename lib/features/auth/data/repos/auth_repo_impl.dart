@@ -24,6 +24,7 @@ class AuthRepoImpl extends AuthRepo {
         await firebaseUser.updateDisplayName(user.name);
         await firebaseUser.reload();
       }
+      _firebaseAuth.signOut();
       return right(null);
     } on FirebaseAuthException catch (e) {
       return left(
