@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "552778303525-0b1qoke5vilav9rpl9b8tobhdvi8ciqv.apps.googleusercontent.com",
+          "client_id": "552778303525-r8rqra5ptgfa95ukmc0mre8cbji0qpgs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mina329.tamam",
-            "certificate_hash": "503058a6b85b0ec2f72367a22ee1a9ec93704a8c"
+            "certificate_hash": "b562af374f7e422970f4b674cd990f5e00dc12a8"
           }
         },
         {
