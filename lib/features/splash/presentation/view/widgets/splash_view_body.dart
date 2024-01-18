@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/core/cache/cache_helper.dart';
 import 'package:todo/core/cache/cache_keys_values.dart';
+import 'package:todo/core/database/database.dart';
 import 'package:todo/core/utils/app_router.dart';
 import 'package:todo/core/utils/assets_manager.dart';
 import 'package:todo/core/utils/service_locator.dart';
@@ -99,6 +100,7 @@ class SplashViewBodyState extends State<SplashViewBody>
           () => GoRouter.of(context).go(AppRouter.kHomeView),
         );
       } else {
+        clearDataBase();
         await Future.delayed(
           const Duration(milliseconds: 2000),
           () => GoRouter.of(context).go(AppRouter.kAuthView),

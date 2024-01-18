@@ -3,6 +3,7 @@
   <h1>Tamam</h1>
   <p>Tamam - Your Ultimate Task Management Solution</p>
 </div>
+<img width="100%" src="images/Feature_Graphic.png" alt="Application Image 10">
 <p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="-----------------------------------------------------" style="width: 100%; height: auto;">
 </p>
@@ -14,7 +15,7 @@
 - [Features 🌟](#features-🌟)
 - [Screenshots 📸](#screenshots-📸)
 - [Packages Used 📚](#packages-used-📚)
-- [Authors](#team-section)
+- [Author](#team-section)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="-----------------------------------------------------" style="width: 100%; height: auto;">
@@ -30,9 +31,7 @@ Welcome to Tamam, your go-to Flutter Android application for effective task mana
 
 ## Demo 🚀
 
-
 https://github.com/Mina329/Tamam-Todo/assets/96777964/1b47f856-18ba-4510-9d64-c1f300bab433
-
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="-----------------------------------------------------" style="width: 100%; height: auto;">
@@ -144,6 +143,10 @@ The app utilizes several packages to enhance its functionality. Some of the key 
 - vibration
 
 These packages are crucial for enabling various functionalities and enhancing the app's capabilities.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="-----------------------------------------------------" style="width: 100%; height: auto;">
+</p>
 
   <h1 align="center">Meet the Visionary Mind Behind the Project 🌟</h1>
 
